@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>challenge</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!--[if lt IE 9]>
+      <script src="script/html5shiv.js"></script>
+      <script src="script/respond.min.js"></script>
+    <![endif]-->
+
+	<style type="text/css">
+		body{
+			padding-top: 50px;
+		}
+		.sidebar{
+			position: fixed;
+			left: 0;
+			top: 51px;
+			bottom:0;
+			padding: 20px 0 0 0;
+			background-color: #f5f5f5;
+		}
+		.sidebar .nav li a.active,
+		.sidebar .nav li a:hover{
+			background-color: #428bca;
+			color: #fff;
+		}
+		.btns{
+			margin-bottom: 20px;
+			margin-left: 0;
+		}
+		.assignments, .construction_progress{
+		}
+		.construction_progress{
+			padding:0;
+		}
+		.construction_progress .label{
+			margin-bottom: 5px;
+			display: inline-block;
+		}
+		.construction_progress{
+		}
+		.orders table{
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<!--brand and collapse-->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar_top">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="#" class="navbar-brand">某管理系统</a>
+			</div>
+			<!--nav links, forms-->
+			<div class="collapse navbar-collapse" id="navbar_top">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">首页</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">功能<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+	                        <li class="dropdown-header">业务功能</li>
+	                        <li><a href="#">信息建立</a></li>
+	                        <li><a href="#">信息查询</a></li>
+	                        <li><a href="#">信息管理</a></li>
+	                        <li class="divider"></li>
+	                        <li class="dropdown-header">系统功能</li>
+	                        <li><a href="#">设置</a></li>
+						</ul>
+					</li>
+					<li><a href="#">帮助</a></li>
+				</ul>
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<input class="form-control" type="text" placeholder="用户名...">
+						<input class="form-control" type="password" placeholder="密码...">
+					</div>
+					<button type="submit" class="btn btn-default">登录</button>
+				</form>
+			</div>
+		</div>
+	</nav>
+	<!--main content-->
+	<div class="container-fluid">
+		<div class="row">
+			<!--sidebar-->
+			<div class="col-md-2 sidebar hidden-sm hidden-xs">
+				<ul class="nav nav-sidebar">
+					<li><a href="#" class="active">首页</a></li>
+					<li class="divider"></li>
+					<li><a href="#">信息建立</a></li>
+					<li><a href="#">信息查询</a></li>
+					<li><a href="#">信息管理</a></li>
+					<li><a href="#">设置</a></li>
+					<li><a href="#">帮助</a></li>
+				</ul>
+			</div>
+			<!--content-->
+			<div class="col-md-10 col-md-offset-2">
+				<div class="page-header">
+					<h1>管理控制台</h1>
+				</div>
+				<!--btns-->
+				<div class="row btns">
+					<button type="button" class="btn btn-default">操作1</button>
+					<button type="button" class="btn btn-primary">操作2</button>
+					<button type="button" class="btn btn-success">操作3</button>
+					<button type="button" class="btn btn-info">操作4</button>
+					<button type="button" class="btn btn-warning">操作5</button>
+					<button type="button" class="btn btn-danger">操作6</button>
+				</div>
+				<!--最新提醒 我的任务-->
+				<div class="row">
+					<!--最新提醒-->
+					<div class="col-md-6">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<div class="panel-title">最新提醒</div>
+							</div>
+							<div class="panel-body">
+								<div class="alert alert-success">
+									<strong>提示:</strong> 您的订单(2016009)已经审核通过!
+								</div>
+								<div class="alert alert-danger">
+									<strong>提示:</strong> 您的订单(2016001)已经被驳回!
+								</div>
+								<div class="alert alert-warning">
+									<strong>提示:</strong> 您的订单(2016007)客户付款被延迟!
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--我的任务-->
+					<div class="col-md-6 assignments">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<div class="panel-title">我的任务</div>
+							</div>
+							<div class="panel-body">
+								<div class="alert alert-info">
+									<a href="#">订单审核<span class="badge pull-right">42</span></a>
+								</div>
+								<div class="alert alert-info">
+									<a href="#">收款确认<span class="badge pull-right">20</span></a>
+								</div>
+								<div class="alert alert-info">
+									<a href="#">付款确认<span class="badge pull-right">10</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--最新订单 工程进度-->
+				<div class="row">
+					<!--最新订单-->
+					<div class="col-md-6">
+						<div class="panel panel-primary orders">
+							<div class="panel-heading">
+								<div class="panel-title">最新订单</div>
+							</div>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>产品</th>
+										<th>数量</th>
+										<th>总金额</th>
+										<th>业务员</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>Apple Macbook air</td>
+										<td>10</td>
+										<td>80000</td>
+										<td>梅小西</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td>Apple iPad air</td>
+										<td>20</td>
+										<td>65000</td>
+										<td>内小马</td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td>Apple Macbook pro</td>
+										<td>5</td>
+										<td>50000</td>
+										<td>苏小牙</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="panel-body">
+								<button type="button" class="btn btn-primary">查看详细 &raquo;</button>
+							</div>
+						</div>
+					</div>
+					<!--工程进度-->
+					<div class="col-md-6">
+						<div class="panel panel-primary construction_progress">
+							<div class="panel-heading">
+								<div class="panel-title">工程进度</div>
+							</div>
+							<div class="panel-body">
+								<span class="label label-primary">水井挖掘工程</span>
+								<div class="progress">
+									<div class="progress-bar progress-bar-primary" style="width:65%"></div>
+								</div>
+								<span class="label label-danger">基建工程</span>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger" style="width:80%"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>
