@@ -1,0 +1,359 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+ul,
+ol,
+dl {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+img {
+  border:none;
+}
+
+.clearfix:after {
+  content:"";
+  display:block;
+  clear: both;
+}
+.clearfix {
+  zoom:1;
+}
+
+#header,
+#main_content,
+.copyright,
+.courses {
+  width: 1000px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#footer {
+  width: 100%;
+  background: #e8e8e8;
+  margin-top: 10px;
+  overflow:hidden;
+  padding-top: 20px;
+}
+
+
+/*header部分*/
+
+#header .logo {
+  float: left;
+}
+
+#header .nav {
+  float: left;
+  margin-top: 10px;
+}
+
+.nav li {
+  float: left;
+  margin: 1px;
+}
+
+.nav a {
+  display: block;
+  text-align: center;
+  padding: 20px 25px;
+}
+
+.nav .active a,
+.nav a:hover {
+  background: #bd3847;
+  color: #fff;
+  border-radius: 5px;
+}
+
+
+/*main_content*/
+
+#banner,
+#news_scroll_box,
+.courses,
+.content {
+  margin-top: 10px;
+}
+
+
+/*banner*/
+
+#banner {
+  width: 1000px;
+  height: 310px;
+  overflow: hidden;
+  position: relative;
+}
+
+#banner_list {
+  height: 310px;
+  width: 3000px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+}
+
+#banner_list li {
+  float: left;
+}
+
+#banner_buttons {
+  position: absolute;
+  heigth: 10px;
+  width: 100px;
+  z-index: 2;
+  bottom: 20px;
+  left: 450px;
+}
+
+#banner_buttons span {
+  cursor: pointer;
+  float: left;
+  border: 1px solid #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #333;
+  margin-right: 10px;
+}
+
+#banner_buttons .active {
+  background: #F90;
+}
+
+.arrow {
+  cursor: pointer;
+  display: none;
+  line-height: 39px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  z-index: 2;
+  top: 135px;
+  background: #000;
+  filter: alpha(opacity: 30);
+  opacity: 0.3;
+}
+
+.arrow:hover {
+  background: #000;
+  filter: alpha(opacity: 70);
+  opacity: 0.7;
+}
+
+#banner:hover .arrow {
+  display: block;
+}
+
+#prev {
+  left: 20px;
+}
+
+#next {
+  right: 20px;
+}
+
+
+/*news_scroll_box*/
+
+.news_scroll {
+  background: #3e3e3e;
+  height: 30px;
+  width:900px;
+  float:left;
+  overflow:hidden;
+  position:relative;
+}
+.news_scroll a {
+  color: #eee;
+}
+.news_scroll a:hover {
+  color: #f99;
+}
+
+
+#news_scroll_box .title,
+.news_scroll ul {
+  height: 30px;
+  line-height: 30px;
+  float:left;
+  display:inline;
+}
+.news_scroll ul{
+  position:absolute;
+  left:0;
+}
+
+#news_scroll_box .title {
+  text-align: center;
+  background: #bd3847;
+  width: 100px;
+  text-indent: 0;
+}
+
+.news_scroll li {
+  padding-right: 20px;
+  float:left;
+}
+
+
+/*courses*/
+
+.courses li {
+  float: left;
+  border: 1px solid #ccc;
+  margin-right: 1px;
+}
+
+.courses p {
+  text-align: center;
+  padding: 2px 0;
+}
+
+
+/*content*/
+
+.content {
+  overflow:hidden;
+}
+.content_news,
+.content_activity,
+.content_contact {
+  width: 330px;
+  height: 320px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  margin-right: 1px;
+  float: left;
+}
+
+.title {
+  height: 30px;
+  line-height: 30px;
+  background: #bd3847;
+  text-indent: 20px;
+  color: #eee;
+  font-size: 14px;
+}
+
+.title a {
+  display: block;
+  float: right;
+  font-size: 12px;
+  padding-right: 10px;
+  color: #eee;
+}
+
+
+/*content_news*/
+
+.news {
+  padding: 10px;
+  line-height: 20px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.news_date {
+  display: block;
+  padding: 10px;
+  background: #bd3847;
+  color: #eee;
+  float: left;
+  border-radius: 5px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.news_title a {
+  color: #000;
+}
+
+.news_content {
+  color: #666;
+}
+
+
+/*content_activity*/
+
+.activity_logo {
+  width: 270px;
+  display: block;
+  margin: 5px auto;
+  border: 1px solid #ccc;
+}
+
+.activity {
+  line-height: 22px;
+  padding-left: 20px;
+}
+
+
+/*content_contact*/
+
+.content_contact {
+  line-height: 22px;
+}
+
+.content_contact span {
+  color: #00F;
+  font-size: 14px;
+}
+
+.recruit {
+  padding: 15px;
+}
+
+.cooperate {
+  padding: 15px;
+}
+
+
+/*footer*/
+
+.copyright dl {
+  float: left;
+  width: 200px;
+  background: url(../img/line.png) no-repeat right center;
+  text-align: center;
+  line-height: 30px;
+  font-family: "微软雅黑";
+}
+
+.copyright a {
+  color: #999;
+  font-size: 14px;
+}
+
+.copyright dt a {
+  font-size: 18px;
+}
+
+.copyright img {
+  vertical-align: middle;
+}
