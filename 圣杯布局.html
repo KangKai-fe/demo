@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>圣杯布局</title>
+    <style type="text/css">
+        .header{
+            width: 100%;
+            min-height: 30px;
+            background-color: #ccc;
+        }
+        .container{
+            /* 把main限制在应有的范围内 */
+            padding: 0 200px 0 200px;
+            margin: 10px 0;
+            /* 清浮动(或者用footer清) */
+            overflow: hidden;
+        }
+        .main{
+            float: left;
+            width: 100%;
+            min-height: 30px;
+            background-color: #f00;
+        }
+        .sub{
+            float: left;
+            width: 190px;
+            min-height: 30px;
+            background-color: #0f0;
+            /* 把sub拉到左边 */
+            margin-left: -100%;
+            position: relative;
+            /* 抵消父级的padding-left */
+            left: -200px;
+        }
+        .extra{
+            float: left;
+            width: 190px;
+            min-height: 30px;
+            background-color: #00f;
+            margin-left: -190px;
+            position: relative;
+            right: -200px;
+        }
+        .footer{
+            width: 100%;
+            min-height: 30px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">header</div>
+    <div class="container">
+        <div class="main">main</div>
+        <div class="sub">sub</div>
+        <div class="extra">extra</div>
+    </div>
+    <div class="footer">footer</div>
+</body>
+</html>
