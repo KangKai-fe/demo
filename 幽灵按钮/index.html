@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>幽灵按钮</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <div class="link link-mission">
+            <span class="icon"></span>
+            <a href="#" class="btn" data-title="My mission is clear">
+                <span class="line line-top"></span>
+                <span class="line line-left"></span>
+                <span class="line line-right"></span>
+                <span class="line line-bottom"></span>
+                MISSION
+            </a>
+        </div>
+        <div class="link link-play">
+            <span class="icon"></span>
+            <a href="#" class="btn" data-title="This is my playground">
+                <span class="line line-top"></span>
+                <span class="line line-left"></span>
+                <span class="line line-right"></span>
+                <span class="line line-bottom"></span>
+                PLAY
+            </a>
+        </div>
+        <div class="link link-touch">
+            <span class="icon"></span>
+            <a href="#" class="btn" data-title="Let's do something together">
+                <span class="line line-top"></span>
+                <span class="line line-left"></span>
+                <span class="line line-right"></span>
+                <span class="line line-bottom"></span>
+                TOUCH
+            </a>
+        </div>
+    </div>
+    <div class="tip">
+        <em></em>
+        <span></span>
+    </div>
+    <script type="text/javascript">
+        $(function() {
+            $(".link .btn").hover(function() {
+                var title = $(this).attr("data-title");
+                $(".tip em").text(title);
+                var pos = $(this).offset().left;
+                console.log(pos);
+                console.log($(".link").offset().left);
+                var dis = ($(".tip").outerWidth() - $(this).outerWidth()) / 2;
+                $(".tip").css({"left": (pos - dis) + "px"}).animate({"top": 195, "opacity": 1}, 300);
+            }, function() {
+                $(".tip").animate({"top": 160, "opacity": 0}, 300);
+            });
+        })
+    </script>
+</body>
+</html>
