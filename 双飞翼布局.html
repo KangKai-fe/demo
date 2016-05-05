@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>双飞翼布局</title>
+    <!-- 实现两侧固定宽度, 中间自适应, 且优先解析中间的main部分 -->
+    <style type="text/css">
+        .main{
+            float: left;
+            width: 100%;
+        }
+        .main-wrap{
+            margin-left: 200px;
+            margin-right: 200px;
+            min-height: 30px;
+            background-color: #f00;
+        }
+        .sub{
+            float: left;
+            width: 190px;
+            margin-left: -100%;
+            min-height: 30px;
+            background-color: #0f0;
+        }
+        .extra{
+            float: left;
+            width: 190px;
+            margin-left: -190px;
+            min-height: 30px;
+            background-color: #00f;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="main-wrap">主</div>
+    </div>
+    <div class="sub">副</div>
+    <div class="extra">其他</div>
+</body>
+</html>
