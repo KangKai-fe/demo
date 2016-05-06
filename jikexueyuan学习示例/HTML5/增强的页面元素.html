@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+    <!-- figure元素以及figcaption元素 -->
+    <figure>
+        <img src="img/portrait_messi.jpg" alt="messi" />
+        <img src="img/portrait_puyol.jpg" alt="puyol" />
+        <img src="img/portrait_ronaldinho.jpg" alt="ronaldinho" />
+        <img src="img/portrait_xavi.jpg" alt="xavi" />
+        <figcaption>best players</figcaption>
+    </figure>
+    <!-- detail元素和summary元素 -->
+    <details id="detail" onclick="detailOnclick(this)">
+        <summary>美队3</summary>
+        <p id="p" style="visibility: hidden">今天上映,明天去看,不对,是后天...</p>
+    </details>
+    <script>
+        function detailOnclick(detail) {
+            var p = document.getElementById("p");
+            if (detail.open) {
+                p.style.visibility = "hidden";
+            } else {
+                p.style.visibility = "visible";
+            }
+        }
+    </script>
+    <!-- mark元素 -->
+    <p>这是一段文字,用来测试<mark>mark</mark>元素</p>
+    <!-- progress元素 -->
+    <section>
+        <h2>progress元素的使用</h2>
+        <p>完成的百分比: <progress id="progressBar" max="100" value=""><span>0</span>%</progress></p>
+        <input type="button" onclick="btn()" value="点击" />
+    </section>
+    <script>
+        function btn() {
+            var i = 0;
+
+            function addOne() {
+                if (i < 100) {
+                    i++;
+                    updateProgress(i);
+                }
+            }
+
+            setInterval(addOne, 100);
+        }
+        function updateProgress(newValue) {
+            var progressBar = document.getElementById("progressBar");
+
+            progressBar.value = newValue;
+            progressBar.getElementsByTagName("span")[0].textValue = newValue;
+        }
+    </script>
+    <!-- meter元素 -->
+    <br />
+    <meter value="40" min="0" max="100" low="10" high="90" optimum="80"></meter>
+    <!-- ol, 新增start属性和reversed属性 -->
+    <ol start="5" reversed="true">
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+        <li>列表5</li>
+    </ol>
+    <!-- dl, 一个dl中可以有多个dt和对应的dd -->
+    <dl>
+        <dt>hello</dt>
+        <dd>1</dd>
+        <dt>world</dt>
+        <dd>2</dd>
+    </dl>
+    <!-- cite元素 -->
+    <h3>cite元素</h3>
+    <p>我最喜欢的球队是<cite>巴塞罗那</cite></p>
+    <!-- small元素, 用于标识小字印刷体 -->
+</body>
+</html>
