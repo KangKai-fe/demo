@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>改良input</title>
+</head>
+<body>
+    <!-- url类型 -->
+    <form>
+        <input type="url" name="url" value="http://www.baidu.com" />
+        <input type="submit" value="提交" />
+    </form>
+    <br />
+    <!-- email类型 -->
+    <form>
+        <input type="email" name="email" value="kk@qq.com" />
+        <input type="submit" value="提交" />
+    </form>
+    <br />
+    <!-- date类型 -->
+    <input type="date" />
+    <br />
+    <br />
+    <!-- time类型 -->
+    <input type="time" name="time" value="10:00" />
+    <br />
+    <br />
+    <!-- datetime类型->utc类型时间 -->
+    <input type="datetime" name="datetime" value="10:00" />
+    <!-- datetime-local类型 -->
+    <input type="datetime-local" name="datetime-local" value="" />
+    <!-- month元素 -->
+    <input type="month" name="month" value="" />
+    <!-- week元素 -->
+    <input type="week" name="week" />
+    <!-- number类型 -->
+    <input type="number" name="number" value="15" min="10" max="100" step="5" />
+    <br /><br />
+    <!-- calc -->
+    <form>
+        <input type="number" id="num1" />
+        +
+        <input type="number" id="num2" />
+        =
+        <input type="number" id="result" readonly />
+        <input type="button" id="calc" value="计算" />
+    </form>
+    <script>
+        function sum() {
+            var n1 = document.getElementById("num1").valueAsNumber,
+                n2 = document.getElementById("num2").valueAsNumber,
+            result = document.getElementById("result");
+
+            result.valueAsNumber = n1 + n2;
+        }
+
+        var calc = document.getElementById("calc");
+        calc.onclick = sum;
+    </script>
+    <br /><br />
+    <!-- range元素 -->
+    <input type="range" name="range" value="25" min="0" max="100" step="5" />
+    <br /><br />
+    <!-- search类型 -->
+    <input type="search" />
+    <!-- tel类型 -->
+    <input type="tel" />
+    <!-- color类型 -->
+    <input type="color" onchange="document.body.style.backgroundColor = document.getElementById('curColor').textContent = this.value" />
+    <span id="curColor"></span>
+    <br /><br />
+    <!-- output元素的追加 -->
+    <form id="testform">
+        <input type="range" id="range" min="0" max="100" step="5" value="10" onchange="valueChange()" />
+        <output id="output">10</output>
+    </form>
+    <script>
+        function valueChange() {
+            var num = document.getElementById("range").value;
+            document.getElementById("output").value = num;
+        }
+    </script>
+    <br /><br />
+    <!-- validate -->
+    <form id="testform" onsubmit="check()" novalidate="true">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" /><br />
+        <input type="submit" />
+    </form>
+    <script>
+        function check() {
+            var email = document.getElementById("email");
+            if (email.value == "") {
+                alert("请输入email");
+                return false;
+            } else if (!email.checkValidity()) {
+                alert("请输入正确的email地址");
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
