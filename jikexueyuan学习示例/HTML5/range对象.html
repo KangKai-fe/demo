@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>html5编辑API-range对象</title>
+</head>
+<body>
+    <div>
+        Selection对象与Range对象的使用
+        <input type="button" value="请选中一段文字并点击我" onclick="rangeTest()" />
+        <div id="showRange"></div>
+    </div>
+    <script>
+        function rangeTest() {
+            var html,
+            showRangeDiv = document.getElementById("showRange"),
+            selection = document.getSelection();
+
+            if (selection.rangeCount > 0) {
+                html = "您选取了" + selection.rangeCount + "段内容<br />";
+
+                for (var i = 0; i < selection.rangeCount; i++) {
+                    var range = selection.getRangeAt(i);
+
+                    html += "第" + (i + 1) + "段内容为: " + range + "<br />";
+                }
+                showRangeDiv.innerHTML = html;
+            }
+        }
+    </script>
+
+    <!-- range对象的方法, 选取节点 -->
+    <div id="selectTest" style="background-color: #ccc; width: 300px; height: 50px;">
+        元素中的内容
+    </div>
+    <input type="button" value="删除内容" onclick="deleteRangeContent(true)" />
+    <input type="button" value="删除元素" onclick="deleteRangeContent(false)" />
+    <script>
+        function deleteRangeContent(contentOnly) {
+            var divTest = document.getElementById("selectTest"),
+            rangeObj = document.createRange();
+
+            if (contentOnly) {
+                rangeObj.selectNodeContents(divTest);
+            } else {
+                rangeObj.selectNode(divTest);
+            }
+
+            rangeObj.deleteContents();
+        }
+    </script>
+
+    <!-- setStart, setEnd -->
+    <div id="setTest" style="background-color: #ccc;">用于删除的文字</div>
+    <button onclick="deleteChar()">删除文字</button>
+    <script>
+        function deleteChar() {
+            var setTest = document.getElementById("setTest"),
+            textNode = setTest.firstChild,
+            rangeObj = document.createRange();
+
+            rangeObj.setStart(textNode, 1);
+            rangeObj.setEnd(textNode, 4);
+            rangeObj.deleteContents();
+        }
+    </script>
+</body>
+</html>
