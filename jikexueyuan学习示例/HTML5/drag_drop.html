@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>html5拖放</title>
+    <script src="js/drag_drop.js"></script>
+    <style type="text/css">
+        .box{
+            float: left;
+            margin-right: 20px;
+            width: 300px;
+            height: 300px;
+            background-color: #ccc;
+        }
+        #imgContainer{
+            clear: both;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="testBox" class="box">可拖放网页中图片</div>
+    <div id="testBox2" class="box">可拖放网页中图片</div>
+    <img id="testImg" src="img/portrait_messi.jpg" alt="" />
+    <div id="info"></div>
+
+    <!-- 拖放本地资源 -->
+    <div id="imgContainer" class="box">可拖放本地图片</div>
+</body>
+</html>
