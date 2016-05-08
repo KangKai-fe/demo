@@ -1,0 +1,109 @@
+@charset "utf-8";
+body {
+  background-color: #aaa;
+}
+/* 我是被编译的 */
+.box {
+  width: 300px;
+  height: 300px;
+  background-color: yellow;
+  border: 5px solid pink;
+}
+.border {
+  border: 5px solid pink;
+}
+.box2 {
+  width: 300px;
+  height: 300px;
+  background-color: yellow;
+  border: 5px solid pink;
+  margin-left: 100px;
+}
+.test_mixin {
+  border: solid #ffff00 30px;
+}
+.test_mixin_03 {
+  border: solid #008000 10px;
+}
+.test_mixin_04 {
+  border: solid #008000 20px;
+}
+.radius_test {
+  width: 100px;
+  height: 40px;
+  background-color: green;
+  -webket-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+.radius_test_02 {
+  width: 100px;
+  height: 40px;
+  background-color: yellow;
+  -webket-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.triangle {
+  border-width: 10px;
+  border-color: #cccccc transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+.text_pos {
+  width: 200px;
+  height: 200px;
+  background-color: #0f0;
+  position: relative;
+}
+.box_02 {
+  width: 320px;
+  height: 1400px;
+  color: #c2c2c2;
+}
+/*
+	.list{}
+	.list li{}
+	.list a{}
+	.list span{}
+ */
+.list {
+  width: 600px;
+  margin: 30px auto;
+  padding: 0;
+  list-style: none;
+}
+.list li {
+  height: 30px;
+  line-height: 30px;
+  background-color: pink;
+  margin-bottom: 5px;
+  padding: 0 10px;
+}
+.list a {
+  float: left;
+  text-decoration: none;
+}
+.list a:hover {
+  text-decoration: underline;
+  color: red;
+}
+.list span {
+  float: right;
+}
+.test_arguments {
+  border: 30px #ff0000 solid;
+  height: 30px;
+  width: 30px;
+}
+.test_avoid {
+  width: calc(300px-30px);
+}
+.test_important {
+  border: solid #008000 10px !important;
+  -webket-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  border-radius: 5px !important;
+}

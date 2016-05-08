@@ -1,0 +1,210 @@
+@charset "utf-8";
+
+body{
+	background-color: #aaa;
+}
+
+/* 我是被编译的 */
+// 我不会被编译
+
+// 变量
+
+// less中的变量
+// less中声明变量@变量名:值
+@test_width:300px;
+
+.box{
+	width: @test_width;
+	height: @test_width;
+	background-color: yellow;
+
+	.border;
+}
+
+// 混合
+.border{
+	border: 5px solid pink;
+}
+
+.box2{
+	.box;
+
+	margin-left: 100px;
+}
+
+
+// 混合 - 可以带参数
+.border_02(@border_width){
+	border:solid yellow @border_width;
+}
+
+.test_mixin {
+	.border_02(30px);
+}
+
+// 混合 - 带默认值 - 调用时要加括号
+.border_03(@border_width:10px) {
+	border:solid green @border_width;
+}
+
+.test_mixin_03{
+	.border_03();
+}
+.test_mixin_04{
+	.border_03(20px);
+}
+
+// 混合e.g.
+.border_radius(@radius:5px){
+	-webket-border-radius:@radius;
+	-moz-border-radius:@radius;
+	border-radius: @radius;
+}
+.radius_test {
+	width:100px;
+	height:40px;
+	background-color: green;
+
+	.border_radius();
+}
+.radius_test_02 {
+	width:100px;
+	height:40px;
+	background-color: yellow;
+
+	.border_radius(10px);
+}
+
+// 匹配模式
+
+// .triangle {
+// 	width:0;
+// 	height:0;
+// 	overflow: hidden;
+
+// 	border-width: 10px;
+// 	border-color: blue transparent transparent transparent;
+// 	border-style: solid dashed dashed dashed;
+// }
+.triangle_02(top, @w:5px, @c:#ccc){
+	border-width: @w;
+	border-color: transparent transparent @c transparent;
+	border-style: dashed dashed solid dashed;
+}
+
+.triangle_02(bottom, @w:5px, @c:#ccc){
+	border-width: @w;
+	border-color: @c transparent transparent transparent;
+	border-style: solid dashed dashed dashed;
+}
+
+.triangle_02(left, @w:5px, @c:#ccc){
+	border-width: @w;
+	border-color: transparent @c transparent transparent;
+	border-style: dashed solid dashed dashed;
+}
+
+.triangle_02(right, @w:5px, @c:#ccc){
+	border-width: @w;
+	border-color: transparent transparent transparent @c;
+	border-style: dashed dashed dashed solid;
+}
+
+
+// 不管选上下左右,下面这段代码都会带着
+.triangle_02(@_,@w:5px,@c:#ccc){
+	height:0;
+	width:0;
+	overflow:hidden;
+}
+
+.triangle{
+	.triangle_02(bottom,10px);
+}
+
+// 匹配模式 - 定位
+.pos(r){
+	position: relative;
+}
+.pos(a){
+	position:absolute;
+}
+.pos(f){
+	position: fixed;
+}
+.text_pos{
+	width:200px;
+	height:200px;
+	background-color: #0f0;
+	.pos(r);
+}
+
+// less中的运算, 任何数字, 颜色或者变量都可以参与运算
+
+@test_01:300px;
+
+.box_02{
+	width:@test_01 + 20;
+	height:(@test_01 - 20) * 5;
+	color:#ccc - 10;
+}
+
+// 嵌套: i) &对伪类 -> hover 或者 focus; ii) 对链接的使用 -> &-item
+/*
+	.list{}
+	.list li{}
+	.list a{}
+	.list span{}
+ */
+
+.list{
+	width:600px;
+	margin:30px auto;
+	padding: 0;
+	list-style: none;
+
+	li{
+		height:30px;
+		line-height: 30px;
+		background-color: pink;
+		margin-bottom: 5px;
+		padding:0 10px;
+	}
+
+	a{
+		float: left;
+		text-decoration: none;
+		// &代表它的上一层选择器
+		&:hover{
+			text-decoration: underline;
+			color:red;
+		}
+	}
+
+	span{
+		float:right;
+	}
+}
+
+// @arguments 变量(不常用): @arguments包含了所有传递进来的参数
+
+.border_arg(@w:30px,@c:red, @xx:solid){
+	border:@arguments;
+}
+.test_arguments{
+	.border_arg();
+	height:30px;
+	width:30px;
+}
+
+// 避免编译: 有时我们需要输出一些不正确的css语法或者使用一些less不认识的专有语法(如filter:alpha())
+// 要输出这样的值,我们可以在字符串前加上一个~
+// e.g.width:~' calc(100% - 35)'
+.test_avoid{
+	width:~'calc(300px-30px)';
+}
+// !important关键字(少用): 会为所有mixin所带来的样式, 都加上!important
+.test_important{
+	.border_03()!important;
+	.border_radius()!important;
+}
