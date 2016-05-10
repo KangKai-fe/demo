@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>fullpage API DEMO</title>
+    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.css">
+    <style type="text/css">
+        body{
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+        }
+        .slide{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="fullpage">
+        <!-- 页, 可通过设置active类来设置默认页 -->
+        <div class="section">第一屏内容</div>
+        <div class="section">第二屏内容
+            <!-- 每一页中可以增加幻灯片 -->
+            <div class="slide">slide1</div>
+            <div class="slide">slide2</div>
+            <div class="slide">slide3</div>
+            <div class="slide">slide4</div>
+        </div>
+        <div class="section">第三屏内容</div>
+        <div class="section">第四屏内容</div>
+    </div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/vendors/jquery.easings.min.js"></script> -->
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /**
+             * afterLoad(anchorLink, index): 滚动到某一section且滚动结束后, 会触发一次此回调函数,函数接收anchorLink和index两个参数, 前者为锚链接名称, 后者为序号, 从1开始计算. 我们可以根据两个参数来判断触发相应的事件.
+             * onLeave(index, nextIndex, direction): 当离开一个section时, 会触发一次此回调函数, 接收index, nextIndex, direction3个参数: index指离开的页面的序号,从1开始计;nextIndex是滚动到的目标页面的序号;direction判断往上滚动还是往下滚动, 值为up/down; 通过return false, 可以取消滚动
+             * afterRender(): 页面结构生成后的回调函数, 或者说页面初始化完成后的回调函数
+             * afterResize(): 浏览器窗口尺寸改变后的回调函数
+             * afterSlideLoad(anchorLink, index, slideAnchor, slideIndex): 滚动到某一幻灯片后的回调函数, 与afterLoad类似, 接收四个参数
+             * onSlideLeave(anchorLink, index, slideIndex, direction, nextSlideIndex): 离开一个slide时触发
+             */
+            $("#fullpage").fullpage({
+                sectionsColor: ['#ccc', '#f00', '#0f0', '#00f'],
+                anchors: ['page1', 'page2', 'page3', 'page4'],
+                afterLoad: function(anchorLink, index) {
+                    console.log('afterLoad: anchorLink=' + anchorLink + '; index=' + index);
+                },
+                onLeave: function(index, nextIndex, direction) {
+                    console.log('onLeave: index=' + index + '; nextIndex=' + nextIndex + '; direction=' + direction);
+                },
+                afterRender: function(){
+                    console.log('afterRender');
+                },
+                afterResize: function(){
+                    console.log('afterResize');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
