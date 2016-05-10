@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>fullpage API DEMO</title>
+    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.css">
+    <style type="text/css">
+        body{
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 0;
+            margin: 0;
+        }
+        .slide{
+            font-size: 30px;
+        }
+        #header{
+            position: fixed;
+            top: 0;
+            background-color: #000;
+            color: #fff;
+            height: 50px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">header</div>
+    <div id="fullpage">
+        <!-- 页, 可通过设置active类来设置默认页 -->
+        <div class="section">第一屏内容
+            <!-- 每一页中可以增加幻灯片 -->
+            <div class="slide">slide1</div>
+            <div class="slide">slide2</div>
+            <div class="slide">slide3</div>
+            <div class="slide">slide4</div>
+        </div>
+        <div class="section">第二屏内容</div>
+        <div class="section">第三屏内容</div>
+        <div class="section">第四屏内容</div>
+    </div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/vendors/jquery.easings.min.js"></script> -->
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /**
+             * 配置项
+             * easing: 定义页面section滚动动画方式, 默认为easeInOutCubic, 如果修改此项, 需要引入jquery.easings插件或者jquery ui
+             * css3: 是否使用css3transforms来实现滚动效果, default: true, 这个配置项可以提高支持css3的浏览器, 比如移动设备等的速度, 如果浏览器不支持css3, 则会使用jquery来替代css3实现滚动效果
+             * loopTop: 滚动到顶部后是否连续滚动到底部, default: false
+             * loopBottom: 滚动到底部后是否连续滚动到顶部, default: false
+             * continuousVertical: 是否循环滚动, default: false, 若设置为true, 则页面会循环滚动, 但不像loopTop和loopBottom那样出现跳动, 且它与二者不兼容, 不要同时设置
+             * loopHorizontal: 横向slider是否循环滚动, default: true
+             * autoScrolling: 是否使用插件的滚动方式, default: true, 若选择false, 则出现浏览器自带滚动条, 将不会按页滚动, 而是按滚动条默认行为滚动
+             * scrollBar: 是否包含滚动条, default: false, 若设置为true, 则滚动条出现, 页面滚动时还是按页滚动, 但是滚动条的默认行为也有效
+             * paddingTop/paddingBottom: 设置每个section顶部和底部padding, default: 0, 单位px, 不要加单位
+             * fixedElements: 固定元素, default: null, 需要配置一个jquery选择器, 页面滚动时, fixedElements设置的元素固定不动. 若需要设置固定在顶部或底部的菜单, 导航, 元素等,可以使用这两个配置项
+             * keyboardScrolling: 是否可以使用键盘方向键导航, default: true
+             * touchSensitivity: 移动设备中滑动页面的敏感性, default: 5, 是按百分比衡量的, 最大值100, 值越大越难滑动
+             */
+            $("#fullpage").fullpage({
+                sectionsColor: ['#ccc', '#f00', '#0f0', '#00f'],
+                // controlArrows: false,
+                // verticalCentered: false,
+                // resize: true,
+                // scrollingSpeed: 2000,
+                // anchors: ['page1', 'page2', 'page3', 'page4'],
+                // css3: false,
+                // loopTop: true,
+                // loopBottom: true,
+                // autoScrolling: false,
+                // scrollBar: true
+                paddingTop: 50,
+                fixedElements: '#header',
+                continuousVertical: true
+            });
+        });
+    </script>
+</body>
+</html>
