@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>fullpage API DEMO</title>
+    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.css">
+    <style type="text/css">
+        body{
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+        }
+        .slide{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="fullpage">
+        <!-- 页, 可通过设置active类来设置默认页 -->
+        <div class="section">第一屏内容
+            <!-- 每一页中可以增加幻灯片 -->
+            <div class="slide">slide1</div>
+            <div class="slide">slide2</div>
+            <div class="slide">slide3</div>
+            <div class="slide">slide4</div>
+        </div>
+        <div class="section">第二屏内容</div>
+        <div class="section">第三屏内容</div>
+        <div class="section">第四屏内容</div>
+    </div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/vendors/jquery.easings.min.js"></script> -->
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /**
+             * 配置项
+             * sectionsColor: 为每个section设置background-color
+             * controlArrows: slide箭头是否显示, true(default):显示, false:不显示(常用于移动端)
+             * verticalCentered: 每一页内容是否垂直居中, true(default):居中, 一般保持true
+             * resize: 字体是否随着窗口缩放而缩放, false(default)
+             * scrollingSpeed: 滚动速度, 单位ms, default:700
+             * anchors: 定义锚链接,默认值为[].用于快速定位至某一页面. 注意定义锚链接时, 值不要与页面中任意id或name相同,定义时不需要加#
+             * lockAnchors: 是否锁定锚链接, false(default), 若设置为true, 则定义的anchors属性无效, 该配置很少使用
+             * animateAnchor: 锚链接是否可以控制滚动动画,默认为true. 若设置为false, 则通过锚链接定位到某个页面时不再有动画效果
+             */
+            $("#fullpage").fullpage({
+                sectionsColor: ['#ccc', '#f00', '#0f0', '#00f'],
+                // controlArrows: false,
+                // verticalCentered: false,
+                // resize: true,
+                // scrollingSpeed: 2000,
+                anchors: ['page1', 'page2', 'page3', 'page4']
+            });
+        });
+    </script>
+</body>
+</html>
