@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>fullpage API DEMO</title>
+    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.css">
+    <style type="text/css">
+        body{
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+            padding: 0;
+            margin: 0;
+        }
+        .slide{
+            font-size: 30px;
+        }
+        #header{
+            position: fixed;
+            top: 0;
+            background-color: #000;
+            color: #fff;
+            height: 50px;
+            width: 100%;
+        }
+        #fullpageMenu{
+            font-size: 30px;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">header</div>
+    <!-- <ul id="fullpageMenu">
+        <li class="active" data-menuanchor="page1"><a href="#page1">section1</a></li>
+        <li data-menuanchor="page2"><a href="#page2">section2</a></li>
+        <li data-menuanchor="page3"><a href="#page3">section3</a></li>
+        <li data-menuanchor="page4"><a href="#page4">section4</a></li>
+    </ul> -->
+    <div id="fullpage">
+        <!-- 页, 可通过设置active类来设置默认页 -->
+        <div class="section">第一屏内容
+            <!-- 每一页中可以增加幻灯片 -->
+            <div class="slide">slide1</div>
+            <div class="slide">slide2</div>
+            <div class="slide">slide3</div>
+            <div class="slide">slide4</div>
+        </div>
+        <div class="section">第二屏内容</div>
+        <div class="section">第三屏内容</div>
+        <div class="section">第四屏内容</div>
+    </div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/vendors/jquery.easings.min.js"></script> -->
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /**
+             * 配置项
+             * recordHistory: 是否记录历史, default: true, 可以记录页面滚动的历史, 通过浏览器前进后退来导航.若设置了autoScrolling: false, 则该配置也将被关闭, 即设置为false
+             * menu: 绑定菜单, 设置的相关属性与archors值对应后, 菜单可以控制滚动,默认为false. 可以设置为菜单的jquery选择器
+             * navigation: 是否显示导航, default: false, 若设置为true, 则显示圆点导航
+             * navigationPosition: 导航小圆点的位置, 可以设置为left/right
+             * navigationTooltips: 导航小圆点的tooltips(类似于title)设置, default: [], 注意按照顺序设置
+             * showActiveTooltip: 是否显示当前页面的导航的tooltip信息, default: false
+             * slidesNavigation: 是否设置横向幻灯片的导航, default: false
+             * slideNavPosition: default: bottom, 可设置top/bottom
+             * scrollOverflow: 内容超过满屏后是否显示滚动条, default: false, 若设置为true, 则显示滚动条, 若要滚动查看内容, 还需要jquery.slimscroll插件的配合. slimscroll插件主要用于模拟传统的浏览器滚动条.
+             * sectionSelector: section的选择器, default: .section
+             * slideSelector: slide的选择器, default: .slide
+             */
+            $("#fullpage").fullpage({
+                sectionsColor: ['#ccc', '#f00', '#0f0', '#00f'],
+                // controlArrows: false,
+                // verticalCentered: false,
+                // resize: true,
+                // scrollingSpeed: 2000,
+                anchors: ['page1', 'page2', 'page3', 'page4'],
+                // css3: false,
+                // loopTop: true,
+                // loopBottom: true,
+                // autoScrolling: false,
+                // scrollBar: true
+                paddingTop: 50,
+                fixedElements: '#header',
+                // continuousVertical: true,
+                // recordHistory: false,
+                // menu: '#fullpageMenu',
+                navigation: true,
+                navigationPosition: 'right',
+                navigationTooltips: ['page1', 'page2', 'page3', 'page4'],
+                showActiveTooltip: true,
+                slidesNavigation: true
+            });
+        });
+    </script>
+</body>
+</html>
