@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>fullpage API DEMO</title>
+    <link rel="stylesheet" type="text/css" href="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.css">
+    <style type="text/css">
+        body{
+            color: #fff;
+            text-align: center;
+            font-weight: bold;
+        }
+        .slide{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div id="fullpage">
+        <!-- 页, 可通过设置active类来设置默认页 -->
+        <div class="section">第一屏内容</div>
+        <div class="section">第二屏内容
+            <!-- 每一页中可以增加幻灯片 -->
+            <div class="slide">slide1</div>
+            <div class="slide">slide2</div>
+            <div class="slide">slide3</div>
+            <div class="slide">slide4</div>
+        </div>
+        <div class="section">第三屏内容</div>
+        <div class="section">第四屏内容</div>
+    </div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/vendors/jquery.easings.min.js"></script> -->
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery-fullPage/2.7.4/jquery.fullPage.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /**
+             * 使用方法: $.fn.fullpage.xxx()
+             * moveSectionUp(): 向上滚动一页
+             * moveSectionDown(): 向下滚动一页
+             * moveTo(section, slide): 滚动到第几页, 第几个幻灯片, 注意: 页面从1开始, 幻灯片从0开始
+             * silentMoveTo(section, slide): 跟moveTo一样,但没有动画效果
+             * moveSlideRight(): 幻灯片向右滚动
+             * moveSlideLeft(): 幻灯片向左滚动
+             * setAutoScrolling(boolean): 动态设置autoScrolling
+             * setLockAnchors(boolean): 动态设置lockAnchors
+             * setRecordHistory(boolean): 动态设置recordHistory
+             * setScrollingSpeed(milliseconds): 动态设置scrollingSpeed
+             * setAllowScrolling(Boolean, [directions]): 添加或删除鼠标滚轮/滑动控制, 第一个参数true为启用, false禁用, 第二个参数为方向, all/up/down/left/right, 可使用多个, 用逗号分隔
+             * eg: 比如在做一个有奖问答页面, 提问的问题再前面的页面有答案, 当滚动到最后一页时, 不希望用户滚动返回之前的页面查看答案, 可以使用这样的方法
+             * destroy(type): 销毁fullpage特效, type可以不写或者使用all, 不写type, fullpage给页面添加的样式和html元素还在, 如果使用all, 则样式和html等全部销毁, 页面恢复不适用fullpage之前的效果
+             * reBuild(): 重新更新或页面的尺寸, 用于通过ajax请求后改变了页面结构后, 重建效果
+             */
+            $("#fullpage").fullpage({
+                sectionsColor: ['#ccc', '#f00', '#0f0', '#00f'],
+                anchors: ['page1', 'page2', 'page3', 'page4']
+            });
+        });
+    </script>
+</body>
+</html>
