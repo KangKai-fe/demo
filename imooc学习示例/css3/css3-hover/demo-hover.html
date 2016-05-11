@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>css3 hover</title>
+    <style type="text/css">
+        .demo, .img, .mask, .border{
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+        }
+
+        .img{
+            background-size: cover;
+            background-position: 50% 50%;
+        }
+        .demo{
+            position: relative;
+            display: block;
+        }
+        .mask, .border{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .mask{
+            text-align: center;
+            color: rgba(255,255,255,0);
+            -webkit-transition: all .5s ease-in;
+            -o-transition: all .5s ease-in;
+            transition: all .5s ease-in;
+        }
+        .info{
+            margin-top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+        .border{
+            border: 10px solid darkblue;
+            border-top-color: red;
+            border-left-color: red;
+            box-sizing: border-box;
+            -webkit-transition: all .5s ease-in;
+            -o-transition: all .5s ease-in;
+            transition: all .5s ease-in;
+        }
+        .demo:hover .mask{
+            background-color: rgba(0,0,0,.5);
+            color: rgba(255,255,255,1);
+        }
+        .demo:hover .border{
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="demo">
+        <div class="img" style="
+            background-image: url(6.jpg);"></div>
+        <div class="mask">
+            <div class="info">
+                <h3>BEST TEAM EVER</h3>
+                <p>F.C. Barcelona</p>
+            </div>
+        </div>
+        <div class="border"></div>
+    </a>
+</body>
+</html>
