@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>径向动画菜单效果</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #292a38;
+            font-family: 'Microsoft Yahei';
+        }
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-top: 40px;
+        }
+        .nav-wrap {
+            position: relative;
+            margin: 120px auto 20px;
+            width: 200px;
+            height: 200px;
+            border: 2px dotted #4e5061;
+            border-radius: 100%;
+        }
+        .nav-wrap .main-nav {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+            color: #fff;
+            border-radius: 3px;
+            text-shadow: 1px 1px 0 #000;
+            background: #15a5f3;
+            font-size: 12px;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .nav-wrap nav {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: scale(0);
+            -ms-transform: scale(0);
+            -o-transform: scale(0);
+            transform: scale(0);
+            -webkit-transition: all .5s ease-out;
+            -o-transition: all .5s ease-out;
+            transition: all .5s ease-out;
+            opacity: 0;
+        }
+        .nav-wrap.active nav{
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            -o-transform: scale(1);
+            transform: scale(1);
+            opacity: 1;
+        }
+        .nav-wrap nav > a{
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: #f44283;
+            text-align: center;
+            line-height: 30px;
+            text-decoration: none;
+            color: #fff;
+            border-radius: 3px;
+            text-shadow: 1px 1px 0 #000;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        /*.nav-wrap nav .nav-item1{
+            left: 0;
+            top: 0;
+        }
+        .nav-wrap nav .nav-item2{
+            left: 50%;
+            top: 0;
+        }
+        .nav-wrap nav .nav-item3{
+            left: 100%;
+            top: 0;
+        }
+        .nav-wrap nav .nav-item4{
+            left: 100%;
+            top: 50%;
+        }
+        .nav-wrap nav .nav-item5{
+            left: 100%;
+            top: 100%;
+        }
+        .nav-wrap nav .nav-item6{
+            left: 50%;
+            top: 100%;
+        }
+        .nav-wrap nav .nav-item7{
+            left: 0;
+            top: 100%;
+        }
+        .nav-wrap nav .nav-item8{
+            left: 0;
+            top: 50%;
+        }
+*/    </style>
+</head>
+<body>
+    <h1>径向动画菜单效果演示</h1>
+    <div class="nav-wrap">
+        <nav>
+            <a class="nav-item nav-item1">1</a>
+            <a class="nav-item nav-item2">2</a>
+            <a class="nav-item nav-item3">3</a>
+            <a class="nav-item nav-item4">4</a>
+            <a class="nav-item nav-item5">5</a>
+            <a class="nav-item nav-item6">6</a>
+            <a class="nav-item nav-item7">7</a>
+            <a class="nav-item nav-item8">8</a>
+        </nav>
+        <a class="main-nav">点击</a>
+    </div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    $(function() {
+
+        $('.main-nav').on('click', function(e) {
+            e.preventDefault();
+
+            var me = $(this),
+                navWrap = me.closest('.nav-wrap'),
+                navs = navWrap.find('nav a');
+
+            // 避免每次都重新设置位置
+            var isLocated = false;
+
+            // 当菜单未被激活时
+            if (!navWrap.hasClass('active') && !isLocated) {
+
+                // 圆的半径 radius
+                var width = navWrap.width(),
+                    radius = width / 2;
+
+                // 圆形菜单的起始, 终止角度
+                var startAngle = 0,
+                    endAngle = 360;
+
+                // 两个子菜单间的夹角 gap
+                var total = navs.length,
+                    gap = (endAngle - startAngle) / total;
+
+                // 计算并确定各个子菜单的最终位置
+                $.each(navs, function(index, item){
+
+                    // 当前子菜单与x轴正想的夹角 (角度->弧度)
+                    var myAngle = (startAngle + gap * index) * (Math.PI / 180);
+
+                    // 计算当前子菜单相对于左上角(0, 0)的坐标(x, y)
+                    var myX = radius + radius * Math.cos(myAngle), // x = r + r * cos(θ)
+                        myY = radius + radius * Math.sin(myAngle); // y = r + r * sin(θ)
+
+                    // 设置当前子菜单的位置
+                    $(this).css({
+                        left: myX + 'px',
+                        top: myY + 'px'
+                    });
+                });
+
+                isLocated = true;
+            }
+
+            navWrap.toggleClass('active');
+        });
+    });
+    </script>
+</body>
+</html>
