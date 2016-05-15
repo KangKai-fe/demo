@@ -1,0 +1,146 @@
+<!DOCTYPE html><!--[if IE 8]><html class='ie8'><![endif]-->
+<!--[if IE 9]><html class='ie9'><![endif]-->
+<!--[if IE]><!--><html><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JADE study</title>
+</head>
+<body>
+  <p>desc from index</p>
+  <div id="runtime"></div>
+  <script src="node_modules/jade/runtime.js"></script>
+  <script src="runtime.js"></script>
+  <script>
+    var runtimeNode = document.getElementById('runtime');
+    var runtimeHtml = template({isRuntime: true});
+    runtimeNode.innerHTML = runtimeHtml;
+  </script>
+  <h3>markdown</h3><p>Hi, this is <strong>imooc</strong> <a href="http://imooc.com">link</a></p>
+  <h3>less</h3>
+  <style>body p {
+  background: #ccc;
+}
+
+  </style>
+  <h3>coffee</h3>
+  <script>(function() {
+  console.log('This is coffee.');
+
+}).call(this);
+
+  </script>
+  <style>
+    h3{
+        color:#ccc;
+    }
+  </style>
+  <style>
+    h2{
+        color:#000;
+    }
+  </style><div>
+    <h3>content from html</h3>
+</div>
+  <p>desc from index</p>
+  <h2>mixin</h2>
+    <p>imooc jade study</p>
+    <p>KK is learning</p>
+    <ul class="courses">
+      <li>jade</li>
+      <li>node</li>
+    </ul>
+    <h4>KangKai-fe</h4>
+      <p>KangKai-fe is learning</p>
+      <ul class="courses">
+        <li>jade</li>
+        <li>node</li>
+      </ul>
+    <h4>slogon</h4>
+    <p>no team</p>
+    <h4>slogon2</h4>
+    <p>Good job!</p>
+    <p class="magic">attr</p>
+    <p id="attrsid" class="magic2">attrs</p>
+    <ul class="magic">
+      <li>node</li>
+      <li>jade</li>
+      <li>...</li>
+    </ul>
+  <h2>流程</h2>
+  <h3>if else</h3>
+  <p>more than 1: jade, node</p>
+  <h3>unless</h3>
+  <p>2</p>
+  <h3>case</h3>
+  <p>Hi jade!</p>
+  <h3>for</h3>
+  <p>jade</p>
+  <p>high</p>
+  <h3>each</h3>
+  <p>course:jade</p>
+  <p>level:high</p>
+  <p>course:jade</p>
+  <p>level:high</p>
+  <p>node</p>
+  <p>jade</p>
+  <p>express</p>
+  <dl>
+    <dt>1</dt>
+    <dd>a</dd>
+    <dd>b</dd>
+    <dt>2</dt>
+    <dd>c</dd>
+    <dd>d</dd>
+  </dl>
+  <h3>while</h3>
+  <ul>
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <input value="undefined">
+  <input>
+  <h2>声明变量和替换</h2>
+  <style>body {color:#f00;}</style>
+  <script>var imoocCourse = 'jade';</script>
+  <h2>注释</h2>
+  <h3>单行注释</h3>
+  <!-- h1.title.title2#title imooc jade study-->
+  <h3>非缓冲注释</h3>
+  <h3>块注释(缩进)</h3>
+  <h2>文档声明和头尾标签</h2>
+  <h2>标签语法</h2>
+  <section>
+    <div>
+      <ul></ul>
+      <p></p>
+    </div>
+  </section>
+  <h2>元素属性</h2>
+  <div id="id" class="class1 class2"></div>
+  <div id="id" class="className1 className2"><a href="http://www.baidu.com" target="_blank">link</a></div>
+  <h2>元素的值, 文本</h2>
+  <p><a href="http://imooc.com" title="imooc jade study" data-uid="1000">link</a>
+    <input name="course" type="text" value="jade">
+    <input name="type" type="checkbox" checked>
+  </p>
+  <h2>混排的大段文本</h2>
+  <p>
+    1. aa<strong>11</strong>
+    2. bb
+    <span>22</span>
+    3. cc
+    4. dd
+    <a href='#'></a>
+  </p>
+  <p>
+    1.aa
+    2.bb
+    3.cc
+    4.dd
+  </p>
+  <p>1.aa<strong>11</strong>2.bb<span>22</span>3.cc
+    4.dd
+  </p>
+</body></html>

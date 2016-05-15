@@ -1,0 +1,20 @@
+doctype html
+//- doctype strict
+//- doctype frameset
+//- doctype transition
+//- doctype xml
+<!--[if IE 8]><html class='ie8'><![endif]-->
+<!--[if IE 9]><html class='ie9'><![endif]-->
+<!--[if IE]><!--><html><!--<![endif]-->
+head
+    //- 法1: - var course = 'jade2'
+    //- 法2: 在bash命令行中输入 $ jade index.jade -P -w --obj '{"course": "jade"}'
+    //- 注意: jade2优先级高于jade
+    //- 法3: 引入json文件
+    //- bash命令行中输入 $ jade index.jade -P -w -O imooc.json
+    include head
+body
+    block desc
+        p desc from layout
+    block content
+</html>
