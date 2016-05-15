@@ -1,0 +1,27 @@
+{
+  "name": "kangkai-fe-movie",
+  "authors": [
+    "KangKai <403155995@qq.com>"
+  ],
+  "description": "learning nodejs from imooc",
+  "main": "",
+  "keywords": [
+    "nodejs",
+    "mongodb",
+    "express"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6"
+  }
+}
