@@ -38,8 +38,8 @@ MovieSchema.statics = {
             .find({})
             .sort('meta.updateAt')
             .exec(cb)
-    }
-    findById: function(cb) {
+    },
+    findById: function(id, cb) {
         return this
             .findOne({_id: id})
             .exec(cb)
