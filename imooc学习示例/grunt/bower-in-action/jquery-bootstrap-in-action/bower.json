@@ -1,0 +1,26 @@
+{
+  "name": "jquery-bootstrap-in-action",
+  "homepage": "https://github.com/KangKai-fe/demo",
+  "authors": [
+    "KangKai <403155995@qq.com>"
+  ],
+  "description": "test bower using jquery & bootstrap",
+  "main": "",
+  "keywords": [
+    "jquery",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "angular": "^1.5.5"
+  }
+}
