@@ -72,6 +72,40 @@ app.post('/user/signup', function(req, res) {
 
 })
 
+// signin
+app.post('/user/signin', function(req, res) {
+    var _user = req.body.user;
+    var name = _user.name;
+    var password = _user.password;
+
+    User.findOne({name, name}, function(err, user) {
+
+        if (err) {
+            console.log(err)
+        }
+
+        if (!user) {
+            return res.redirect('/')
+        }
+
+        user.comparePassword(password, function(err, isMatch) {
+
+            if (err) {
+                console.log(err)
+            }
+
+            if (isMatch) {
+                console.log('Password is matched')
+                return res.redirect('/')
+            } else {
+                console.log('Password is not matched')
+                return res.redirect('/')
+            }
+        })
+    })
+
+})
+
 // userlist page
 app.get('/admin/userlist', function(req, res) {
     User.fetch(function(err, users) {
