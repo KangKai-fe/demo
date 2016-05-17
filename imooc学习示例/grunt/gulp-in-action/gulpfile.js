@@ -1,4 +1,4 @@
-// generated on 2016-05-16 using generator-webapp 2.1.0
+// generated on 2016-05-17 using generator-webapp 2.1.0
 const gulp = require('gulp');
 const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
@@ -10,14 +10,14 @@ const reload = browserSync.reload;
 
 gulp.task('styles', () => {
   return gulp.src('app/styles/*.scss')
-    .pipe($.plumber())
+    .pipe($.plumber()) // 防止错误引发的pipe breaking
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
-      outputStyle: 'expanded',
-      precision: 10,
+      outputStyle: 'expanded', // nested: 类似嵌套的样式, expanded: 接近手写, compact: 集中在一行, compressed: 合并
+      precision: 10, // 非整数属性保留小数位数
       includePaths: ['.']
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']})) // 市场占有率大于1%, 适配每种浏览器最新的两个版本
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/styles'))
     .pipe(reload({stream: true}));
@@ -68,9 +68,9 @@ gulp.task('html', ['styles', 'scripts'], () => {
 
 gulp.task('images', () => {
   return gulp.src('app/images/**/*')
-    .pipe($.cache($.imagemin({
-      progressive: true,
-      interlaced: true,
+    .pipe($.cache($.imagemin({ // gulp-cache: 避免二次压缩, 类似于装饰者模式
+      progressive: true, // 图像渐进式扫描: 针对jpg格式文件, 先以比较模糊的模式展现; 基线/标准模式: 从上到下一点一点展示出来
+      interlaced: true, // gif 隔行展现, 先奇数行, 后偶数行等等
       // don't remove IDs from SVGs, they are often used
       // as hooks for embedding and styling
       svgoPlugins: [{cleanupIDs: false}]
@@ -95,6 +95,9 @@ gulp.task('extras', () => {
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+// gulp.task('clean', () => {
+//   del(['.tmp', 'dist']);
+// })
 
 gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   browserSync({
@@ -151,15 +154,15 @@ gulp.task('serve:test', ['scripts'], () => {
 
 // inject bower components
 gulp.task('wiredep', () => {
-  gulp.src('app/styles/*.scss')
-    .pipe(wiredep({
+  gulp.src('app/styles/*.scss') // 首先拿到sass文件
+    .pipe(wiredep({             // 处理其对bower_components依赖
       ignorePath: /^(\.\.\/)+/
     }))
-    .pipe(gulp.dest('app/styles'));
+    .pipe(gulp.dest('app/styles')); // 输出
 
   gulp.src('app/*.html')
     .pipe(wiredep({
-      exclude: ['bootstrap-sass'],
+      exclude: ['bootstrap-sass'], // 排除
       ignorePath: /^(\.\.\/)*\.\./
     }))
     .pipe(gulp.dest('app'));
@@ -167,7 +170,7 @@ gulp.task('wiredep', () => {
 
 gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
-});
+}); // gulp-size 展示文件大小
 
 gulp.task('default', ['clean'], () => {
   gulp.start('build');
