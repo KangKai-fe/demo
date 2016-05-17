@@ -4,6 +4,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var _ = require('underscore');
 var Movie = require('./models/movie');
+var User = require('./models/user');
 var port = process.env.PORT || 3000;
 var app = express();
 
@@ -35,6 +36,57 @@ app.get('/', function(req, res) {
         })
     })
 })
+
+// signup
+app.post('/user/signup', function(req, res) {
+    // 若路由为app.post('/user/signup/:userid',(req, res) =>{})
+    // var _user = req.param('user');
+    // 若路由为/user/signup/1111?userid=1112
+    // req.body{userid: 1113}
+    // 则req.param('userid')优先匹配1111, 其次1113, 最后1112
+    // var _user = req.query.userid
+    // 若post或者jquery的ajax请求
+    var _user = req.body.user;
+
+    User.findOne({name: _user.name}, function(err, user) {
+
+        if (err) {
+            console.log(err);
+        }
+
+        if (user) {
+            return res.redirect('/')
+        } else {
+            var user = new User(_user);
+
+            user.save(function(err, user) {
+
+                if (err) {
+                    console.log(err);
+                }
+
+                res.redirect('/admin/userlist')
+            })
+        }
+    })
+
+})
+
+// userlist page
+app.get('/admin/userlist', function(req, res) {
+    User.fetch(function(err, users) {
+
+        if(err) {
+            console.log(err);
+        }
+
+        res.render('userlist', {
+            title: 'imooc 用户列表页',
+            users: users
+        })
+    })
+})
+
 
 // detail page
 app.get('/detail/:id', function(req, res) {
