@@ -82,7 +82,7 @@ exports.logout = function(req, res) {
 
 
 // userlist page
-exports.userlist = function(req, res) {
+exports.list = function(req, res) {
     User.fetch(function(err, users) {
 
         if(err) {
@@ -94,4 +94,26 @@ exports.userlist = function(req, res) {
             users: users
         })
     })
+}
+
+// midware for user 登录中间键设置
+exports.signinRequired = function(req, res, next) {
+    var user = req.session.user;
+
+    if (!user) {
+        return res.redirect('/signin');
+    }
+
+    next();
+}
+
+// midware for user 中间键设置
+exports.adminRequired = function(req, res, next) {
+    var user = req.session.user;
+
+    if (user.role <= 10) {
+        return res.redirect('/signin');
+    }
+
+    next();
 }
