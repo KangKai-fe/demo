@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost/test');
 var dbUrl = 'mongodb://localhost/test';
 
 // app.locals.moment = require('moment')
-app.set('views', './views/pages');
+app.set('views', './app/views/pages');
 app.set('view engine', 'jade');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -36,10 +36,11 @@ if ('development' === app.get('env')) { // 如果环境变量是开发环境(本
     mongoose.set('debug', true);
 }
 
+// 引入路由
 require('./config/routes')(app);
 
-app.use(express.static(path.join(__dirname, 'public')))
-app.locals.moment = require('moment');
 app.listen(port);
+app.locals.moment = require('moment');
+app.use(express.static(path.join(__dirname, 'public')))
 
 console.log('imooc started on port ' + port);
