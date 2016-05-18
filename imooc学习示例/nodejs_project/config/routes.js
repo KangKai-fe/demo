@@ -25,6 +25,8 @@ module.exports = function(app) {
         // 若post或者jquery的ajax请求
     app.post('/user/signup', User.signup)
     app.post('/user/signin', User.signin)
+    app.get('/signin', User.showSignin)
+    app.get('/signup', User.showSignup)
     app.get('/logout', User.logout)
     app.get('/admin/userlist', User.userlist)
 
