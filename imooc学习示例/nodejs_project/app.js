@@ -35,16 +35,21 @@ app.listen(port);
 
 console.log('imooc started on port ' + port);
 
-// index page
-app.get('/', function(req, res) {
-    console.log('user in session: ')
-    console.log(req.session.user);
-
+// prehandle user 预处理
+app.use(function(req, res, next){
     var _user = req.session.user;
 
     if (_user) {
         app.locals.user = _user;
     }
+    return next()
+})
+
+// index page
+app.get('/', function(req, res) {
+    console.log('user in session: ')
+    console.log(req.session.user);
+
     Movie.fetch(function(err, movies) {
 
         if(err) {
