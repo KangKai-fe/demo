@@ -1,15 +1,21 @@
 var Movie = require('../models/movie');
+var Comment = require('../models/comment');
 var _ = require('underscore');
 
 // detail page
 exports.detail = function(req, res) {
     var id = req.params.id;
 
-    Movie.findById(id, function(err, movie) {
-        res.render('detail', {
-            title: 'imooc ' + movie.title,
-            // id: id,
-            movies: movie
+    Movie.findById(id, function(err, movie) { // 找到该电影
+        Comment
+        .find({movie: id}) // 找到该电影对应的评论
+        .populate('from', 'name') // 将from中的ObjectId反向查询出其name
+        .exec(function(err, comments) { // 执行render
+            res.render('detail', {
+                title: 'imooc ' + movie.title,
+                movie: movie,
+                comments: comments
+            })
         })
     })
 }
@@ -18,17 +24,7 @@ exports.detail = function(req, res) {
 exports.new =  function(req, res) {
     res.render('admin', {
         title: 'imooc 后台录入页',
-        movie: {
-            // _id: '',
-            title: '',
-            director: '',
-            country: '',
-            year: '',
-            poster: '',
-            flash: '',
-            summary: '',
-            language: ''
-        }
+        movie: {}
     })
 }
 
