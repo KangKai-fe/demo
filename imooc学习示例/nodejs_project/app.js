@@ -1,7 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session'); // express4.0 以上三者独立出来了
+var cookieSession = require('cookie-session');
+var logger = require('morgan'); // express4.0 以上4者独立出来了
 var path = require('path');
 var session = require('express-session');
 var mongoose = require('mongoose');
@@ -26,6 +27,14 @@ app.use(cookieSession({
         collection: 'sessions'
     })
 }));
+
+// 配置控制台信息
+if ('development' === app.get('env')) { // 如果环境变量是开发环境(本地环境)
+    app.set('showStackError', true);
+    app.use(logger(':method :url :status'));
+    app.locals.pretty = true;
+    mongoose.set('debug', true);
+}
 
 require('./config/routes')(app);
 
