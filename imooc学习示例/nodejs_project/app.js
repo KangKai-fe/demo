@@ -1,14 +1,19 @@
 var express = require('express');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session'); // express4.0 以上三者独立出来了
 var path = require('path');
+var session = require('express-session');
 var mongoose = require('mongoose');
+var mongoStore = require('connect-mongo')(session);
 var _ = require('underscore');
 var Movie = require('./models/movie');
 var User = require('./models/user');
 var port = process.env.PORT || 3000;
 var app = express();
 
-mongoose.connect('mongodb://localhost/test')
+mongoose.connect('mongodb://localhost/test');
+var dbUrl = 'mongodb://localhost/test';
 
 // app.locals.moment = require('moment')
 app.set('views', './views/pages');
@@ -16,6 +21,14 @@ app.set('view engine', 'jade');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 // app.use(express.bodyParser());
+app.use(cookieParser()); // session的依赖
+app.use(cookieSession({
+    secret: 'imooc',
+    store: new mongoStore({
+        url: dbUrl,
+        collection: 'sessions'
+    })
+}));
 app.use(express.static(path.join(__dirname, 'public')))
 app.locals.moment = require('moment');
 app.listen(port);
@@ -24,6 +37,8 @@ console.log('imooc started on port ' + port);
 
 // index page
 app.get('/', function(req, res) {
+    console.log('user in session: ')
+    console.log(req.session.user);
     Movie.fetch(function(err, movies) {
 
         if(err) {
@@ -95,7 +110,9 @@ app.post('/user/signin', function(req, res) {
             }
 
             if (isMatch) {
-                console.log('Password is matched')
+                req.session.user = user // sessing: 服务器和客户端间的会话状态
+
+
                 return res.redirect('/')
             } else {
                 console.log('Password is not matched')
