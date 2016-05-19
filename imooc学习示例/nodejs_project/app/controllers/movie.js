@@ -1,12 +1,11 @@
 var Movie = require('../models/movie');
 var Comment = require('../models/comment');
+var Category = require('../models/category');
 var _ = require('underscore');
 
 // detail page
 exports.detail = function(req, res) {
     var id = req.params.id;
-    console.log("id:")
-    console.log(id)
     Movie.findById(id, function(err, movie) { // 找到该电影
         Comment
         .find({movie: id}) // 找到该电影对应的评论
@@ -24,9 +23,12 @@ exports.detail = function(req, res) {
 
 // admin new page
 exports.new =  function(req, res) {
-    res.render('admin', {
-        title: 'imooc 后台录入页',
-        movie: {}
+    Category.find({}, function(err, categories) {
+        res.render('admin', {
+            title: 'imooc 后台录入页',
+            categories: categories,
+            movie: {}
+        })
     })
 }
 
@@ -36,9 +38,12 @@ exports.update = function(req, res) {
 
     if (id) {
         Movie.findById(id, function(err, movie) {
-            res.render('admin',{
-                title: 'imooc 后台更新页',
-                movie: movie
+            Category.find({}, function(err, categories) {
+                res.render('admin',{
+                    title: 'imooc 后台更新页',
+                    movie: movie,
+                    categories: categories
+                })
             })
         })
     }
@@ -50,7 +55,7 @@ exports.save =  function(req, res) {
     var movieObj = req.body.movie;
     var _movie;
 
-    if (id !== 'undefined') {
+    if (id) {
         Movie.findById(id, function(err, movie) {
             if (err) {
                 console.log(err);
@@ -66,16 +71,8 @@ exports.save =  function(req, res) {
             })
         })
     } else {
-        _movie = new Movie({
-            director: movieObj.director,
-            title: movieObj.title,
-            country: movieObj.country,
-            language: movieObj.language,
-            year: movieObj.year,
-            poster: movieObj.poster,
-            summary: movieObj.summary,
-            flash: movieObj.flash
-        })
+        _movie = new Movie(movieObj);
+        var categoryId = _movie.category;
 
         _movie.save(function(err, movie) {
 
@@ -83,7 +80,13 @@ exports.save =  function(req, res) {
                 console.log(err);
             }
 
-            res.redirect('/detail/' + movie._id);
+            Category.findById(categoryId, function(err, category) {
+                category.movies.push(_movie._id);
+
+                category.save(function(err, category) {
+                    res.redirect('/detail/' + movie._id);
+                })
+            })
         })
     }
 }
