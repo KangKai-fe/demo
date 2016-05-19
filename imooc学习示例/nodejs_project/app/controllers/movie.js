@@ -5,14 +5,16 @@ var _ = require('underscore');
 // detail page
 exports.detail = function(req, res) {
     var id = req.params.id;
-
+    console.log("id:")
+    console.log(id)
     Movie.findById(id, function(err, movie) { // 找到该电影
         Comment
         .find({movie: id}) // 找到该电影对应的评论
         .populate('from', 'name') // 将from中的ObjectId反向查询出其name
+        .populate('reply.from reply.to', 'name') // reply 中的from和to 的name值的反向查询
         .exec(function(err, comments) { // 执行render
             res.render('detail', {
-                title: 'imooc ' + movie.title,
+                title: 'imooc详情页',
                 movie: movie,
                 comments: comments
             })
