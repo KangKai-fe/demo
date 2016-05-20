@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>操作便捷</title>
+    <style>
+        p {
+            color: red;
+            margin: 5px;
+            cursor: pointer;
+        }
+        p:hover {
+            background: yellow;
+        }
+        .selected {
+            color: blue;
+        }
+        .highlight {
+            background: yellow;
+        }
+        div {
+            background-color: #bca;
+            width: 100px;
+            border: 1px solid green;
+        }
+        div {
+            color: red;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <!-- jquery2.0之后不再兼容IE6,7,8 -->
+    <!-- write less, do more -->
+
+    <!-- 例一 -->
+    <p>first paragraph</p>
+    <p>second paragraph</p>
+    <p>one more paragraph</p>
+
+    <!-- 例二 -->
+    <button id="go">Run&raquo;</button>
+    <div id="block">hello</div>
+
+    <!-- 例三 -->
+    <form>
+        <input type="checkbox" name="newsletter" value="Hourly" checked />
+        <input type="checkbox" name="newsletter" value="Daily" />
+        <input type="checkbox" name="newsletter" value="Weekly" />
+        <input type="checkbox" name="newsletter" value="Monthly" checked />
+        <input type="checkbox" name="newsletter" value="Yearly" />
+    </form>
+    <div id="tips"></div>
+    <script>
+
+        // 例一
+        $('p').click(function() {
+            $(this).slideUp();
+        });
+
+        // 例二
+        $('#go').click(function() {
+            $('#block').animate({
+                width: '70%',
+                opacity: 0.4,
+                marginLeft: '2em',
+                fontSize: '3em',
+                borderWidth: 10
+            }, 1500);
+        });
+
+        // 例三
+        var countChecked = function() {
+            var n = $('input:checked').length;
+            $('#tips').text(n + (n === 1 ? ' is' : ' are') + ' checked!');
+        };
+        $('input[type=checkbox]').on('click', countChecked);
+    </script>
+</body>
+</html>
