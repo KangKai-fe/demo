@@ -57,22 +57,39 @@ exports.save =  function(req, res) {
 
     if (id) {
         Movie.findById(id, function(err, movie) {
+
             if (err) {
                 console.log(err);
             }
 
+            var oldCategory = movie.category;
             _movie = _.extend(movie, movieObj);
-            _movie.save(function(err, movie) {
+            _movie.save(function(err, newmovie) {
+
                 if (err) {
                     console.log(err);
                 }
 
+                if (oldCategory != newmovie.category) {
+                    Category.findById(oldCategory,function(err,category){
+                        var index = category.movies.indexOf(_movie.id);
+                        category.movies.splice(index,1)
+                        category.save()
+                    });
+
+                    Category.findById(_movie.category,function(err,category){
+                        category.movies.push(_movie.id);
+                        category.save();
+                    });
+                }
+
                 res.redirect('/detail/' + movie._id);
             })
-        })
+        });
     } else {
         _movie = new Movie(movieObj);
-        var categoryId = _movie.category;
+        var categoryId = movieObj.category;
+        var categoryName = movieObj.categoryName;
 
         _movie.save(function(err, movie) {
 
@@ -80,13 +97,27 @@ exports.save =  function(req, res) {
                 console.log(err);
             }
 
-            Category.findById(categoryId, function(err, category) {
-                category.movies.push(_movie._id);
+            if (categoryId) {
+                Category.findById(categoryId, function(err, category) {
+                    category.movies.push(movie._id);
+
+                    category.save(function(err, category) {
+                        res.redirect('/detail/' + movie._id);
+                    })
+                })
+            } else if (categoryName) {
+                var category = new Category({
+                    name: categoryName,
+                    movies: [movie._id]
+                })
 
                 category.save(function(err, category) {
-                    res.redirect('/detail/' + movie._id);
+                    movie.category = category._id;
+                    movie.save(function(err, movie) {
+                        res.redirect('/detail/' + movie._id);
+                    })
                 })
-            })
+            }
         })
     }
 }

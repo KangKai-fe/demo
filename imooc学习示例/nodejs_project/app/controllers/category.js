@@ -58,3 +58,18 @@ exports.index = function(req, res) {
             })
         })
 }
+
+// list delete category
+exports.del =  function(req, res) {
+    var id = req.query.id
+
+    if (id) {
+        Category.remove({_id: id}, function(err, category) {
+            if (err) {
+                console.log(err)
+            } else {
+                res.json({success: 1})
+            }
+        })
+    }
+}

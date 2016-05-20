@@ -40,4 +40,12 @@ $(function() {
             })
         }
     })
+
+    $('#movieInfo').submit(function(e) {
+        if (!$('#inputCategory').val() && $(':checked').length === 0) {
+            alert('请输入或选择电影分类!');
+            e.preventDefault();
+            $('#inputCategory').focus();
+        }
+    })
 })
