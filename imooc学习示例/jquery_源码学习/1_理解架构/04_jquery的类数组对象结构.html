@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>类数组对象结构</title>
+    <style>
+        div{
+            width: 150px;
+            height: 50px;
+            float: left;
+        }
+        #show1{
+            background-color: #f00;
+        }
+        #show2{
+            background-color: #0f0;
+        }
+        #show3{
+            background-color: #00f;
+        }
+        #show4{
+            background-color: #ccc;
+        }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <p id="book">book</p>
+
+    <div id="show1"></div>
+    <div id="show2"></div>
+    <div id="show3"></div>
+    <div id="show4"></div>
+
+    <button id="test1">jQuery[0]</button>
+    <button id="test2">jQuery.get</button>
+    <button id="test3">kQuery[0]</button>
+    <button id="test4">kQuery.get</button>
+    <img src="http://img.mukewang.com/53fad4240001c7b805050236.jpg" alt="通过$('.class')构建的对象结构" />
+
+    <script>
+    /**
+     * jQuery的入口都是统一的$, 通过船体参数的不同, 实现了9种方式的重载:
+     * jQuery([selector,[context]])
+     * jQuery(element)
+     * jQuery(elementArray)
+     * jQuery(object)
+     * jQuery(jQuery object)
+     * jQuery(html, [ownerDocument])
+     * jQuery(html, [attributes])
+     * jQuery()
+     * jQuery(callback)
+     *
+     * 9种用法整体来说可以分为三大块: 选择器, dom的处理, dom的加载!!!
+     * 换句话说jQuery就是为了获取DOM, 操作DOM而存在的, 所以为了更方便这些操作, 让节点与实例对象通过一个桥梁给关联起来, jQuery内部就才用了一种叫做'类数组对象'的方式作为存储结构, 所以我们既可以像对象一样处理jQuery操作, 也能像数组一样可以用push, pop, shift, unshift, sort, each, map等类数组的方法操作jQuery对象了.
+     *
+     * 通过$('.class')构建的对象结构很明了, 通过对象键值对的关系保存着属性, 原型保存着方法, 以下内容为通过kQuery方法抽象出对象创建的具体过程, 这就是软件工程领域中广为人知的设计模式 - 工厂方法.
+     */
+
+    /**
+     * 函数kQuery()内部首先保证了必须是通过new操作符构建, 这样就能保证当前构建的是一个带有this的实例对象, 因此可以将所有的方法和属性作为对象的key和value方式映射到this上, 所以如下结构就可以模拟出jQuery通过索引取值, 也可以链式方法取值, 但是这样的结构有很大缺陷, 每调用一次kQuery方法, 就等于创建了一个新的实例, 类似的get方法就要在每个实例上重新创建一遍, 性能大打折扣, 因此jQuery在结构上的优化不仅仅是我们看到的, 除了实现类数组结构及方法的原型共享, 而且还实现方法的静态与实例的共存, 下节分析.
+     */
+
+        // 数据结构的简单模拟如下:
+        var kQuery = function(selector) {
+
+            // 强制为对象
+
+            if (!(this instanceof kQuery)) {
+                return new kQuery(selector);
+            }
+
+            var elem = document.getElementById(/[^#].*/.exec(selector)[0]);
+            this.length = 1;
+            this[0] = elem;
+            this.context = selector;
+            this.selector = selector;
+            this.get = function(num) {
+                return this[num];
+            }
+            return this;
+        }
+
+        // 得到的结果是一个dom元素
+
+        $('#test1').click(function() {
+            $('#show1').append($('#book')[0]);
+        });
+
+        $('#test2').click(function() {
+            $('#show2').append($('#book').get(0));
+        });
+
+        $('#test3').click(function() {
+            $('#show3').append(kQuery('#book')[0]);
+        });
+
+        $('#test4').click(function() {
+            $('#show4').append(kQuery('#book').get(0));
+        });
+    </script>
+</body>
+</html>
