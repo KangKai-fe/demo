@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>dom加载</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+    /**
+     * >> jQuery有三种针对文档加载的方法:
+     *
+     * $(document).ready(function() {
+     *     // 代码
+     * })
+     *
+     * $(function(){
+     *     // document ready的简写
+     * })
+     *
+     * $(document).load(function() {
+     *     // 代码
+     * })
+     *
+     * >> ready和load谁先执行:
+     * ready先执行, load后执行
+     *
+     * >> DOM文档加载的步骤:
+     * 1. 解析html结构
+     * 2. 加载外部脚本和css
+     * 3. 解析并执行脚本代码
+     * 4. 构造html dom模型 // --ready
+     * 5. 加载图片等外部文件
+     * 6. 页面加载完毕 // --load
+     *
+     * >> jQuery如何处理文档加载时机:
+     *
+     * jQuery.ready.promise = function(obj) {
+     *
+     *     if (!readyList) {
+     *         readyList = jQuery.Deffered();
+     *
+     *         if (document.readyState === 'complete') {
+     *             // Handle it asynchronously to allow scripts the opportunite to delay ready
+     *             setTimeout(jQuery.ready);
+     *         } else {
+     *             document.addEventListener('DOMCotentLoaded', completed, false);
+     *             window.addEventListener('load', completed, false);
+     *         }
+     *     }
+     *     return readyList.promise(obj);
+     * };
+     *
+     * >> jQuery的ready是通过promise包装过的, 统一了回调体系.
+     * 可见jQuery兼容的具体策略: 针对高级的浏览器, 使用了DOMContentLoaded事件, 省时省力, 针对旧的IE, 继续看jQuery的方案:
+     *
+     * // Ensure firing before onload, maybe late but safe also for iframes
+     * document.attachEvent('onreadystatechange', completed);
+     * // a fallback to window.onload, that will always work
+     * window.attachEvent('onload', completed);
+     * // if IE and not a frame
+     * // continually check to see if the document is ready
+     * var top = false;
+     * try {
+     *     top = window.frameElement == null && document.documentElement;
+     * } catch (e) {}
+     * if (top && top.doScroll) {
+     *     (function doScrollCheck() {
+     *         if (!jQuery.isReady) {
+     *             try {
+     *                 // use the trick by Diego Perini
+     *                 top.doScroll('left');
+     *             } catch (e) {
+     *                 return setTimeout(doScrollCheck, 50);
+     *             }
+     *             // detach all dom ready events
+     *             detach();
+     *             // adn execute any waiting functions
+     *             jQuery.ready();
+     *         }
+     *     })();
+     * }
+     *
+     * >> 如果浏览器存在document.onreadystatechange事件, 当该事件触发时, 如果document.readyState=complete的时候, 可视为DOM树已经载入, 不过, 这个事件不太可靠, 比如当页面中存在图片的时候, 可能反而在onload事件之后才触发, 换言之, 它只能正确的执行于页面不包含二进制资源或者非常少或者被缓存时的一个备选.
+     *
+     * >> Diego Perini 在 2007 年的时候, 报告了一种检测 IE 是否加载完成的方式, 使用 doScroll 方法调用, 详情可见http://javascript.nwbox.com/IEContentLoaded/.原理就是对于 IE 在非 iframe 内时, 只有不断地通过能否执行 doScroll 判断 DOM 是否加载完毕. 在上述中间隔 50 毫秒尝试去执行 doScroll, 注意, 由于页面没有加载完成的时候, 调用 doScroll 会导致异常, 所以使用了 try -catch 来捕获异常. 结论：所以总的来说当页面 DOM 未加载完成时, 调用 doScroll 方法时, 会产生异常. 那么我们反过来用, 如果不异常, 那么就是页面DOM加载完毕了. 这都是我们在第一时间内处理ready加载的问题, 如果ready在页面加载完毕后呢?
+     *
+     * >> jQuery就必须针对这样的情况跳过绑定了:
+     *
+     * if (document.readyState === 'complete') {
+     *     // Handle it asynchronously to allow scripts the opportunity to delay ready
+     *     setTimeout(jQuery.ready);
+     * }
+     *
+     * 直接通过查看readyState状态来确定页面的加载是否已经完成, 这里会给一个定时器最小时间去执行, 用于确保执行的正确.
+     */
+
+        show('观察脚本加载的顺序');
+
+        document.addEventListener('DOMContentLoaded', function() {
+            show('DOMContentLoaded回调');
+        });
+
+        window.addEventListener('load', function() {
+            show('load事件回调');
+        });
+
+        show('脚本解析一');
+
+        // 测试加载
+        $(function() {
+            show('脚本解析二');
+        })
+
+        show('脚本解析三');
+
+        function show(data) {
+            $('body').append('<li>' + data + '</li>');
+        }
+    </script>
+</body>
+</html>
