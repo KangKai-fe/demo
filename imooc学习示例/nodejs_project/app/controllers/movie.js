@@ -8,6 +8,12 @@ var path = require('path');
 // detail page
 exports.detail = function(req, res) {
     var id = req.params.id;
+
+    Movie.update({_id: id}, {$inc: {pv: 1}}, function(err) {
+        if (err) {
+            console.log(err);
+        }
+    })
     Movie.findById(id, function(err, movie) { // 找到该电影
         Comment
         .find({movie: id}) // 找到该电影对应的评论
