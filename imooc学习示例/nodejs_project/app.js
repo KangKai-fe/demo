@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 // app.use(express.bodyParser());
 app.use(cookieParser()); // session的依赖
+app.use(require('connect-multiparty')());
 app.use(cookieSession({
     secret: 'imooc',
     store: new mongoStore({
