@@ -10,57 +10,57 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['public/js/**', 'models/**/*.js', 'schemas/**/*.js'],
-                // tasks: ['jshint'],
+                tasks: ['jshint'],
                 options: {
                     livereload: true
                 }
             }
-        //     uglify: {
-        //         files: ['public/**/*.js'],
-        //         tasks: ['jshint'],
-        //         options: {
-        //             livereload: true
-        //         }
-        //     },
-        //     styles: {
-        //         files: ['public/**/*.less'],
-        //         tasks: ['less'],
-        //         options: {
-        //             nospawn: true
-        //         }
-        //     }
-        // },
+            uglify: {
+                files: ['public/**/*.js'],
+                tasks: ['jshint'],
+                options: {
+                    livereload: true
+                }
+            },
+            styles: {
+                files: ['public/**/*.less'],
+                tasks: ['less'],
+                options: {
+                    nospawn: true
+                }
+            }
+        },
 
-        // jshint: {
-        //     options: {
-        //         jshintrc: '.jshintrc',
-        //         ignores: ['public/libs/**/*.js']
-        //     },
-        //     all: ['public/js/*.js', 'test/**/*.js', 'app/**/*.js']
-        // },
+        jshint: {
+            options: {
+                jshintrc: '.jshintrc',
+                ignores: ['public/libs/**/*.js']
+            },
+            all: ['public/js/*.js', 'test/**/*.js', 'app/**/*.js']
+        },
 
-        // less: {
-        //     development: {
-        //         options: {
-        //             compress: true,
-        //             yuicompress: true,
-        //             optimization: 2
-        //         },
-        //         files: {
-        //             'public/build/index.css': 'public/less/index.less'
-        //         }
-        //     }
-        // },
+        less: {
+            development: {
+                options: {
+                    compress: true,
+                    yuicompress: true,
+                    optimization: 2
+                },
+                files: {
+                    'public/build/index.css': 'public/less/index.less'
+                }
+            }
+        },
 
-        // uglify: {
-        //     development: {
-        //         files: {
-        //             'public/build/admin.min.js': 'public/js/admin.js',
-        //             'public/build/detail.min.js': [
-        //                 'public/js/detail.js'
-        //             ]
-        //         }
-        //     }
+        uglify: {
+            development: {
+                files: {
+                    'public/build/admin.min.js': 'public/js/admin.js',
+                    'public/build/detail.min.js': [
+                        'public/js/detail.js'
+                    ]
+                }
+            }
         },
 
         nodemon: {
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         },
 
         concurrent: {
-            tasks: ['nodemon', 'watch'/*, 'less', 'uglify', 'jshint'*/],
+            tasks: ['nodemon', 'watch', 'less', 'uglify', 'jshint'],
             options: {
                 logConcurrentOutput: true
             }
@@ -100,6 +100,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-nodemon') // 监听app.js
     grunt.loadNpmTasks('grunt-concurrent') // 针对慢任务: sass, less, coffee 的编译
     grunt.loadNpmTasks('grunt-mocha-test') // 引入mocha模块
+    grunt.loadNpmTasks('grunt-contrib-less')
+    grunt.loadNpmTasks('grunt-contrib-uglify')
+    grunt.loadNpmTasks('grunt-contrib-jshint')
+
     grunt.option('force', true)
     grunt.registerTask('default', ['concurrent'])
     grunt.registerTask('test', ['mochaTest']) // 注册任务
