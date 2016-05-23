@@ -81,12 +81,12 @@ module.exports = function(grunt) {
             }
         },
 
-        // mochaTest: {
-        //     options: {
-        //         reporter: 'spec'
-        //     },
-        //     src: ['test/**/*.js']
-        // },
+        mochaTest: {
+            options: {
+                reporter: 'spec'
+            },
+            src: ['test/**/*.js']
+        },
 
         concurrent: {
             tasks: ['nodemon', 'watch'/*, 'less', 'uglify', 'jshint'*/],
@@ -99,6 +99,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch')
     grunt.loadNpmTasks('grunt-nodemon') // 监听app.js
     grunt.loadNpmTasks('grunt-concurrent') // 针对慢任务: sass, less, coffee 的编译
+    grunt.loadNpmTasks('grunt-mocha-test') // 引入mocha模块
     grunt.option('force', true)
     grunt.registerTask('default', ['concurrent'])
+    grunt.registerTask('test', ['mochaTest']) // 注册任务
 }

@@ -9,9 +9,30 @@ var mongoose = require('mongoose');
 var mongoStore = require('connect-mongo')(session);
 var port = process.env.PORT || 3000;
 var app = express();
+var fs = require('fs'); // 文件读写模块
 
 mongoose.connect('mongodb://localhost/test');
 var dbUrl = 'mongodb://localhost/test';
+
+// models loading
+var models_path = __dirname + '/app/models';
+var walk = function(path) {
+    fs
+        .readdirSync(path)
+        .forEach(function(file) {
+            var newPath = path + '/' + file;
+            var stat = fs.statSync(newPath);
+
+            if (stat.isFile()) {
+                if (/(.*)\.(js|coffee)/.test(file)) {
+                    require(newPath);
+                }
+            } else if (stat.isDirectory()) {
+                walk(newPath);
+            }
+        })
+} // 遍历目录
+walk(models_path);
 
 // app.locals.moment = require('moment')
 app.set('views', './app/views/pages');
@@ -34,7 +55,7 @@ if ('development' === app.get('env')) { // 如果环境变量是开发环境(本
     app.set('showStackError', true);
     app.use(logger(':method :url :status'));
     app.locals.pretty = true;
-    mongoose.set('debug', true);
+    // mongoose.set('debug', true);
 }
 
 // 引入路由
