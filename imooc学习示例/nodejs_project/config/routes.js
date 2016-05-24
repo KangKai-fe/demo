@@ -4,6 +4,9 @@ var Movie = require('../app/controllers/movie');
 var Comment = require('../app/controllers/comment');
 var Category = require('../app/controllers/category');
 
+var multiparty = require('connect-multiparty');
+var multipartyMiddleware = multiparty()
+
 module.exports = function(app) {
     // prehandle user 预处理
     app.use(function(req, res, next){
@@ -37,7 +40,7 @@ module.exports = function(app) {
     app.get('/detail/:id', Movie.detail)
     app.get('/admin/movie/new', User.signinRequired, User.adminRequired, Movie.new)
     app.get('/admin/movie/update/:id', User.signinRequired, User.adminRequired, Movie.update)
-    app.post('/admin/movie/', User.signinRequired, User.adminRequired, Movie.savePoster, Movie.save)
+    app.post('/admin/movie/', multipartyMiddleware, User.signinRequired, User.adminRequired, Movie.savePoster, Movie.save)
     app.get('/admin/movie/list', User.signinRequired, User.adminRequired, Movie.list)
     app.delete('/admin/movie/list', User.signinRequired, User.adminRequired, Movie.del)
 
