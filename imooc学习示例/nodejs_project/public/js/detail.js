@@ -10,8 +10,8 @@ $(function() {
             $('#toId').val(toId)
         } else {
             $('<input>').attr({
-                type: "hidden",
-                id: "toId",
+                type: 'hidden',
+                id: 'toId',
                 name: 'comment[tid]',
                 value: toId
             }).appendTo('#commentForm')
@@ -21,8 +21,8 @@ $(function() {
             $('#commentId').val(commentId)
         } else {
             $('<input>').attr({
-                type: "hidden",
-                id: "commentId",
+                type: 'hidden',
+                id: 'commentId',
                 name: 'comment[cid]',
                 value: commentId
             }).appendTo('#commentForm')

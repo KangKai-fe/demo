@@ -106,7 +106,7 @@ exports.save =  function(req, res) {
                     console.log(err);
                 }
 
-                if (oldCategory != newmovie.category) {
+                if (oldCategory !== newmovie.category) {
                     Category.findById(oldCategory,function(err,category){
                         var index = category.movies.indexOf(_movie.id);
                         category.movies.splice(index,1)
