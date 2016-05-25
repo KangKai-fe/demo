@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>方法链式调用的实现</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    链式调用$$().setName('kangkai-fe').getName()的结果：
+    <div id="kangkai"></div>
+    <script>
+    /**
+     * 链式代码实例:
+     * $('input[type="button"]').eq(0).click(function() {
+     *     alert('点击!');
+     * }).end().eq(1).click(function() {
+     *     $('input[type="button"]:eq(0)').trigger('click');
+     * }).end().eq(2).toggle(function() {
+     *     $('kk').hide('slow');
+     * }, function() {
+     *     $('kk').show('slow');
+     * });
+     *
+     * 1. 找到type为button的input元素
+     * 2. 找到第一个按钮, 并绑定click事件处理函数
+     * 3. 返回所有按钮, 找到第二个button
+     * 4. 为第二个按钮绑定click事件
+     * 5. 为第三个按钮绑定toggle事件
+     *
+     * 优势:
+     * 1. 节约js代码
+     * 2. 所返回的都是同一个对象, 提高代码效率
+     *
+     * 通过简单扩展原型方法并通过 return this 的形式来实现跨浏览器的链式调用. 利用js下的简单工厂方法模式, 来讲所有对于同一个DOM对象的操作指定同一个实例.
+     *
+     * 如下代码:
+     * kQuery().init().name()
+     * 代码分解, 很明显实现链式调用的基本条件就是要实例对象创建好, 调用自己的方法:
+     * kQuery.prototype = {
+     *     init: function() {
+     *         return this;
+     *     },
+     *     name: function() {
+     *         return this;
+     *     }
+     * }
+     *
+     * 所以如果需要链式的处理, 只需要在方法内部返回当前的这个实例对象this就可以了, 因为返回当前实例this, 从而又可以访问自己的原型了, 这样就节省代码量, 提高代码的效率, 代码看起来更优雅, 但是这样有一个问题: 所有对象的方法返回的都是对象本身, 也就是说没有返回值, 所以这种方法不一定在任何环境下都适合.
+     * 虽然js是无阻塞语言, 但并不是没阻塞, 而是不能阻塞, 所以需要通过事件来驱动, 异步完成一些本需要阻塞进程的操作, 这样处理知识 同步链式, 除了同步链式, 还有异步链式, 异步链式jQuery从1.5开始引入Promise, jQuery.Deferred.
+     */
+    </script>
+    <script>
+    var $$ = kQuery = function(selector) {
+        return kQuery.fn.init(selector);
+    }
+
+    kQuery.fn = kQuery.prototype = {
+        name: 'kangkai',
+        init: function(selector) {
+            this.selector = selector;
+            return this;
+        },
+        constructor: kQuery
+    }
+
+    kQuery.fn.init.prototype = kQuery.fn;
+
+    kQuery.fn.setName = function(myName) {
+        this.myName = myName;
+        return this;
+    }
+
+    kQuery.fn.getName = function() {
+        $('#kangkai').html(this.myName);
+        return this;
+    }
+
+    $$().setName('kangkai-fe').getName();
+    </script>
+</body>
+</html>
