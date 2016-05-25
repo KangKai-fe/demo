@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>插件接口的设计</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div id="kangkai"></div>
+    <script>
+    /**
+     * 在软件设计中插件借口的提供把独立的功能与框架以一种很宽松的方式松耦合.
+     * jQuery插件的开发分为两种:
+     * 1. 一种是挂在jQuery命名空间下的全局函数, 也可称为静态方法;
+     * 2. 另一种是jQuery对象级别的方法, 即挂在jQuery原型下的方法, 这样通过选择器获取的jQuery对象实例也能共享该方法
+     *
+     * 提供的接口:
+     * $.extend(target, [object1], [objectN])
+     * 接口的使用:
+     * jQuery.extend({
+     *     data: function() {},
+     *     removeData: function() {}
+     * })
+     *
+     * jQuery.fn.extend({
+     *     data: function() {},
+     *     removeData: function() {}
+     * })
+     *
+     * jQuery的主体框架就是之前提到的那样, 通过工厂模式返回一个内部的init构造器生成的对象, 但是根据一般设计者的习惯,如果要为jQuery添加静态方法或者实例方法, 从封装的角度讲是应该提供一个统一的接口才符合设计
+     *
+     * jQuery支持自己扩展属性, 这个对外提供了一个接口, jQuery.fn.extend()来对对象增加方法, 从jQuery的源码中可以看到, jQuery.extend和jQuery.fn.extend其实是指向同一方法的不同引用.
+     *
+     * 这里有一个设计的重点, 通过调用的上下文, 我们来确定这个方法作为是静态还是实例处理, 在js的世界中一共有四种上下文调用方式:
+     * 方法调用模式,
+     * 函数调用模式,
+     * 构造器调用模式,
+     * apply调用模式.
+     * jQuery.extend调用的时候上下文指向的是jQuery构造器
+     * jQuery.fn.extend调用的时候上下文指向的是jQuery构造器的实例对象
+     * 通过extend()函数可以方便快速的扩展功能, 不会破坏jQuery的原型结构, jQuery.extend = jQuery.fn.extend = function() {...};
+     * 这个是连等, 也就是两个指向同一个函数, 怎么会实现不同的功能呢?依靠this.
+     *
+     * fn和jQuery是两个不同的对象, 在之前讲解中: jQuery.extend 调用的时候, this是指向jQuery对象的(jQuery是函数, 也是对象), 所以这里扩展在jQuery上. 而jQuery.fn.extend 调用的时候, this指向fn对象, jQuery.fn 和jQuery.prototype指向同一对象, 扩展fn就是扩展jQuery.prototype原型对象. 这里增加的是原型方法, 也就是对象方法了. 所以jQueryAPI中提供了以上两个扩展函数.
+     *
+     * jQuery的extend代码实现较长, 简要介绍重点:
+     * kk.extend = kk.fn.extend = function() {
+     *     var options, src, copy,
+     *         target = arguments[0] || {},
+     *         i = 1,
+     *         length = arguments.length;
+     *
+     *     // 只有一个参数, 就是对jQuery自身的扩展处理
+     *     // extend, fn.extend
+     *     if (i === length) {
+     *         target = this; // 调用的上下文对象jQuery/或者实例
+     *         i--;
+     *     }
+     *     for (; i<length; i++) {
+     *         // 从i开始取参数, 不为空开始遍历
+     *         if ((options = arguments[i]) != null) {
+     *             for (name in options) {
+     *                 copy = options[name];
+     *                 // 覆盖拷贝
+     *                 target[name] = copy;
+     *             }
+     *         }
+     *     }
+     *     return target;
+     * }
+     */
+    </script>
+    <script>
+        var $$ = kQuery = function(selector) {
+            return new kQuery.fn.init(selector);
+        }
+
+        kQuery.fn = kQuery.prototype = {
+            name: 'kangkai',
+            init: function(selector) {
+                this.selector = selector;
+                return this;
+            },
+            constructor: kQuery
+        }
+
+        kQuery.fn.init.prototype = kQuery.fn;
+
+        kQuery.extend = kQuery.fn.extend = function() {
+            var options, src, copy,
+                target = arguments[0] || {},
+                i = 1,
+                length = arguments.length;
+
+            // 只有一个参数，就是对jQuery自身的扩展处理
+            // extend, fn.extend
+            if (i === length) {
+                target = this;
+                i--;
+            }
+            for (; i<length; i++) {
+                // 从i开始取参数, 不为空开始遍历
+                if ((options = arguments[i]) != null) {
+                    for (name in options) {
+                        copy = options[name];
+                        // 覆盖拷贝
+                        target[name] = copy;
+                    }
+                }
+            }
+            return target;
+        }
+
+        kQuery.fn.extend({
+            setName: function(name) {
+                this.name = name;
+                return this;
+            },
+            getName: function() {
+                $('#kangkai').html(this.name);
+                return this;
+            }
+        })
+
+        // $$().getName(); // kangkai
+        $$().setName('kangkai-fe').getName(); // kangkai-fe
+    </script>
+</body>
+</html>
