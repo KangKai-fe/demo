@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>对象的构建</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+    /**
+     * JS中函数不仅拥有一切传统函数的使用方式(声明和调用), 而且可以做到像简单值一样赋值, 传参, 返回, 这样的函数成为第一级函数. 不仅如此, 而且还可以通过操作符new来充当类的构造器.
+     * 函数在充当类的构造器时, 原型prototype是一个重要的概念. prototype是构造函数的一个属性, 该属性指向一个对象. 而这个对象将作为构造函数所创建的所有实例的基引用(base reference), 可以把对象的基引用想象成一个自动创建的隐藏属性. 当访问对象的一个属性时, 首先查找对象本身, 找到则返回; 否则, 查找基引用指向的对象的属性(如果还找不到, 则沿着原型链向上查找, 直至根). 若没有被覆盖的话, 对象原型的属性就能在所有的实例中找到.
+     *
+     * 类一:
+     * function kjQuery() {
+     *     this.name = 'jQuery';
+     *     this.sayName = function() {
+     *         return this.name;
+     *     }
+     * }
+     * var a = new kjQuery();
+     * var b = new kjQuery();
+     * var c = new kjQuery();
+     *
+     * 类二:
+     * function kjQuery() {
+     *     this.name = 'jQuery';
+     * }
+     * kjQuery.prototype = {
+     *     sayName: function() {
+     *         return this.name;
+     *     }
+     * }
+     * var a = new kjQuery();
+     * var b = new kjQuery();
+     * var c = new kjQuery();
+     *
+     * 类一与类二产生的结构几乎是一样的, 本质区别是: 类二new产生的a, b, c三个实例对象共享了原型的sayName方法, 这样的好处是节省了内存空间, 类一则是要为每一个实例复制sayName方法, 每个方法属性都占用一定的内存空间, 所以如果把所有属性方法都声明在构造函数中, 会无形增大很多开销, 这些实例化的对象的属性一模一样, 都是对this的引用来处理. 除此之外, 类一的所有方法都是拷贝到当前实例对象上的, 类二则是要通过scope连接到原型链上查找, 这样无形中要多一层作用域链的查找.
+     *
+     * jQuery对象的构建如果在性能上考虑, 所以采用了原型式的结构:
+     *
+     * var $jQuery= function(selector, context){
+     *     return new $jQuery.fn.init(selector, context);
+     * }
+     * $jQuery.fn = $jQuery.prototype = {
+     *     init: function() {
+     *         this.name = 'kk';
+     *         return this;
+     *     },
+     *     constructor: $jQuery,
+     *     jQuery: version,
+     *     .......
+     * }
+     * var $a = $jQuery();
+     *
+     * 使用原型结构, 性能上得到了优化, 但是kjQuery类这个结构与目标jquery还是有很大不一致:
+     * a. 没有采用new操作符
+     * b. return返回的是一个通过new出来的对象
+     */
+    </script>
+    <script>
+        
+    </script>
+</body>
+</html>
