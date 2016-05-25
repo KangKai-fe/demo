@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>回溯处理的设计</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <button id="test1">直接处理</button>
+    <button id="test2">通过end连贯处理</button> 
+
+    <ul class="first">
+        <li class="foo">list item 1</li>
+        <li>list item 2</li>
+        <li class="bar">list item 3</li>
+    </ul>
+    <ul class="second">
+        <li class="foo">list item 1</li>
+        <li>list item 2</li>
+        <li class="bar">list item 3</li>
+    </ul>
+
+    <script>
+    /**
+     * jQuery对象的包装
+     * var $kangkai = $("kangkai");
+     * Query选择器最终都是通过DOM接口实现取值的, 但是通过jQuery处理后返回的不仅仅只有DOM对象, 而是一个包装容器, 返回jQuery对象: $kangkai
+     *
+     * 在jQuery对象中有个prevObject对象:
+     * jQuery内部维护着一个jQuery对象栈,每个遍历方法都会找到一组新元素(一个jQuery对象), 然后jQuery会把这组元素推入到栈中. 而每个jQuery对象都有三个属性: context、selector和prevObject, 其中的prevObject属性就指向这个对象栈中的前一个对象, 而通过这个属性可以回溯到最初的DOM元素集中.
+     *
+     * jQuery为我们操作内部对象栈提供个非常有用的2个方法:
+     * .end();
+     * .addBack();
+     * 有些API上是andSelf, 因为就Query的api是这样写的, andSelf现在是.addBack()的一个别名. 在jQuery1.8和更高版本中应使用.addBack()
+     * jQuery.fn.andSelf = jQuery.fn.addBack;
+     *
+     * 调用第一个方法只是简单地弹出一个对象(结果就是回到前一个jQuery对象). 第二个方法更有意思, 调用它会在栈中回溯一个位置, 然后把两个位置上的元素集组合起来, 并把这个新的、组合之后的元素集推入栈的上方.
+     *
+     * 利用这个DOM元素栈可以减少重复的查询和遍历的操作, 而减少重复操作也正是优化jQuery代码性能的关键所在.
+     */
+    </script>
+    <script>
+        $('#test1').click(function() {
+            // 直接处理
+            var foo = $('ul.first');
+            foo.find('.foo').css('background-color', 'red');
+            foo.find('.bar').css('background-color', 'green');
+        })
+
+        $('#test2').click(function() {
+            // 通过end处理
+            $('ul.second').find('.foo').css('background-color', 'red').end().find('.bar').css('background-color', 'green');
+        })
+    </script>
+</body>
+</html>
