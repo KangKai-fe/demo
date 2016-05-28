@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+        body{
+            padding: 20px;
+        }
+        fieldset{
+            margin-bottom: 50px;
+        }
+        .button{
+            height:2em;
+            line-height: 2em;
+            width: 150px;
+            text-align: center;
+            background: orangered;
+            color: #fff;
+            box-shadow: 1px 1px 2px orange;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>第一个例子:</legend>
+        <b>计算:</b>
+        <br />
+        <br />
+        <table>
+            <tr>
+                <td>单价: (美元)</td>
+                <td>数量: </td>
+            </tr>
+            <tr>
+                <td><input type="number" ng-model="qty" required /></td>
+                <td><input type="number" ng-model="cost" required /></td>
+            </tr>
+        </table>
+        <br />
+        <b>金额: </b>{{qty * cost | currency}}
+    </fieldset>
+
+    <fieldset>
+        <b>改变model来控制dom:</b>
+        <br />
+        <br />
+        <legend>第二个例子:</legend>
+        <input type="text" ng-model="data.msg" />
+        <br />
+        <br />
+        <div class="{{data.msg}}">我是一个{{data.msg}}</div>
+    </fieldset>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+</body>
+</html>
