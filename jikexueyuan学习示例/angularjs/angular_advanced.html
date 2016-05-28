@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>angular进阶</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <style>
+        body{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body ng-app="app">
+    <div ng-controller="MyCtrl">
+        <input type="text" ng-model="msg" />
+        <h1>{{msg}}</h1>
+    </div>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+    <script src="myCtrl.js"></script>
+</body>
+</html>
