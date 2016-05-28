@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>binding指令实现数据双向绑定</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <style>
+        body{
+            padding: 10px;
+        }
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body ng-app="">
+    <div>
+       <!--  <p>{{2 + 3}}</p>
+        <p>{{2 - 3}}</p>
+        <p>{{2 * 3}}</p>
+        <p>{{'hello ' + 'angular'}}</p> -->
+        <input type="text" ng-model="uname" />
+        <!-- <h3>{{uname}}</h3> -->
+<!--         <p>{{'用户名: ' + uname}}</p>
+        <p ng-bind="'用户名: ' + uname"></p>
+        <p class="{{uname}}">{{uname}}</p> -->
+        <p ng-cloak>{{uname}}</p>
+    </div>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+</body>
+</html>
