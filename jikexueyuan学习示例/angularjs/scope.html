@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>controller的作用域</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <style>
+        body{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body ng-app="app">
+    <div ng-controller="MyCtrl">
+        <input type="text" ng-model="user.uname" />
+        <input type="text" ng-model="user.pwd" />
+        <!-- 方法调用时要加() -->
+        <!-- <h1>{{reverse()}}</h1> -->
+        <a class="btn btn-default" ng-click="login()">登录</a>
+        <div class="alert alert-danger" ng-show="errormsg.length>0">{{errormsg}}</div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+    <script src="scope.js"></script>
+</body>
+</html>
