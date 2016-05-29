@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-repeat的使用</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <style>
+        body{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body ng-app="app" ng-controller="MyCtrl">
+    <div class="panel panel-default">
+        <div class="panel-heading">用户角色</div>
+        <div class="panel-body">
+            <select ng-model="curselect">
+                <option value="请选择"></option>
+                <option ng-repeat="role in roles" value={{role.id}}>{{role.rolename}}</option>
+                <!-- <option value="1">系统管理员</option> -->
+            </select>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">权限列表</div>
+        <div class="panel-body" ng-repeat="right in rights">
+            <label for="right.id"><input id="right.id" type="checkbox" ng-checked="right.ischecked" />right.rightname</label>
+            <!-- <label for="admin2"><input id="admin2" type="checkbox" />合同管理</label>
+            <label for="admin3"><input id="admin3" type="checkbox" />项目管理</label>
+            <label for="admin4"><input id="admin4" type="checkbox" />新闻公告</label> -->
+
+        </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+    <script src="http_example.js"></script>
+</body>
+</html>
