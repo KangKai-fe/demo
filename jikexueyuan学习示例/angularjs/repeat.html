@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-repeat的使用</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <style>
+        body{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body ng-app="app" ng-controller="AddressCtrl">
+    <h2>地址管理</h2>
+    <div class="list-group">
+        <a class="list-group-item" href="#" ng-repeat="item in list" ng-class="{'active': $first}" ng-if="!$last">
+            {{$index + 1 + '.' + item.address + ', ' + $first + ', ' + $last}}
+            <span class="glyphicon glyphicon-menu-right pull-right"></span>
+        </a>
+    </div>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+    <script src="repeat.js"></script>
+</body>
+</html>
