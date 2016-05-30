@@ -1,0 +1,12 @@
+1. 减少或避免repaint(页面重绘), reflow(页面回流).
+    -> 减少对dom元素的操作: 先将dom元素从dom文档流中提取出来, 然后进行操作.
+2. 尽量缓存所有可以缓存的数据
+    localStorage.setItem('data_1', JSON.stringify({a: 1}))
+    JSON.parse(localStorage.getItem('data_1'));
+    sessionStorage: 会话结束就清空;
+    indexedDB
+3. 使用CSS3的transform代替DOM操作.
+4. 尽量不要给非static定位元素(absolut, relative, fixed)添加CSS3动画.
+5. 适当-->适当!!使用硬件加速: GPU渲染.
+    canvas会触发硬件加速;
+    transform: translate3d(0, 0, 0);
