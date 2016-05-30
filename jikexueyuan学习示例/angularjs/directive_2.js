@@ -11,6 +11,7 @@ var app = angular.module('app', []);
 
 // app.directive('hello', function() {
 //     return {
+//         restrict: 'A', // attribute, 默认值
 //         link: function() {
 //             alert('我在这里');
 //         }

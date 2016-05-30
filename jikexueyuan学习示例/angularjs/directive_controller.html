@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ng-repeat的使用</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css" />
+    <style>
+        body{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div ng-app="app">
+        <!-- <div ng-controller="AppCtrl">
+            <div enter="loadMoreData()">I'm here</div>
+            <div enter="delData()">I'm here</div>
+        </div> -->
+        <food apple orange melon>所有食物</food><br />
+        <food orange melon>所有食物</food>
+    </div>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.5.0-beta.0/angular.min.js"></script>
+    <script src="directive_controller.js"></script>
+</body>
+</html>
