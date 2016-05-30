@@ -4,4 +4,5 @@ background: url(data: image/png; base64, base64编码);
 base64格式图片生成:
 通过base64图片编辑器, 将图片拖放进去, 即可生成base64格式.
 
-base64图片未经压缩, 体积更大.
+base64图片利于页面直接加载, 减少请求.
+base64图片未经压缩, 体积更大; 维护不方便.
