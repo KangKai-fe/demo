@@ -1,0 +1,7 @@
+base64格式图片的使用:
+background: url(data: image/png; base64, base64编码);
+
+base64格式图片生成:
+通过base64图片编辑器, 将图片拖放进去, 即可生成base64格式.
+
+base64图片未经压缩, 体积更大.
