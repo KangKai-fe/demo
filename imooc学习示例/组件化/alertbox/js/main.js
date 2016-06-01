@@ -70,5 +70,15 @@ require(['jquery', 'window'], function($, w) {
                 alert('取消');
             }
         });
-    })
+    });
+
+    $('#common').click(function() {
+        new w.Window().common({
+            content: '我是一个通用弹窗',
+            width: 300,
+            height: 150,
+            y: 50,
+            hasCloseBtn: true
+        });
+    });
 });

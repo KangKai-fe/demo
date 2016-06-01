@@ -45,11 +45,14 @@ define(['widget', 'jquery', 'jqueryUI'], function(widget, $, $UI) {
             }
             this.boundingBox = $(
                 '<div class="window_boundingBox">' +
-                    '<div class="window_header">' + this.conf.title + '</div>' +
                     '<div class="window_body">' + this.conf.content + '</div>' +
-                    '<div class="window_footer">' + footerContent + '</div>' +
                 '</div>'
             );
+
+            if (this.conf.winType !== 'common') {
+                this.boundingBox.prepend('<div class="window_header">' + this.conf.title + '</div>');
+                this.boundingBox.append('<div class="window_footer">' + footerContent + '</div>');
+            }
             this._promptInput = this.boundingBox.find('.window_promptInput');
 
             if (this.conf.hasMask) {
@@ -144,6 +147,11 @@ define(['widget', 'jquery', 'jqueryUI'], function(widget, $, $UI) {
             $.extend(this.conf, conf, {winType: 'prompt'});
             this.render();
             this._promptInput.focus();
+            return this;
+        },
+        common: function(conf) {
+            $.extend(this.conf, conf, {winType: 'common'});
+            this.render();
             return this;
         }
     })
