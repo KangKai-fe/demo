@@ -12,8 +12,9 @@ require(['jquery', 'window'], function($, w) {
             height: 150,
             y: 50,
             hasCloseBtn: true,
+            // hasMask: false,
             skinClassName: 'window_skin_orange',
-            text4AlertBtn: 'confirm',
+            text4AlertBtn: 'ok',
             handler4AlertBtn: function() {
                 alert('button clicked');
             },

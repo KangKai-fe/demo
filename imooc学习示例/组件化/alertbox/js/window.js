@@ -7,6 +7,7 @@ define(['jquery'], function($) {
             title: '系统消息',
             content: '',
             hasCloseBtn: false,
+            hasMask: true,
             skinClassName: null,
             text4AlertBtn: '确定',
             handler4AlertBtn: null,
@@ -26,10 +27,12 @@ define(['jquery'], function($) {
                 );
             boundingBox.appendTo('body');
 
-            var btn = boundingBox.find('.window_alertBtn');
+            var btn = boundingBox.find('.window_alertBtn'),
+                mask = null;
             btn.click(function() {
                 Conf.handler4AlertBtn && Conf.handler4AlertBtn();
                 boundingBox.remove();
+                mask && mask.remove();
             });
 
             boundingBox.css({
@@ -45,11 +48,17 @@ define(['jquery'], function($) {
                 closeBtn.click(function() {
                     Conf.handler4CloseBtn && Conf.handler4CloseBtn();
                     boundingBox.remove();
+                    mask && mask.remove();
                 });
             }
 
             if (Conf.skinClassName) {
                 boundingBox.addClass(Conf.skinClassName);
+            }
+
+            if (Conf.hasMask) {
+                mask = $('<div class="window_mask"></div>');
+                mask.appendTo('body');
             }
         },
         confirm: function() {
