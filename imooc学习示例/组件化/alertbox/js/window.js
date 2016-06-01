@@ -6,7 +6,9 @@ define(['jquery'], function($) {
             height:300,
             title: '系统消息',
             content: '',
-            handler: null
+            hasCloseBtn: false,
+            handler4AlertBtn: null,
+            handler4CloseBtn: null
         }
     };
 
@@ -17,14 +19,14 @@ define(['jquery'], function($) {
                 '<div class="window_boundingBox">' +
                     '<div class="window_header">' + Conf.title + '</div>' +
                     '<div class="window_body">' + Conf.content + '</div>' +
-                    '<div class="window_footer"><input type="button" value="确定"></div>' +
+                    '<div class="window_footer"><input class="window_alertBtn" type="button" value="确定"></div>' +
                 '</div>'
                 );
             boundingBox.appendTo('body');
-            
-            var btn = boundingBox.find('.window_footer input');
+
+            var btn = boundingBox.find('.window_alertBtn');
             btn.click(function() {
-                Conf.handler && Conf.handler();
+                Conf.handler4AlertBtn && Conf.handler4AlertBtn();
                 boundingBox.remove();
             });
 
@@ -33,7 +35,16 @@ define(['jquery'], function($) {
                 height: Conf.height + 'px',
                 left: (Conf.x || (window.innerWidth - Conf.width) / 2) + 'px',
                 top: (Conf.y || (window.innerHeight - Conf.height) / 2) + 'px',
-            })
+            });
+
+            if (Conf.hasCloseBtn) {
+                var closeBtn = $('<span class="window_closeBtn">X</span>');
+                closeBtn.appendTo(boundingBox);
+                closeBtn.click(function() {
+                    Conf.handler4CloseBtn && Conf.handler4CloseBtn();
+                    boundingBox.remove();
+                });
+            }
         },
         confirm: function() {
 
