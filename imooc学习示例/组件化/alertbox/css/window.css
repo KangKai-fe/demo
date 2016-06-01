@@ -32,3 +32,13 @@
     color: #fff;
     cursor: pointer;
 }
+
+/* skin_orange */
+.window_skin_orange.window_boundingBox {}
+.window_skin_orange .window_alertBtn {}
+.window_skin_orange .window_header {
+    background: orangered;
+}
+.window_skin_orange .window_closeBtn {
+    background: darkred;
+}
