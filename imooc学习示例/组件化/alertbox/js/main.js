@@ -25,10 +25,12 @@ require(['jquery', 'window'], function($, w) {
             handler4CloseBtn: function() {
                 alert('close clicked');
             }
+        }).on('alert', function() {
+            alert('the 2nd alert handler');
+        }).on('close', function() {
+            alert('the 2nd close handler');
         });
 
-        win.on('alert', function() {alert('the 2nd alert handler')});
         win.on('alert', function() {alert('the 3rd alert handler')});
-        win.on('close', function() {alert('the 2nd close handler')});
     });
 });

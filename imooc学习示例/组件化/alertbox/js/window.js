@@ -31,6 +31,9 @@ define(['jquery', 'jqueryUI'], function($, $UI) {
                 this.handlers[type] = [];
             }
             this.handlers[type].push(handler);
+
+            // 实现链式调用
+            return this;
         },
         fire: function(type, data) {
 
@@ -107,6 +110,9 @@ define(['jquery', 'jqueryUI'], function($, $UI) {
                 mask = $('<div class="window_mask"></div>');
                 mask.appendTo('body');
             }
+
+            // 实现链式调用
+            return this;
         },
         confirm: function() {
 
