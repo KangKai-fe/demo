@@ -1,4 +1,4 @@
-define(['jquery', 'jqueryUI'], function($, $UI) {
+define(['widget', 'jquery', 'jqueryUI'], function(widget, $, $UI) {
 
     function Window() {
         this.conf = {
@@ -18,33 +18,8 @@ define(['jquery', 'jqueryUI'], function($, $UI) {
         this.handlers = {};
     };
 
-    Window.prototype = {
+    Window.prototype = $.extend({}, new widget.Widget(), {
 
-        /**
-         * 自定义事件
-         * 1. 本质: 观察者模式
-         * 2. 优点: 跳出原生事件的限制, 提高封装的抽象层级
-         */
-        on: function(type, handler) {
-
-            if (typeof this.handlers[type] === 'undefined') {
-                this.handlers[type] = [];
-            }
-            this.handlers[type].push(handler);
-
-            // 实现链式调用
-            return this;
-        },
-        fire: function(type, data) {
-
-            if (this.handlers[type] instanceof Array) {
-                var handlers = this.handlers[type];
-
-                for (var i=0, len=handlers.length; i<len; i++) {
-                    handlers[i](data);
-                }
-            }
-        },
         alert: function(conf) {
             var Conf = $.extend(this.conf, conf);
             var boundingBox = $(
@@ -120,7 +95,7 @@ define(['jquery', 'jqueryUI'], function($, $UI) {
         prompt: function() {
 
         }
-    }
+    })
 
     return {
         Window: Window
