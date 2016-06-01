@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+define(['jquery', 'jqueryUI'], function($, $UI) {
 
     function Window() {
         this.conf = {
@@ -8,6 +8,8 @@ define(['jquery'], function($) {
             content: '',
             hasCloseBtn: false,
             hasMask: true,
+            isDraggable: true,
+            dragHandle: null,
             skinClassName: null,
             text4AlertBtn: '确定',
             handler4AlertBtn: null,
@@ -54,6 +56,15 @@ define(['jquery'], function($) {
 
             if (Conf.skinClassName) {
                 boundingBox.addClass(Conf.skinClassName);
+            }
+
+            if (Conf.isDraggable) {
+
+                if (Conf.dragHandle) {
+                    boundingBox.draggable({handle: Conf.dragHandle});
+                } else {
+                    boundingBox.draggable();
+                }
             }
 
             if (Conf.hasMask) {

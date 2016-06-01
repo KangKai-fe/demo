@@ -1,6 +1,7 @@
 require.config({
     paths: {
-        'jquery': 'jquery-2.2.4.min'
+        'jquery': 'jquery-2.2.4.min',
+        'jqueryUI': 'http://apps.bdimg.com/libs/jqueryui/1.9.2/jquery-ui.min'
     }
 });
 require(['jquery', 'window'], function($, w) {
@@ -13,7 +14,9 @@ require(['jquery', 'window'], function($, w) {
             y: 50,
             hasCloseBtn: true,
             // hasMask: false,
-            skinClassName: 'window_skin_orange',
+            isDraggable: true,
+            dragHandle: '.window_header',
+            // skinClassName: 'window_skin_orange',
             text4AlertBtn: 'ok',
             handler4AlertBtn: function() {
                 alert('button clicked');
