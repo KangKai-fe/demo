@@ -5,7 +5,7 @@ require.config({
     }
 });
 require(['jquery', 'window'], function($, w) {
-    $('#a').click(function() {
+    $('#alert').click(function() {
         var win = new w.Window();
         win.alert({
             title: '提示',
@@ -33,4 +33,21 @@ require(['jquery', 'window'], function($, w) {
 
         win.on('alert', function() {alert('the 3rd alert handler')});
     });
+
+    $('#confirm').click(function() {
+        win2 = new w.Window().confirm({
+            title: '系统消息',
+            content: '您确定要删除这个文件吗?',
+            width: 300,
+            height: 150,
+            y: 50,
+            text4ConfirmBtn: '是',
+            text4CancelBtn: '否',
+            dragHandle: '.window_header'
+        }).on('confirm', function() {
+            alert('确定');
+        }).on('cancel', function() {
+            alert('取消');
+        });
+    })
 });
