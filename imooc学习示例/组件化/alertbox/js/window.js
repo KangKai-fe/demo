@@ -17,7 +17,12 @@ define(['widget', 'jquery', 'jqueryUI'], function(widget, $, $UI) {
             text4ConfirmBtn: '确定',      // 以下四项为confirm弹窗参数
             text4CancelBtn: '取消',
             handler4ConfirmBtn: null,
-            handler4CancelBtn: null
+            handler4CancelBtn: null,
+            text4PromptBtn: '确定',      // 以下五项为prompt弹窗参数
+            isPromptInputPassword: false,
+            defaultValue4PromptInput: '',
+            maxlength4PromptInput: 10,
+            handler4PromptBtn: null
         };
     }
 
@@ -33,6 +38,10 @@ define(['widget', 'jquery', 'jqueryUI'], function(widget, $, $UI) {
                 case 'confirm':
                     footerContent = '<input type="button" value="' + this.conf.text4ConfirmBtn + '" class="window_confirmBtn"><input type="button" value="' + this.conf.text4CancelBtn + '" class="window_cancelBtn">';
                     break;
+                case 'prompt':
+                    this.conf.content += '<p class="window_proptInputWrapper"><input type="' + (this.conf.isPromptInputPassword ? 'password' : 'text') + '" value="' + this.conf.defaultValue4PromptInput + '" maxlength="' + this.conf.maxlength4PromptInput + '" class="window_promptInput"></p>';
+                    footerContent = '<input type="button" value="' + this.conf.text4PromptBtn + '" class="window_promptBtn"><input type="button" value="' + this.conf.text4CancelBtn + '" class="window_cancelBtn">';
+                    break;
             }
             this.boundingBox = $(
                 '<div class="window_boundingBox">' +
@@ -40,7 +49,8 @@ define(['widget', 'jquery', 'jqueryUI'], function(widget, $, $UI) {
                     '<div class="window_body">' + this.conf.content + '</div>' +
                     '<div class="window_footer">' + footerContent + '</div>' +
                 '</div>'
-                );
+            );
+            this._promptInput = this.boundingBox.find('.window_promptInput');
 
             if (this.conf.hasMask) {
                 this._mask = $('<div class="window_mask"></div>');
@@ -68,6 +78,9 @@ define(['widget', 'jquery', 'jqueryUI'], function(widget, $, $UI) {
             }).delegate('.window_cancelBtn', 'click', function() {
                 that.fire('cancel');
                 that.destroy();
+            }).delegate('.window_promptBtn', 'click', function() {
+                that.fire('prompt', that._promptInput.val());
+                that.destroy();
             });
 
             if (this.conf.handler4AlertBtn) {
@@ -83,7 +96,11 @@ define(['widget', 'jquery', 'jqueryUI'], function(widget, $, $UI) {
             }
 
             if (this.conf.handler4CancelBtn) {
-                this.on('close', this.conf.handler4CancelBtn);
+                this.on('cancel', this.conf.handler4CancelBtn);
+            }
+
+            if (this.conf.handler4PromptBtn) {
+                this.on('prompt', this.conf.handler4PromptBtn);
             }
         },
 
@@ -123,8 +140,11 @@ define(['widget', 'jquery', 'jqueryUI'], function(widget, $, $UI) {
             this.render();
             return this;
         },
-        prompt: function() {
-
+        prompt: function(conf) {
+            $.extend(this.conf, conf, {winType: 'prompt'});
+            this.render();
+            this._promptInput.focus();
+            return this;
         }
     })
 

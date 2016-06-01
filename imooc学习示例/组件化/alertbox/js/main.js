@@ -35,7 +35,7 @@ require(['jquery', 'window'], function($, w) {
     });
 
     $('#confirm').click(function() {
-        win2 = new w.Window().confirm({
+        new w.Window().confirm({
             title: '系统消息',
             content: '您确定要删除这个文件吗?',
             width: 300,
@@ -48,6 +48,27 @@ require(['jquery', 'window'], function($, w) {
             alert('确定');
         }).on('cancel', function() {
             alert('取消');
+        });
+    });
+
+    $('#prompt').click(function() {
+        new w.Window().prompt({
+            title: '请输入您的姓名',
+            content: '您输入的信息我们将会为您保密: ',
+            width: 300,
+            height: 150,
+            y: 50,
+            text4Prompt: '输入',
+            text4CancelBtn: '取消',
+            defaultValue4PromptInput: '张三',
+            isPromptInputPassword: true,
+            dragHandle: '.window_header',
+            handler4PromptBtn: function(inputValue) {
+                alert('您输入的内容是: ' + inputValue);
+            },
+            handler4CancelBtn: function() {
+                alert('取消');
+            }
         });
     })
 });

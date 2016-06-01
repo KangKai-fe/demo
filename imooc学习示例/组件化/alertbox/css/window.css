@@ -54,6 +54,10 @@
 .window_cancelBtn {
     margin-left: 20px;
 }
+.window_proptInputWrapper {
+    text-align: center;
+}
+
 /* skin_orange */
 .window_skin_orange.window_boundingBox {}
 .window_skin_orange .window_alertBtn {}
