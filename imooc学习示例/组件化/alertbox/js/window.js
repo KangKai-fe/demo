@@ -14,10 +14,34 @@ define(['jquery', 'jqueryUI'], function($, $UI) {
             text4AlertBtn: '确定',
             handler4AlertBtn: null,
             handler4CloseBtn: null
-        }
+        };
+        this.handlers = {};
     };
 
     Window.prototype = {
+
+        /**
+         * 自定义事件
+         * 1. 本质: 观察者模式
+         * 2. 优点: 跳出原生事件的限制, 提高封装的抽象层级
+         */
+        on: function(type, handler) {
+
+            if (typeof this.handlers[type] === 'undefined') {
+                this.handlers[type] = [];
+            }
+            this.handlers[type].push(handler);
+        },
+        fire: function(type, data) {
+
+            if (this.handlers[type] instanceof Array) {
+                var handlers = this.handlers[type];
+
+                for (var i=0, len=handlers.length; i<len; i++) {
+                    handlers[i](data);
+                }
+            }
+        },
         alert: function(conf) {
             var Conf = $.extend(this.conf, conf);
             var boundingBox = $(
@@ -30,11 +54,14 @@ define(['jquery', 'jqueryUI'], function($, $UI) {
             boundingBox.appendTo('body');
 
             var btn = boundingBox.find('.window_alertBtn'),
-                mask = null;
+                mask = null,
+                that = this;
+
             btn.click(function() {
-                Conf.handler4AlertBtn && Conf.handler4AlertBtn();
+                // Conf.handler4AlertBtn && Conf.handler4AlertBtn();
                 boundingBox.remove();
                 mask && mask.remove();
+                that.fire('alert');
             });
 
             boundingBox.css({
@@ -48,10 +75,19 @@ define(['jquery', 'jqueryUI'], function($, $UI) {
                 var closeBtn = $('<span class="window_closeBtn">X</span>');
                 closeBtn.appendTo(boundingBox);
                 closeBtn.click(function() {
-                    Conf.handler4CloseBtn && Conf.handler4CloseBtn();
+                    // Conf.handler4CloseBtn && Conf.handler4CloseBtn();
                     boundingBox.remove();
                     mask && mask.remove();
+                    that.fire('close');
                 });
+            }
+
+            if (Conf.handler4AlertBtn) {
+                this.on('alert', Conf.handler4AlertBtn);
+            }
+
+            if (Conf.handler4CloseBtn) {
+                this.on('close', Conf.handler4CloseBtn);
             }
 
             if (Conf.skinClassName) {
