@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>cubic demo</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-transform-style: preserve-3d;
+        }
+        #wrapper {
+            -webkit-perspective: -50px;
+            -webkit-perspective-origin: 50% 50%;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transform-origin: center center -50px;
+        }
+        #cubic {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 200px auto;
+        }
+        .surface {
+            height: 100px;
+            width: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 30px;
+            position: absolute;
+        }
+        #surface_front {
+            background: #ff8800;
+        }
+        #surface_back {
+            background: #0099cc;
+            -webkit-transform: translateZ(-100px);
+        }
+        #surface_top {
+            background: #aa66cc;
+            -webkit-transform-origin: top;
+            -webkit-transform: rotateX(-90deg);
+        }
+        #surface_bottom {
+            background: #cc0000;
+            -webkit-transform-origin: bottom;
+            -webkit-transform: rotateX(90deg);
+        }
+        #surface_left {
+            background: #99cc00;
+            -webkit-transform-origin: left;
+            -webkit-transform: rotateY(90deg);
+        }
+        #surface_right {
+            background: #669900;
+            -webkit-transform-origin: right;
+            -webkit-transform: rotateY(-90deg);
+        }
+        #controller {
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+            font-weight: bold;
+        }
+        #controller .range-control{
+            width: 700px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="cubic">
+            <div class="surface" id="surface_back">背面</div>
+            <div class="surface" id="surface_top">顶面</div>
+            <div class="surface" id="surface_bottom">底面</div>
+            <div class="surface" id="surface_left">左面</div>
+            <div class="surface" id="surface_right">右面</div>
+            <div class="surface" id="surface_front">正面</div>
+        </div>
+    </div>
+    <div id="controller">
+        <p>rotate x: <span id="degx-span">0</span>deg</p>
+        <input id="rotatex" class="range-control" type="range" value="0" min="-360" max="360" onmousemove="rotate()" />
+        <p>rotate y: <span id="degy-span">0</span>deg</p>
+        <input id="rotatey" class="range-control" type="range" value="0" min="-360" max="360" onmousemove="rotate()" />
+        <p>rotate z: <span id="degz-span">0</span>deg</p>
+        <input id="rotatez" class="range-control" type="range" value="0" min="-360" max="360" onmousemove="rotate()" />
+    </div>
+    <script>
+        function rotate() {
+            var x = document.getElementById('rotatex').value;
+            var y = document.getElementById('rotatey').value;
+            var z = document.getElementById('rotatez').value;
+            document.getElementById('wrapper').style.webkitTransform = 'rotateX(' + x + 'deg) rotateY(' + y + 'deg) rotateZ(' + z + 'deg)';
+
+            document.getElementById('degx-span').innerText = x;
+            document.getElementById('degy-span').innerText = y;
+            document.getElementById('degz-span').innerText = z;
+        }
+    </script>
+</body>
+</html>
