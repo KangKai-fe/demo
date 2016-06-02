@@ -22,6 +22,7 @@ window.onload = function() {
     setInterval(function() {
         render(context);
         update();
+        console.log(balls.length)
     }, 50)
 
 }
@@ -78,6 +79,7 @@ function update() {
 }
 
 function updateBalls() {
+    var count = 0;
 
     for (var i=0; i<balls.length; i++) {
         balls[i].x += balls[i].vx;
@@ -89,10 +91,15 @@ function updateBalls() {
             balls[i].vy = -balls[i].vy * 0.75;
         }
 
-        if (balls[i].x >= WINDOW_WIDTH - RADIUS) {
-            balls[i].x = WINDOW_WIDTH - RADIUS;
-            balls[i].vx = -balls[i].vx * 0.75;
+        // 判断小球位置是否在画布中
+        if (balls[i].x + RADIUS > 0 && balls[i].x - RADIUS < WINDOW_WIDTH) {
+            balls[count++] = balls[i];
         }
+    }
+
+    // 删除屏幕外的小球, 进行性能优化
+    while (balls.length > Math.min(200, count)) {
+        balls.pop();
     }
 }
 
