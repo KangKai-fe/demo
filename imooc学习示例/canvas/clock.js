@@ -4,8 +4,8 @@ var RADIUS = 8;
 var MARGIN_LEFT = 30;
 var MARGIN_TOP = 60;
 
-var endTime = new Date();
-endTime.setTime(endTime.getTime() + 3600*1000);
+// var endTime = new Date();
+// endTime.setTime(endTime.getTime() + 3600*1000);
 var curShowTimeSeconds = 0;
 
 var balls = [];
@@ -13,15 +13,8 @@ const colors = ['#33b5e5', '#0099cc', '#aa66cc', '#9933cc', '#99cc00', '#669900'
 
 window.onload = function() {
 
-    // IE6, 7 不兼容
     WINDOW_WIDTH = document.body.clientWidth;
     WINDOW_HEIGHT = document.body.clientHeight;
-    // IE7, 8, 9, FF
-    // WINDOW_WIDTH = document.documentElement.clientWidth;
-    // WINDOW_HEIGHT = document.documentElement.clientHeight;
-    // 非IE, innerWidth未减去右边scrollbar
-    // WINDOW_WIDTH = window.innerWidth;
-    // WINDOW_HEIGHT = window.innerHeight;
 
     MARGIN_LEFT = Math.round(WINDOW_WIDTH/10);
     RADIUS = Math.round(WINDOW_WIDTH*4/5/108) - 1
@@ -44,10 +37,9 @@ window.onload = function() {
 
 function getCurrentShowTimeSeconds() {
     var curTime = new Date();
-    var ret = endTime.getTime() - curTime.getTime();
-    ret = Math.round(ret / 1000);
+    var ret = curTime.getHours() * 3600 + curTime.getMinutes() * 60 + curTime.getSeconds();
 
-    return ret >=0 ? ret : 0;
+    return ret;
 }
 
 function update() {
