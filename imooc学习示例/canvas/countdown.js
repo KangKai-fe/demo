@@ -12,6 +12,21 @@ const colors = ['#33b5e5', '#0099cc', '#aa66cc', '#9933cc', '#99cc00', '#669900'
 
 window.onload = function() {
 
+    // IE6, 7 不兼容
+    WINDOW_WIDTH = document.body.clientWidth;
+    WINDOW_HEIGHT = document.body.clientHeight;
+    // IE7, 8, 9, FF
+    // WINDOW_WIDTH = document.documentElement.clientWidth;
+    // WINDOW_HEIGHT = document.documentElement.clientHeight;
+    // 非IE, innerWidth未减去右边scrollbar
+    // WINDOW_WIDTH = window.innerWidth;
+    // WINDOW_HEIGHT = window.innerHeight;
+
+    MARGIN_LEFT = Math.round(WINDOW_WIDTH/10);
+    RADIUS = Math.round(WINDOW_WIDTH*4/5/108) - 1
+
+    MARGIN_TOP = Math.round(WINDOW_HEIGHT/5);
+
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
 
@@ -22,7 +37,6 @@ window.onload = function() {
     setInterval(function() {
         render(context);
         update();
-        console.log(balls.length)
     }, 50)
 
 }
@@ -98,7 +112,7 @@ function updateBalls() {
     }
 
     // 删除屏幕外的小球, 进行性能优化
-    while (balls.length > Math.min(200, count)) {
+    while (balls.length > count) {
         balls.pop();
     }
 }
