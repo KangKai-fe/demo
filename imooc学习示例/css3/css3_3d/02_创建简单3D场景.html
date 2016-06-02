@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+        #test {
+            -webkit-perspective: 800px;
+            -webkit-perspective-origin: 50% 50%;
+            -webkit-transform-style: -webkit-preserve-3d;
+        }
+        #block {
+            width: 500px;
+            height: 500px;
+            background-color: #69c;
+            margin: 100px auto;
+
+            -webkit-transform: rotateY(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="test">
+        <div id="block"></div>
+    </div>
+    <p>-webkit-transform-style: -webkit-preserve-3d;</p>
+    <p>-webkit-perspective: 800;</p>
+    <p>-webkit-perspective-origin: 50% 50%;</p>
+    <ul>
+        <li>-translate
+            <ul>
+                <li>translateX(x px)</li>
+                <li>translateY(y px)</li>
+                <li>translateZ(z px)</li>
+            </ul>
+        </li>
+        <li>-rotate
+            <ul>
+                <li>rotateX(x deg)</li>
+                <li>rotateY(y deg)</li>
+                <li>rotateZ(z deg)</li>
+            </ul>
+        </li>
+        <li>transform-origin属性调整旋转中心
+            <ul>x轴
+                <li>left</li>
+                <li>center</li>
+                <li>right</li>
+            </ul>
+            <ul>y轴
+                <li>top</li>
+                <li>center</li>
+                <li>bottom</li>
+            </ul>
+            <ul>z轴
+                <li>length px</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

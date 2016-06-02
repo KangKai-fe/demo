@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>3D translate</title>
+    <style>
+        #demo{
+            -webkit-perspective: 800;
+            -webkit-perspective-origin: 50% 50%;
+            -webkit-transform-style: -webkit-preserve-3d;
+        }
+        #block{
+            width: 100px;
+            height: 100px;
+            margin: 100px auto;
+            background-color: #058;
+        }
+        #op {
+            position: relative;
+            left: 50%;
+            margin-left: -350px;
+            font-weight: bold;
+        }
+        #op .range-control{
+            width: 700px;
+        }
+    </style>
+    <script>
+        function translateall() {
+            var x = document.getElementById('translatex').value;
+            var y = document.getElementById('translatey').value;
+            var z = document.getElementById('translatez').value;
+            document.getElementById('block').style.webkitTransform = 'translateX(' + x + 'px) translateY(' + y + 'px) translateZ(' + z + 'px)';
+
+            document.getElementById('pxx-span').innerText = x;
+            document.getElementById('pxy-span').innerText = y;
+            document.getElementById('pxz-span').innerText = z;
+        }
+    </script>
+</head>
+<body>
+    <div id="demo">
+        <div id="block"></div>
+    </div>
+    <div id="op">
+        <p>translate x: <span id="pxx-span">0</span>px</p>
+        <input id="translatex" class="range-control" type="range" value="0" min="-360" max="360" onmousemove="translateall()" />
+        <p>translate y: <span id="pxy-span">0</span>px</p>
+        <input id="translatey" class="range-control" type="range" value="0" min="-360" max="360" onmousemove="translateall()" />
+        <p>translate z: <span id="pxz-span">0</span>px</p>
+        <input id="translatez" class="range-control" type="range" value="0" min="-360" max="360" onmousemove="translateall()" />
+    </div>
+</body>
+</html>

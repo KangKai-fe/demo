@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <style>
+        #block {
+            width: 400px;
+            height: 400px;
+            background: #69c;
+            margin: 0 auto;
+            -webkit-transition: background 1s;
+        }
+        #block:hover {
+            background: red;
+        }
+        #wrapper {
+            width: 100%;
+            margin: 0 auto;
+        }
+        .progress-bar {
+            height: 40px;
+            width: 40px;
+            background-color: #69c;
+        }
+        .progress-bar:hover {
+            width:960px;
+        }
+
+        #bar1 {
+            -webkit-transition: width 1s linear;
+        }
+
+        #bar2 {
+            -webkit-transition: width 1s ease;
+        }
+
+        #bar3 {
+            -webkit-transition: width 1s ease-in;
+        }
+
+        #bar4 {
+            -webkit-transition: width 1s ease-out;
+        }
+
+        #bar5 {
+            -webkit-transition: width 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div id="block"></div>
+    <div id="wrapper">
+        <p>linear</p>
+        <div class="progress-bar" id="bar1"></div>
+
+        <p>ease</p>
+        <div class="progress-bar" id="bar2"></div>
+
+        <p>ease-in</p>
+        <div class="progress-bar" id="bar3"></div>
+
+        <p>ease-out</p>
+        <div class="progress-bar" id="bar4"></div>
+
+        <p>ease-in-out</p>
+        <div class="progress-bar" id="bar5"></div>
+    </div>
+</body>
+</html>
