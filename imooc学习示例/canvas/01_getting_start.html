@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+    <!-- 使用width和height设置canvas画布大小, width="1024" height="768", 同时设置分辨率, 不建议使用CSS设置canvas大小 -->
+    <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto;">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 1024;
+            canvas.height = 768;
+
+            if (canvas.getContext) {
+                // 得到绘图上下文环境, 使用context进行绘制
+                var context = canvas.getContext('2d');
+            } else {
+                alert('当前浏览器不支持canvas, 请更换浏览器后再试');
+            }
+        }
+    </script>
+</body>
+</html>
