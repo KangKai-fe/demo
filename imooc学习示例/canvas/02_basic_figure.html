@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+</head>
+<body>
+    <!-- 使用width和height设置canvas画布大小, width="1024" height="768", 同时设置分辨率, 不建议使用CSS设置canvas大小 -->
+    <canvas id="canvas" style="border: 1px solid #aaa; display: block; margin: 50px auto;">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 1024;
+            canvas.height = 768;
+
+            if (canvas.getContext) {
+                // 得到绘图上下文环境, 使用context进行绘制
+                var context = canvas.getContext('2d');
+
+                // lineTo: draw a line
+
+                // 状态设置, 左上角为原点, 向右为x轴方向, 向下为y轴方向
+                context.beginPath();
+                context.moveTo(100, 100);
+                context.lineTo(700, 700);
+                context.lineTo(100, 700);
+                context.lineTo(100, 100);
+                context.closePath();
+                context.lineWidth = 5;
+                // context.strokeStyle = '#005588';
+                context.strokeStyle = 'red';
+
+                // 绘制线条
+                context.stroke();
+
+                // 填充
+                context.fillStyle = 'rgb(2, 100, 30)';
+                context.fill();
+
+                context.beginPath();
+                context.moveTo(200, 100);
+                context.lineTo(700, 600);
+                context.closePath();
+                // context绘制是基于状态的, 下面的strokeStyle会覆盖之前的状态, 同时会保持上面设置的lineWidth, 因此使用beginPath和closePath
+                context.strokeStyle = 'black';
+                context.stroke();
+            }
+        }
+    </script>
+</body>
+</html>

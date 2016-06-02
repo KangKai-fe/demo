@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>draw an arc</title>
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid #aaa; margin: 50px auto;"></canvas>
+    <script>
+        // draw an arc:
+        // context.arc(
+        //      centerx, centery, radius,
+        //      startingAngle, endingAngle,
+        //      anticlockwise = false
+        // )
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 1024;
+            canvas.height = 768;
+
+            var context = canvas.getContext('2d');
+
+            context.lineWidth = 5;
+            context.strokeStyle = '#005588';
+            // context.arc(300, 300, 200, 0, 0.5*Math.PI, true);
+            // context.stroke();
+
+            for (var i=0; i<10; i++) {
+                context.beginPath();
+                context.arc(50 + i*100, 60, 40, 0, 2*Math.PI*(i+1)/10);
+                context.closePath();
+
+                context.stroke();
+            }
+
+            for (var i=0; i<10; i++) {
+                context.beginPath();
+                context.arc(50 + i*100, 180, 40, 0, 2*Math.PI*(i+1)/10);
+
+                context.stroke();
+            }
+
+            for (var i=0; i<10; i++) {
+                context.beginPath();
+                context.arc(50 + i*100, 300, 40, 0, 2*Math.PI*(i+1)/10, true);
+                context.closePath();
+
+                context.stroke();
+            }
+
+            for (var i=0; i<10; i++) {
+                context.beginPath();
+                context.arc(50 + i*100, 420, 40, 0, 2*Math.PI*(i+1)/10, true);
+
+                context.stroke();
+            }
+
+            context.fillStyle = '#005588';
+
+            for (var i=0; i<10; i++) {
+                context.beginPath();
+                context.arc(50 + i*100, 540, 40, 0, 2*Math.PI*(i+1)/10, true);
+                context.closePath(); // 对fill方法无影响
+
+                context.fill();
+            }
+
+            for (var i=0; i<10; i++) {
+                context.beginPath();
+                context.arc(50 + i*100, 660, 40, 0, 2*Math.PI*(i+1)/10, true);
+
+                context.fill();
+            }
+        }
+    </script>
+</body>
+</html>
