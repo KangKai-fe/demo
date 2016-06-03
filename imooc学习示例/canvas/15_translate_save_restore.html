@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>图形变换</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 800;
+            canvas.height = 800;
+
+            var context = canvas.getContext('2d');
+
+            // 图形变换: 1. translate(x, y); 2. rotate(deg); 3. scale(sx, sy);
+            // scale很特殊, 将所有属性都缩放, 包括lineWidth, x, y, width, height etc...
+
+            context.fillStyle = '#000';
+            context.fillRect(0, 0, canvas.width, canvas.height);
+
+            context.save();
+            context.fillStyle = '#00f';
+            context.translate(150, 150);
+            context.fillRect(0, 0, 400, 400);
+            context.restore();
+
+            context.fillStyle = '#f00';
+            context.translate(100, 100);
+            context.fillRect(0, 0, 400, 400);
+            context.translate(-100, -100);
+
+            context.fillStyle = '#0f0';
+            context.translate(300, 300); // translate(100 - 100 + 300, 100 - 100 + 300);!!! 变换叠加, 解决方案: context.save(); context.restore();
+            context.fillRect(0, 0, 400, 400);
+        }
+    </script>
+</body>
+</html>
