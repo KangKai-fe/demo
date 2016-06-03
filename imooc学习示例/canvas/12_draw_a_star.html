@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>draw a star</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 800;
+            canvas.height = 800;
+
+            var context = canvas.getContext('2d');
+
+            context.lineWidth = 10;
+            drawStar(context, 400, 400, 150, 300, 30);
+        }
+
+        function drawStar(cxt, x, y, innerR, outerR, rot) {
+            cxt.beginPath();
+
+            for (var i=0; i<5; i++) {
+                cxt.lineTo(Math.cos((18 + i * 72 - rot) / 180 * Math.PI) * outerR + x, -Math.sin((18 + i * 72 - rot) / 180 * Math.PI) * outerR + y);
+                cxt.lineTo(Math.cos((54 + i * 72 - rot) / 180 * Math.PI) * innerR + x, -Math.sin((54 + i * 72 - rot) / 180 * Math.PI) * innerR + y);
+            }
+            cxt.closePath();
+            cxt.stroke();
+        }
+    </script>
+</body>
+</html>
