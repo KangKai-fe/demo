@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>trnasform变换矩阵</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 1200;
+            canvas.height = 800;
+
+            var context = canvas.getContext('2d');
+
+            context.fillStyle = '#f00';
+            context.strokeStyle = '#058';
+            context.lineWidth = 5;
+
+            ///////////
+            // 变换矩阵
+            // a c e
+            // b d f
+            // 0 0 1
+            ///////////
+            // transform(a, b, c, d, e, f);
+            //
+            // a, d 水平, 垂直缩放
+            // b, c 水平, 垂直倾斜
+            // e, f 水平, 垂直位移
+
+            context.save();
+            // 多次变换矩阵会级联
+            // setTransform(1, 0, 0, 1, 100, 100);
+            // ->首先将矩阵设置为单位矩阵, 再根据传入的参数进行变换;
+            context.transform(2, 0.2, 0.2, 1.5, 50, 100);
+            context.fillRect(50, 50, 300, 300);
+            context.strokeRect(50, 50, 300, 300);
+            context.restore();
+        }
+    </script>
+</body>
+</html>
