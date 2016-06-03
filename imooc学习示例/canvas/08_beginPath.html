@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>多条路径</title>
+</head>
+<body>
+    <canvas id="canvas" style="border:1px solid #aaa; display:block; margin:50px auto;"></canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+            canvas.width = 800;
+            canvas.height = 800;
+            var context = canvas.getContext('2d');
+
+            context.lineWidth = 7;
+
+            // 第一个位置的beginPath可以省略
+            // context.beginPath();
+            context.moveTo(100, 200);
+            context.lineTo(200, 400);
+            context.lineTo(100, 600);
+            context.strokeStyle = '#f00';
+            context.stroke();
+
+            // beginPath和lineTo搭配, 相当于moveTo
+            context.beginPath();
+            context.lineTo(200, 200);
+            context.lineTo(300, 400);
+            context.lineTo(200, 600);
+            context.strokeStyle = '#0f0';
+            context.stroke();
+
+            context.beginPath();
+            context.moveTo(300, 200);
+            context.lineTo(400, 400);
+            context.lineTo(300, 600);
+            context.strokeStyle = '#00f';
+            context.stroke();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>draw a star</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 800;
+            canvas.height = 800;
+
+            var context = canvas.getContext('2d');
+
+            context.lineWidth = 10;
+            context.lineJoin ='miter'; // miter(default),bevel, round
+            context.miterLimit = 20;   // 长度超过该值(default: 10)时, 按bevel显示, 要绘制非常尖锐的角的时候才使用
+            drawStar(context, 30, 300, 400, 400, 30);
+        }
+
+        function drawStar(cxt, r, R, x, y, rot) {
+            cxt.beginPath();
+
+            for (var i=0; i<5; i++) {
+                cxt.lineTo(Math.cos((18 + i * 72 - rot) / 180 * Math.PI) * R + x, -Math.sin((18 + i * 72 - rot) / 180 * Math.PI) * R + y);
+                cxt.lineTo(Math.cos((54 + i * 72 - rot) / 180 * Math.PI) * r + x, -Math.sin((54 + i * 72 - rot) / 180 * Math.PI) * r + y);
+            }
+            cxt.closePath();
+            cxt.stroke();
+        }
+    </script>
+</body>
+</html>

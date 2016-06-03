@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>closePath fill</title>
+</head>
+<body>
+    <canvas id="canvas" style="border:1px solid #aaa; display:block; margin:50px auto;"></canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+            canvas.width = 800;
+            canvas.height = 800;
+            var context = canvas.getContext('2d');
+
+            // 路径
+            context.beginPath();
+            context.moveTo(100, 350);
+            context.lineTo(500, 350);
+            context.lineTo(500, 200);
+            context.lineTo(700, 400);
+            context.lineTo(500, 600);
+            context.lineTo(500, 450);
+            context.lineTo(100, 450);
+            // 由于lineWidth的存在,有5px的瑕疵
+            // 最后一条lineTo可以省略
+            // context.lineTo(100, 350);
+            context.closePath();
+
+            // 状态
+            context.lineWidth = 10;
+            context.strokeStyle = '#058';
+            context.fillStyle = 'orangered';
+
+            // 绘制
+            // 先填充后描边, 可以防止5px的覆盖
+            context.fill();
+            context.stroke();
+        }
+    </script>
+</body>
+</html>

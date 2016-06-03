@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>从线条开始</title>
+</head>
+<body>
+    <canvas id="canvas" style="border:1px solid #aaa; display:block; margin:50px auto;"></canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+            canvas.width = 800;
+            canvas.height = 800;
+            var context = canvas.getContext('2d');
+
+            // 状态设置 -> canvas是基于状态的绘制环境
+            context.moveTo(100, 350);
+            context.lineTo(500, 350);
+            context.lineTo(500, 200);
+            context.lineTo(700, 400);
+            context.lineTo(500, 600);
+            context.lineTo(500, 450);
+            context.lineTo(100, 450);
+
+            context.moveTo(50, 50);
+            context.lineTo(75, 75);
+            context.lineTo(50, 100);
+
+            context.moveTo(75, 50);
+            context.lineTo(100, 75);
+            context.lineTo(75, 100);
+
+            context.moveTo(100, 50);
+            context.lineTo(125, 75);
+            context.lineTo(100, 100);
+
+            context.lineWidth = 10;
+            context.strokeStyle = '#058';
+            // 绘制
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
