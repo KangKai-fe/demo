@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>探照灯效果</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        var searchLight = {
+            x: 400,
+            y: 400,
+            radius: 120,
+            vx: Math.random() * 5 + 10,
+            vy: Math.random() * 5 + 10
+        },
+        rot = 0;
+
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 800;
+            canvas.height = 600;
+
+            var context = canvas.getContext('2d');
+
+           setInterval(function() {
+            draw(context);
+            update(canvas.width, canvas.height);
+           }, 40);
+        }
+
+        function draw(cxt) {
+            var canvas = cxt.canvas;
+
+            cxt.clearRect(0, 0, canvas.width, canvas.height);
+
+            cxt.save();
+
+            cxt.beginPath();
+            cxt.fillStyle = '#000';
+            cxt.fillRect(0, 0, canvas.width, canvas.height);
+
+            cxt.save();
+            // cxt.beginPath();
+            // cxt.arc(searchLight.x, searchLight.y, searchLight.radius, 0, Math.PI * 2);
+            cxt.translate(searchLight.x, searchLight.y);
+            cxt.rotate(rot / 180 * Math.PI);
+            cxt.scale(searchLight.radius, searchLight.radius);
+            starPath(cxt);
+            cxt.fillStyle = '#fff';
+            cxt.fill();
+            cxt.restore();
+            cxt.clip();
+
+            cxt.font = 'bold 60px Mricrosoft Yahei';
+            cxt.fillStyle = '#058';
+            cxt.textAlign = 'center';
+            cxt.textBaseline = 'middle';
+            cxt.fillText('CANVAS动画探照灯效果', canvas.width * 0.5, canvas.height * 0.5, canvas.width * 8);
+
+            cxt.font = '30px Mricrosoft Yahei';
+            cxt.fillText('——kangkai-fe', canvas.width * 0.5, canvas.height * 0.6, canvas.width * 0.4);
+
+            cxt.restore();
+        }
+
+        function update(canvasWidth, canvasHeight) {
+
+            rot += 1;
+
+            searchLight.x += searchLight.vx;
+            searchLight.y += searchLight.vy;
+
+            if (searchLight.x - searchLight.radius <= 0) {
+                searchLight.x = searchLight.radius;
+                searchLight.vx = -searchLight.vx;
+            }
+
+            if (searchLight.x + searchLight.radius >= canvasWidth) {
+                searchLight.x = canvasWidth - searchLight.radius;
+                searchLight.vx = -searchLight.vx;
+            }
+
+            if (searchLight.y - searchLight.radius <= 0) {
+                searchLight.y = searchLight.radius;
+                searchLight.vy = -searchLight.vy;
+            }
+
+            if (searchLight.y + searchLight.radius >= canvasHeight) {
+                searchLight.y = canvasHeight - searchLight.radius;
+                searchLight.vy = -searchLight.vy;
+            }
+        }
+
+        // 标准星星
+        function starPath(cxt) {
+            cxt.beginPath();
+
+            for (var i=0; i<5; i++) {
+                cxt.lineTo(Math.cos((18 + i * 72) / 180 * Math.PI), -Math.sin((18 + i * 72) / 180 * Math.PI));
+                cxt.lineTo(Math.cos((54 + i * 72) / 180 * Math.PI) * 0.5, -Math.sin((54 + i * 72) / 180 * Math.PI) * 0.5);
+            }
+            cxt.closePath();
+        }
+    </script>
+</body>
+</html>

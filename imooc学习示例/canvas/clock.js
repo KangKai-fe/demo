@@ -32,7 +32,6 @@ window.onload = function() {
         render(context);
         update();
     }, 50)
-
 }
 
 function getCurrentShowTimeSeconds() {
@@ -133,6 +132,14 @@ function addBalls(x, y, num) {
 function render(cxt) {
 
     cxt.clearRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+
+    cxt.font = 'bold 60px Mricrosoft Yahei';
+    cxt.fillStyle = '#058';
+    cxt.textAlign = 'right';
+    cxt.fillText('Canvas动画时钟效果', WINDOW_WIDTH / 2, WINDOW_HEIGHT * 0.7, WINDOW_WIDTH * 0.4);
+
+    cxt.font = '30px Mricrosoft Yahei';
+    cxt.fillText('——kangkai-fe', WINDOW_WIDTH / 2, WINDOW_HEIGHT * 0.7 + 40, WINDOW_WIDTH * 0.4);
 
     var hours = parseInt(curShowTimeSeconds/3600);
     var minutes = parseInt((curShowTimeSeconds - hours*3600)/60);
