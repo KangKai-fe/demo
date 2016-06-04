@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>arc</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 800;
+            canvas.height = 800;
+
+            var context = canvas.getContext('2d');
+            // context.moveTo(x0, y0);  开始点
+            // context.arcTo(x1, y1,    控制点
+            //               x2, y2,    结束点
+            //               radius);
+            context.beginPath();
+            context.moveTo(150, 150);
+            context.arcTo(650, 150, 650, 650, 300);
+
+            context.lineWidth = 6;
+            context.strokeStyle = 'red';
+            context.stroke();
+
+            // baseline
+            context.beginPath();
+            context.moveTo(150, 150);
+            context.lineTo(650, 150);
+            context.lineTo(650, 650);
+
+            context.lineWidth = 2;
+            context.strokeStyle = '#aaa';
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
