@@ -1,5 +1,5 @@
 # Canvas 常用API
-##目录
+## 目录
 * 基本结构
 * 线条
 * 线条属性
@@ -9,7 +9,7 @@
 * 文字渲染
 * 其他
 
-###基本结构
+### 基本结构
 HTML:
 
     <canvas id=“canvas”></canvas>
@@ -24,7 +24,7 @@ JavaScript:
     *canvas.height
     *canvas.getContext('2d')
     
-###线条
+### 线条
     // 状态设置
     context.moveTo(x, y);
     context.lineTo(x, y);
@@ -44,7 +44,7 @@ JavaScript:
     context.fillRect(x, y, width, height);
     context.strokeRect(x, y, width, height);
 
-###线条属性
+### 线条属性
     context.lineWidth = num;
 
     context.lineCap = 
@@ -59,7 +59,7 @@ JavaScript:
     
     context.miterLimit = num;
 
-###图形变换
+### 图形变换
     context.save();             // 状态保存
     context.restore();          // 状态恢复
     
@@ -76,7 +76,7 @@ JavaScript:
     e: 水平位移
     f: 垂直位移
 
-###填充样式
+### 填充样式
     // strokeStyle与fillStyle相似;
     context.fillStyle =
         color 
@@ -116,7 +116,7 @@ context.fillStyle = image || canvas || video;
         repeat-y
         repeat 
 
-###曲线
+### 曲线
     context.arc(
         centerx, centery, radius,
         startingAngle, endingAngle,
@@ -146,7 +146,7 @@ context.fillStyle = image || canvas || video;
         x3, y3          // 结束点
     );
 
-###文字渲染
+### 文字渲染
 
 字体
 
@@ -211,7 +211,7 @@ context.fillStyle = image || canvas || video;
 
     context.measureText( string ).width
 
-###其他
+### 其他
 
 阴影:
 
@@ -233,7 +233,7 @@ global:
                                         source-over     destination-over    lighter
                                         source-atop     destination-atop    copy
                                         source-in       destination-in      xor
-                                        source-out      destination-out     
+                                        source-out      destination-out
 
 剪辑区域:
 
@@ -248,3 +248,8 @@ clearRect
 isPointInPath
 
     context.isPointInPath(x ,y);
+
+### 兼容性
+    https://github.com/arv/explorercanvas
+    <!--[if lte IE 8]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+    // Firefox, Safari and Opera 9 support the canvas tag to allow 2D command-based drawing operations. ExplorerCanvas brings the same functionality to Internet Explorer; web developers only need to include a single script tag in their existing canvas webpages to enable this support.
