@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>text</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 800;
+            canvas.height = 1000;
+
+            var context = canvas.getContext('2d');
+
+            // 文字渲染基础:
+            // context.font = default: '20px sans-serif'
+            //  font-style: normal(default), italic(斜体字), oblique(倾斜字体)
+            //  font-variant: normal(default), small-caps(小型大写字母)
+            //  font-weight: normal(default), lighter(浏览器支持不好), bold, bolder(浏览器支持不好), 100 - 400(normal) - 700(bold) - 900
+            //  font-size: 20px(default), 2em, 150%
+            //  font-family: 设置多种字体备选(逗号间隔), 支持font-face, web安全字体
+            //
+            // 水平对齐方式: context.textAlign = left, center, right
+            // 竖直对齐方式: context.textBaseline = top, middle, bottom, alphabetic(default, 拉丁), ideographic(方块字), hanging(印度文)
+            // 文本的度量: context.measureText(string).width
+            // context.fillText(string, x, y, [maxlen]);
+            // context.strokeText(string, x, y, [maxlen]);
+            context.font = 'bold 40px Arial';
+            context.fillStyle = '#058';
+            context.fillText('canvas text demo', 40, 100);
+
+            context.lineWidth = 1;
+            context.strokeStyle = '#058';
+            context.strokeText('canvas text demo', 40, 200);
+
+            context.fillText('canvas text demo', 40, 300, 200);
+            context.strokeText('canvas text demo', 40, 400, 200);
+
+            var linearGrad = context.createLinearGradient(0, 0, 800, 0);
+            linearGrad.addColorStop(0.0, 'red');
+            linearGrad.addColorStop(0.25, 'orangered');
+            linearGrad.addColorStop(0.5, 'yellow');
+            linearGrad.addColorStop(0.75, 'purple');
+            linearGrad.addColorStop(1.0, 'gray');
+            context.fillStyle = linearGrad;
+            context.fillText('canvas text demo extra extra extra extra', 40, 500);
+
+            context.fillStyle = '#058';
+            context.textAlign = 'left';
+            context.fillText('textAlign = left', 400, 600);
+            context.textAlign = 'center';
+            context.fillText('textAlign = center', 400, 700);
+            context.textAlign = 'right';
+            context.fillText('textAlign = right', 400, 800);
+
+            // baseline
+            context.strokeStyle = '#888';
+            context.moveTo(400, 500);
+            context.lineTo(400, 900);
+            context.stroke();
+        }
+    </script>
+</body>
+</html>
