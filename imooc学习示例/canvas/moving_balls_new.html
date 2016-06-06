@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>canvas中使用其他HTML元素</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        button{
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        #canvas_wrapper{
+            width: 1200px;
+            height: 800px;
+            position: relative;
+            margin: 50px auto;
+        }
+        #canvas{
+            border: 1px solid #aaa;
+        }
+        #controller{
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            background-color: rgba(0, 85, 116, 0.7);
+            padding: 5px 20px 25px;
+            border-radius: 10px;
+        }
+        #controller h1{
+            color: #fff;
+            font-weight: bold;
+            font-family: 'Microsoft Yahei';
+        }
+        #canvas_btn{
+            display: inline-block;
+            background-color: #8b0;
+            color: #fff;
+            font-size: 14px;
+            padding: 5px 15px;
+            border-radius: 6px;
+        }
+        #canvas_btn:hover{
+            background-color: #7a0;
+        }
+        .color-btn{
+            vertical-align: middle;
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            margin: 0 5px;
+        }
+        #color_btn_white{
+            background: #fff;
+        }
+        #color_btn_black{
+            background: #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas_wrapper">
+        <canvas id="canvas">
+            当前浏览器不支持canvas, 请更换浏览器后再试
+        </canvas>
+        <div id="controller">
+            <h1>Canvas动画</h1>
+            <button id="canvas_btn" type="button">停止运动</button>
+            <button id="color_btn_white" class="color-btn" type="button"></button>
+            <button id="color_btn_black" class="color-btn" type="button"></button>
+        </div>
+    </div>
+    <script>
+        var balls = [];
+        var aBall = null;
+        var timer = null;
+
+        var isMoving = true;
+        var themeColor = '#fff';
+
+        var canvas = document.getElementById('canvas');
+
+        canvas.width = 1200;
+        canvas.height = 800;
+
+        var context = canvas.getContext('2d');
+
+        window.onload = function() {
+
+            for (var i = 0; i < 50; i++) {
+                var R = Math.floor(Math.random() * 255);
+                var G = Math.floor(Math.random() * 255);
+                var B = Math.floor(Math.random() * 255);
+                var radius = Math.random() * 50 + 20;
+
+                aBall = {
+                    color: 'rgb(' + R + ', ' + G + ', ' + B + ')',
+                    radius: radius,
+                    x: Math.random() * (canvas.width - radius * 2) + radius,
+                    y: Math.random() * (canvas.width - radius * 2) + radius,
+                    vx: (Math.random() * 5 + 5) * Math.pow(-1, Math.round(Math.random())),
+                    vy: (Math.random() * 5 + 5) * Math.pow(-1, Math.round(Math.random()))
+                };
+                balls[i] = aBall;
+            }
+
+            timer = setInterval(function() {
+                draw(context);
+                update(canvas.width, canvas.height);
+            }, 50);
+        }
+
+        var canvas_btn = document.getElementById('canvas_btn');
+        var theme_white = document.getElementById('color_btn_white');
+        var theme_black = document.getElementById('color_btn_black');
+        canvas_btn.onclick = function(event) {
+
+            if (isMoving) {
+                isMoving = false;
+                this.innerHTML = '开始运动';
+                clearInterval(timer);
+            } else {
+                isMoving = true;
+                this.innerHTML = '停止运动';
+                timer = setInterval(function() {
+                    draw(context);
+                    update(canvas.width, canvas.height);
+                }, 50);
+            }
+        }
+
+        theme_white.onclick = function() {
+            themeColor = '#fff';
+            draw(context);
+        }
+
+        theme_black.onclick = function() {
+            themeColor = '#000';
+            draw(context);
+        }
+
+        function draw(cxt) {
+            cxt.clearRect(0, 0, canvas.width, canvas.height);
+
+            switch (themeColor) {
+                case '#000':
+                    cxt.fillStyle = '#000';
+                    break;
+                case '#fff':
+                    cxt.fillStyle = '#fff';
+                    break;
+            }
+
+            cxt.fillRect(0, 0, canvas.width, canvas.height);
+
+            for (var i = 0; i < balls.length; i++) {
+                cxt.fillStyle = balls[i].color;
+                cxt.beginPath();
+                cxt.arc(balls[i].x, balls[i].y, balls[i].radius, 0, Math.PI * 2);
+                cxt.closePath();
+                cxt.fill();
+            }
+        }
+
+        function update(canvasWidth, canvasHeight) {
+
+            for (var i = 0; i < balls.length; i++) {
+                balls[i].x += balls[i].vx;
+                balls[i].y += balls[i].vy;
+
+                if (balls[i].x - balls[i].radius <= 0) {
+                    balls[i].vx = -balls[i].vx;
+                    balls[i].x = balls[i].radius;
+                }
+
+                if (balls[i].x + balls[i].radius >= canvasWidth) {
+                    balls[i].vx = -balls[i].vx;
+                    balls[i].x = canvasWidth - balls[i].radius;
+                }
+
+                if (balls[i].y - balls[i].radius <= 0) {
+                    balls[i].vy = -balls[i].vy;
+                    balls[i].y = balls[i].radius;
+                }
+
+                if (balls[i].y + balls[i].radius >= canvasHeight) {
+                    balls[i].vy = -balls[i].vy;
+                    balls[i].y = canvasHeight - balls[i].radius;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
