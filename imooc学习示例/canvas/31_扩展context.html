@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>扩展context</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+        CanvasRenderingContext2D.prototype.fillStar = function(x, y, R, r, rot) {
+            this.beginPath();
+
+            for (var i=0; i<5; i++) {
+                this.lineTo(Math.cos((18 + i * 72 - rot) / 180 * Math.PI) * R + x, -Math.sin((18 + i * 72 - rot) / 180 * Math.PI) * R + y);
+                this.lineTo(Math.cos((54 + i * 72 - rot) / 180 * Math.PI) * r + x, -Math.sin((54 + i * 72 - rot) / 180 * Math.PI) * r + y);
+            }
+            this.closePath();
+
+            this.fill();
+        }
+        window.onload = function() {
+            canvas.width = 800;
+            canvas.height = 800;
+
+            context.fillStyle = '#058';
+            context.fillStar(400, 400, 300, 150, 0);
+        }
+
+    </script>
+</body>
+</html>
