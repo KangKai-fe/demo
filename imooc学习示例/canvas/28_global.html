@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>globalAlpha globalCompositeOperation</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById('canvas');
+
+            canvas.width = 1200;
+            canvas.height = 700;
+
+            var context = canvas.getContext('2d');
+
+            // 全局透明度
+            context.globalAlpha = 0.7;
+
+            // globalCompositeOperation = 'source-over' (default); 11种值
+            // source: 后绘制的图形; destination: 先绘制的图形;
+            for (var i=0; i<100; i++) {
+
+                var R = Math.floor(Math.random() * 255);
+                var G = Math.floor(Math.random() * 255);
+                var B = Math.floor(Math.random() * 255);
+
+                context.fillStyle = 'rgb(' + R + ', ' + G + ', ' + B + ')';
+
+                context.beginPath();
+                context.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 100, 0, Math.PI * 2);
+                context.fill();
+            }
+        }
+    </script>
+</body>
+</html>
