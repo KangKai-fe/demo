@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>使用Canvas交互</title>
+    <style>
+        #canvas {
+            border: 1px solid #aaa;
+            display: block;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas">
+        当前浏览器不支持canvas, 请更换浏览器后再试
+    </canvas>
+    <script>
+        var balls = [];
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+
+        window.onload = function() {
+            canvas.width = 800;
+            canvas.height = 800;
+
+            for (var i = 0; i < 10; i++) {
+                var aBall = {
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height * 0.8,
+                    r: Math.random() * 50 + 20
+                };
+                balls[i] = aBall;
+            }
+
+            drawText();
+            canvas.addEventListener('mousemove', detect);
+        }
+
+        function draw() {
+
+            for (var i = 0; i < balls.length; i++) {
+                context.beginPath();
+                context.arc(balls[i].x, balls[i].y, balls[i].r, 0, Math.PI * 2);
+
+
+                context.fill();
+            }
+        }
+
+        function detect(event) {
+            // canvas交互常用
+            var x = event.clientX - canvas.getBoundingClientRect().left;
+            var y = event.clientY - canvas.getBoundingClientRect().top;
+
+            for (var i = 0; i < balls.length; i++) {
+                context.beginPath();
+                context.arc(balls[i].x, balls[i].y, balls[i].r, 0, Math.PI * 2);
+
+                if (context.isPointInPath(x, y)) {
+                    context.fillStyle = 'orangered';
+                } else {
+                    context.fillStyle = '#058';
+                }
+                context.fill();
+            }
+        }
+
+        function drawText() {
+            context.font = 'bold 60px Mricrosoft Yahei';
+            context.fillStyle = '#058';
+            context.textAlign = 'center';
+            context.fillText('Canvas交互 -> 鼠标移入变色', canvas.width * 0.5, canvas.height * 0.9, canvas.width * 0.8);
+
+            context.font = '30px Mricrosoft Yahei';
+            context.fillText('——kangkai-fe', canvas.width * 0.5, canvas.height * 0.9 + 40, canvas.width * 0.4);
+        }
+    </script>
+</body>
+</html>
