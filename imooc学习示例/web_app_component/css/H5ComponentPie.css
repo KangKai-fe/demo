@@ -13,6 +13,7 @@
     position: absolute;
     z-index: 99;
     text-align:center;
+    font-size: 12px;
     height: 24px;
     transition: all .5s;
 }
