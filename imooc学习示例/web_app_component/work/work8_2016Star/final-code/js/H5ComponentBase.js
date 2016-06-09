@@ -5,7 +5,7 @@ var H5ComponentBase =function ( name, cfg ) {
     var id = ( 'h5_c_'+Math.random() ).replace('.','_') ;
 
     // 把当前的组建类型添加到样式中进行标记
-    var cls = ' h5_component_'+cfg.type; 
+    var cls = ' h5_component_'+cfg.type;
     var component = $('<div class="h5_component '+cls+' h5_component_name_'+name+'" id="'+id+'">');
 
     cfg.text   &&  component.text(cfg.text);
@@ -28,7 +28,7 @@ var H5ComponentBase =function ( name, cfg ) {
     }
 
     component.on('onLoad',function(){
-       
+
         setTimeout(function(){
             component.addClass(cls+'_load').removeClass(cls+'_leave');
             cfg.animateIn && component.animate( cfg.animateIn );
@@ -41,7 +41,7 @@ var H5ComponentBase =function ( name, cfg ) {
         setTimeout(function(){
             component.addClass(cls+'_leave').removeClass(cls+'_load');
             cfg.animateOut && component.animate( cfg.animateOut );
-         },cfg.delay || 0)
+        },cfg.delay || 0)
         return false;
     })
 

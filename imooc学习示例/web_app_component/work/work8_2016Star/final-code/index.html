@@ -19,8 +19,8 @@
 
     <script type="text/javascript" src="js/H5_loading.js"></script>
     <link rel="stylesheet" type="text/css" href="css/H5_loading.css" >
-    
-    <body>
+
+<body>
 
     <div class="loading">
 
@@ -52,8 +52,9 @@
 		body{
 			margin:0;
 			padding:0;
+            background-color: #ccc;
 		}
-	
+
         @-webkit-keyframes rock{
             0%{ transform:rotate(0deg)}
             5%{ transform:rotate(3deg)}
@@ -65,7 +66,10 @@
             70%{ transform:rotate(0deg)}
             100%{ transform:rotate(0deg)}
         }
-
+        .h5 {
+            max-width: 375px;
+            margin: 0 auto;
+        }
 		.h5_page {background-color:#000;color:#fff;}
 		.h5_component_name_enter_small{
 			border-radius:50%;
@@ -89,7 +93,7 @@
 			text-align:center;
 			color:#fff;
 		}
-		
+
 		.h5_component_name_star{
 			display:block;
 			height:80px;
@@ -103,87 +107,82 @@
 		.h5_component_bar .name,
 		.h5_component_bar .per{color:#fff}
 		.h5_component_bar .per{
-		  position: absolute;
-			right: -25px;
+            position: absolute;
+            right: -25px;
 		}
 	</style>
     <script type="text/javascript">
-	
-	if (window.DeviceMotionEvent) {
-		window.addEventListener('devicemotion', function (eventData) {
-        var acceleration = eventData.accelerationIncludingGravity;
 
-        if (Math.abs(acceleration.x) < 2 && Math.abs(acceleration.y) < 2) {
-            return false;
-        }
+	// if (window.DeviceMotionEvent) {
+	// 	window.addEventListener('devicemotion', function (eventData) {
+ //        var acceleration = eventData.accelerationIncludingGravity;
 
-        var degX = (acceleration.x * 10 / Math.PI)%25;
+ //        if (Math.abs(acceleration.x) < 2 && Math.abs(acceleration.y) < 2) {
+ //            return false;
+ //        }
 
-            $('.h5_component_name_bg:visible').css({
-                'left': degX+'%'
-            });
+ //        var degX = (acceleration.x * 10 / Math.PI)%25;
 
-		}, false);
-	}
-	
+ //            $('.h5_component_name_bg:visible').css({
+ //                'left': degX+'%'
+ //            });
+
+	// 	}, false);
+	// }
+
 	var star_data = [
-		{name:'白羊',bg:'baiyang',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'金牛',bg:'jinniu',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'双子',bg:'shuangzi',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'巨蟹',bg:'juxie',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'狮子',bg:'shizi',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'处女',bg:'chunv',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'天秤',bg:'tianping',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'天蝎',bg:'tianxie',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'射手',bg:'sheshou',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'摩羯',bg:'mojie',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'水瓶',bg:'shuiping',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
-		{name:'双鱼',bg:'shuangyu',date:'3月21日～4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'白羊',bg:'baiyang',date:'3月21日-4月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'金牛',bg:'jinniu',date:'4月21日-5月21日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'双子',bg:'shuangzi',date:'5月22日-6月21日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'巨蟹',bg:'juxie',date:'6月22日-7月22日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'狮子',bg:'shizi',date:'7月23日-8月22日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'处女',bg:'chunv',date:'8月23日-9月23日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'天秤',bg:'tianping',date:'9月24日-10月23日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'天蝎',bg:'tianxie',date:'10月24日-11月22日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'射手',bg:'sheshou',date:'11月23日-12月21日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'摩羯',bg:'mojie',date:'12月22日-1月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'水瓶',bg:'shuiping',date:'1月21日-2月19日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
+		{name:'双鱼',bg:'shuangyu',date:'2月20日-3月20日',data:[['爱情' , .6  ,'#ff7676'],['事业' , .75  ],['财富' , .65  ],['整体' , .65  ]]},
 	];
-	
+
 	var star_detail_data = [
 	'这年的多数时间内，白羊座都易将其莽撞、冲动的个性特质发挥过度，易给人有勇无谋的印象，务必凡事三思而后行，尤其是在个人创业、理财投资方面，皆以保守谨慎为佳，面对诱惑一定要让头脑好好降温。好在爱情运相对不错，即使频频犯错，但你火热的爱心对方仍旧能够接收到，付出不会完全白费。今年总体运势颇难期待出现漂亮高峰，但下半年整体要优于上半年，夏末秋初将迎来事业运的一波小高潮，有任何计划若在这个时间内启动，收效会明显高于其他时间段。',
 	'无突破之运，2016年金牛座适合无欲无求，懂得压制自己的欲望，知足而常乐，就能享受生活的温馨与幸福。整年运势变化不大，起伏转折间将有诸如与人发生口角、出门破财、购物体验不佳等不愉快的插曲发生，但都是过眼云烟，不用特别放在心上。上半年爱情方面能坐享甜蜜，但事业上遭遇突发事件的比例相对较高，需记得以不变应万变，年中时各项运势将达到高潮，到秋季时财富事业运还有一波反弹，届时生意投资上前期的投入将逐步开始收益。',
 	'2016对双子座而言，将会是戏剧化的一年，让你不得不印象深刻。办公室桃花缠身、出现平时鲜少交往却突然大献慇勤的人等等，诸如此类这些跳出你以往生活范畴的事件在今年层出不穷，务必处处小心，有人挖坑等你跳，但避开这些烦心事也能有好运主动找上门来。总体来说，今年会有不少沟坎摆在你的前面，尤其上半年运势跌宕较大，万不可掉以轻心，务必保持镇定、未雨绸缪才能有效避开风险。而进入深秋季节运势逐步趋于平稳，之后会有意想不到的好事发生。',
 	'今年的巨蟹如果求守安稳、鲜少作为，也能过上平淡温馨的小日子，但原地踏步只会浪费一波波袭来的好运，让周围的人事远远将你抛在身后。不妨大胆将自己的想法付诸实践，有什么规划就着手实施，如跳槽、转行、创业、投资、旅行、约会、告白等等，事情只要开始了，结果就会超出你想像的好。上半年贵人运极佳，事情遇到艰难险阻，自会有贵人主动前来相助。下半年感情运走红，需注意的是凡事不可以自我为中心，要懂得将心比心，处处为对方设想。',
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
-	'',
+	'对狮子座而言，2016年是为人际关系、共有利益操心的年份。这一年将会有正面冲突与合作协调的挑战出现。尽管你懂得用虚张声势的方式来占上风，却可能赢了面子、输了里子。由于财星水星在5月份以前一直处于逆行状态，使得投资、合伙、交易、签约、谈判出现好事多磨的局面，使得上半年多处于雷声大、雨点小，实质进展不如预期的状况，但学到的经验也将弥足珍贵。',
+	'对于处女座而言，2016年是安守本份，有容乃大的一年。今年的满月暗示处女座们要注意工作细节、小人背后捣鬼与健康方面的议题。恰好守护星水星在2016年5月之前都在逆行，做事易徒劳无功、反覆耗时，不小心就会消磨斗志与信心。6月起流年太阳进入合作宫，处女座们容易把焦点放在合作伙伴、重要客户、情人或公开竞争的对手上。为此，很容易与家人发生不快，内心的安全感将受到考验，与长辈相处易有磨擦；爱情上一方一厢情愿的作法无法得到另一方的正面回应。',
+	'承接2015年以来的好运，2016年的天秤座依旧活跃。上半年的满月暗示“朋友、组织、社团”对你带来强烈的影响，容易发展出新友谊与合作的机会。只是水星于6月前都在娱乐宫中逆行，使得旅游、娱乐、创作的事情常有反覆变化或拖延改期的状况；想生小孩的朋友也苦苦等待，好消息有迟来的现象。',
+	'2016年是天蝎座休息与忙碌交接的一年。2016年的满月将激发天蝎座思考“如何安身立命”的议题。上半年会一直很忙，在工作与家庭之间往返，即便在家也很忙碌。幸而年中流年太阳进入娱乐宫，天蝎座终于能好好享受休闲生活，但运势中出现为娱乐而破财的状况。有趣的是，守护星火星随后又进入以劳碌为主的工作宫，使得天蝎座不是为了玩乐而赶场，就是常有紧急的任务出现，被迫临时加班。对于从事娱乐、艺文、运动或小朋友相关行业的人来说，将是业务成长的好时机。',
+	'2016年上半年，流年太阳在家庭宫中停留，与家人一起吃喝玩乐、外出旅行的机会增多。满月显示在上半年事业发展或职业生涯规划将发生重大的转变，既会对现有的家庭生活带来挑战，也可能让收入出现变化。由于天冥凶相持续影响射手座的财运，使得射手座在今年特别容易有较大的投资，也会因为娱乐、旅游、爱情、子女、家人、房屋而破财。事业星水星也转进家庭宫，会花较多精力与家人沟通、为家人的事情烦心。',
+	'016年上半年，流年太阳在沟通宫停留，因此，这段时间摩羯座与人沟通交流、出外拜访的频率增加，与此同时，易有远行、进修的决定出现，也可能会得到某个重要的消息，并因此带来进步与改变的机会。然而，这些沟通与出行过程中多波折阻碍，须慎防认知上的错误、突如其来的麻烦出行、流言蜚语的可能。由于事业星金星停留在家庭宫，容易为了家人、办公室人事而忙碌，甚至出现与人发生冲突的场面。因此需要多些耐心来处理人际上的问题。',
+	'水瓶座2016年上半年太阳在财帛宫，今年会花钱如流水，不仅仅是为了旅游、学习、亲友而花费，还可能发现临时要花钱的事情也跟着增加。瓶子们2016年对财务要精打细算，若需签署与费用相关的合同时要特别谨慎。偏财星水星年中起进入财帛宫，想的事情也将绕着财务、金钱、物质生活为主，并与工作收入、投资、社交、借贷有关。',
+	'2016年4月以前，流年太阳都在命宫停留，双鱼座的朋友能够花时间在自己想做的事情上，也懂得犒赏自己，享受生活，这确实是轻松惬意的时光。然而，这一年事业宫受到土星的影响，事业方面发展多阻碍，不可任意妄为。你会感觉理想与现实落差甚大，自身被公司或主管所局限或困扰，鱼儿们此时不妨充实个人专业，累积经验，等待机会。若自己当老板的话，事业成长空间有限，更须深耕细作。'
 	]
 
 	$(function  () {
 		var h5 = new H5();
 		var list_index = 3;
-		
+
 		h5
 		.addPage('face')
 			.addComponent('bg',{
 				css:{
-					width:'150%',
+					width:'100%',
 					height:'100%',
-					left:'-25%',
 					backgroundSize:'cover'
 				},
 				bg:'imgs/face_bg.png'
 			})
 			.addComponent('enter',{
-					text:'我的2016星座运势',
-					onclick : function(){
-						$.fn.fullpage.moveTo( 1 )
-					}
-				})
+				text:'我的2016星座运势',
+				onclick : function(){
+					$.fn.fullpage.moveTo( 1 )
+				}
+			})
 
 	var list = h5.addPage('list');
-		
+
 		for(var i=0;i<12;i++){
 			list.addComponent('star star_'+i,{
 				'text':star_data[i].name,
@@ -198,7 +197,7 @@
 				})(i)
 			})
 		}
-		
+
 		for(var i=0;i<12;i++){
 			h5.addPage('star')
 				.addComponent('detail_icon',{
@@ -223,7 +222,7 @@
 					data:star_data[i].data,
 					css:{top:'250px'},
 				})
-				
+
 				.addComponent('enter_small',{
 					text:'星座',
 					css:{left:'30%',top:'50%',opacity:0},
@@ -238,11 +237,11 @@
 					css:{right:'-20%',top:'80%',opacity:0,backgroundColor:'rgba(255, 114, 130, 0.51)'},
 					animateIn:{opacity:1,right:'20%',},
 					onclick : (function(i){return function(){
-						
+
 						$.fn.fullpage.moveTo( list_index + 12 );
 						$('.h5_component_name_end_text').text(star_detail_data[i]);
 						$('.h5_component_name_end_icon').css('backgroundImage','url(imgs/'+star_data[i].bg+'.png)');
-						
+
 					}})(i),
 					delay:1500
 				})
@@ -255,14 +254,14 @@
                     css:{opacity:0,top:110,right:110},
                     animateIn:{opacity:1,top:10,right:10},
                     animateOut:{opacity:0,top:110,right:110},
-                    delay:1000 
+                    delay:1000
                 })
 			.addComponent('end_icon',{
 					width:160,
 					height:160,
 					center:true,
 					css:{top:'50px'},
-					
+
 					'bg':'imgs/'+star_data[0].bg+'.png',
 			})
 			.addComponent('end_text',{
@@ -285,10 +284,10 @@
 					delay:1500
 				})
 		h5.loader( [ 'imgs/baiyang.png' ]);
-		
+
 	});
     </script>
 
-    </body>
+</body>
 
 </html>
