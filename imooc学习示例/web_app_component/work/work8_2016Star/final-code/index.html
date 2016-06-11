@@ -54,7 +54,9 @@
 			padding:0;
             background-color: #ccc;
 		}
-
+        .h5_component_name_star{
+            -webkit-animation:rock 12s infinite;
+        }
         @-webkit-keyframes rock{
             0%{ transform:rotate(0deg)}
             5%{ transform:rotate(3deg)}
@@ -188,7 +190,7 @@
 				'text':star_data[i].name,
 				'bg':'imgs/'+star_data[i].bg+'.png',
 				css:{
-					'-webkit-animation':'rock 12s infinite '+(i+2)+'s'
+					'-webkit-animation-delay': (i+2)+'s'
 				},
 				onclick:(function(i){
 					return function(){

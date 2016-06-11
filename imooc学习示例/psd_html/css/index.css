@@ -1,0 +1,217 @@
+/* index页 */
+/* banner */
+.index-banner {
+    position: relative;
+}
+
+.index-banner-bg {
+    height: 570px;
+    overflow: hidden;
+}
+.index-banner-bg img {
+    margin: 0 auto;
+}
+
+.index-banner-text {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    margin-left: -388px;
+}
+.index-banner-text .text-logo {
+    width: 776px;
+    height: 117px;
+    background: url('../img/index-banner-textlogo.png') center center no-repeat;
+}
+.index-banner-text .text-info {
+    margin-top: 16px;
+    text-align: center;
+    color: #fff;
+}
+.index-banner-text .line {
+    display: inline-block;
+    width: 40px;
+    border-top: 1px solid #fff;
+    vertical-align: middle;
+    *margin-top: 20px; /* ie7 hack */
+}
+.index-banner-text .text {
+    margin: 0 27px;
+}
+
+/* menu */
+.index-menu {
+    position: relative;
+    border-top: 4px solid #f34949;
+}
+.menu-tips {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 156px;
+    height: 71px;
+    margin-left: -78px;
+    line-height: 61px;
+    text-align: center;
+    color: #fff;
+    background: #f34949;
+}
+.menu-tips:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 0;
+    border: 78px solid transparent;
+    border-bottom: 10px solid #fff;
+}
+.menu-container {
+    overflow: hidden;
+}
+.menu-list {
+    margin-top: 150px;
+    width: 1160px;
+}
+.menu-list .menu-item {
+    float: left;
+    width: 520px;
+    height: 36px;
+    margin: 0 60px 56px 0;
+}
+.menu-list .title {
+    position: relative;
+    overflow: hidden;
+    font-weight: bold;
+    color: #555;
+}
+.menu-list .line {
+    display: inline-block;
+    position: absolute;
+    top: 8px;
+    right: 100px;
+    width: 190px;
+    border-top: 1px solid #e3e1e1;
+    vertical-align: middle;
+}
+.menu-list .price {
+    float: right;
+    margin-right: 0 28px;
+}
+.menu-list .info {
+    margin-top: 4px;
+    color: #b7b7b7;
+}
+.menu-more-btn {
+    display: block;
+    width: 131px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    margin: 40px auto;
+    border: 1px solid #d7d5d5;
+    font-size: 14px;
+    color: #d7d5d5;
+}
+.menu-more-btn .icon {
+    display: inline-block;
+    width: 11px;
+    height: 7px;
+    background: url('../img/index-menu-btn-icon.png') center center no-repeat;
+}
+.menu-more-btn .line-v {
+    margin: 0 11px 0 14px;
+}
+
+/* panel */
+.index-panel {
+    margin-top: 200px;
+}
+.index-panel-header h3 {
+    float: left;
+    font-size: 20px;
+    color: #3B3B3B;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+.index-panel-header .line {
+    float: left;
+    margin-top: 10px;
+    margin-left: 45px;
+    border-top: 1px solid #e3e1e1;
+    width: 200px;
+}
+.index-panel-header .btn-group {
+    // 清除行内元素默认间距
+    font-size: 0;
+    float: right;
+}
+.index-panel-header .btn {
+    display: inline-block;
+    margin-left: 11px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #DDDDDD;
+}
+.index-panel-header .btn.active, .index-panel-header .btn:hover {
+    background: #9A9A9A;
+}
+
+.index-panel-body {
+    margin-top: 75px;
+}
+.index-food-list {
+    overflow: hidden;
+}
+
+.index-food-list ul {
+    width: 1160px;
+}
+.food-item {
+    float: left;
+    width: 230px;
+    margin-right: 60px;
+}
+.food-item img {
+    height: 202px;
+    margin-bottom: 30px;
+}
+.food-item .title {
+    font-size: 16px;
+    color: #555555;
+}
+.food-item .price {
+    float: right;
+}
+.food-item .star-bar {
+    font-size: 0;
+    margin-top: 10px;
+}
+.food-item .star {
+    display: inline-block;
+    width: 11px;
+    height: 12px;
+    margin-right: 5px;
+    background: url('../img/star.png') 0 0 no-repeat;
+}
+.food-item .star-no {
+    background: url('../img/star.png') 0 -11px no-repeat;
+}
+
+/* pics */
+.index-pics {
+    height: 380px;
+    overflow: hidden;
+}
+.index-pics .pic-col {
+    float: left;
+}
+.index-pics .pic-col-m {
+    width: 353px;
+}
+.index-pics .pic-col-s {
+    width: 287px;
+}
+.index-pics .pic-col-l {
+    width: 460px;
+}

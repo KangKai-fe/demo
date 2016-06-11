@@ -1,0 +1,32 @@
+/* 重置样式 */
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, a, p, input, textarea {
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    border: none;
+}
+
+.clearfix {
+    zoom: 1;
+}
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: "";
+    height: 0;
+    visibility: hidden;
+}
