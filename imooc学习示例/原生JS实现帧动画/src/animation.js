@@ -1,7 +1,7 @@
 'use strict';
 
 var loadImage = require('./imageLoader');
-var timeline = require('./timeline');
+var Timeline = require('./timeline');
 
 // 初始化状态
 var STATE_INITIAL= 0;
@@ -28,9 +28,9 @@ function next(callback) {
  */
 function Animation() {
     this.taskQueue = [];
-    this.index = 0;
     this.timeline = new Timeline();
     this.state = STATE_INITIAL;
+    this.index = 0;
 }
 
 /**
@@ -61,8 +61,8 @@ Animation.prototype.changePosition = function(ele, positions, imageUrl) {
     var type;
 
     if (len) {
+        var me = this;
         taskFn = function(next, time) {
-            var me = this;
 
             if (imageUrl) {
                 ele.style.backgroundImage = 'url(' + imageUrl + ')'
@@ -193,7 +193,7 @@ Animation.prototype.repeat = function(times) {
             me._next(task);
         }
     }
-    var type = TASK_ASYNC;
+    var type = TASK_SYNC;
 
     return this._add(taskFn, type);
 };
@@ -352,7 +352,6 @@ Animation.prototype._next = function(task) {
     task.wait ? setTimeout(function() {
         me._runTask();
     }, task.wait) : this._runTask();
-    this._runTask();
 };
 
 module.exports = function() {
