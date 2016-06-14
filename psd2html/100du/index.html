@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>100du_demo</title>
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+<div class="wrapper">
+    <div class="header clearfix">
+        <p class="cities fl">切换城市： <a class="city current" href="#">北京</a><a class="city" href="#">上海</a><a class="city" href="#">福州</a><a class="city" href="#">广州</a><a class="city" href="#">青岛</a></p>
+        <p class="management fr"><a class="join" href="#">加盟100度</a><span>|</span><a class="manage" href="#">店铺管理</a></p>
+    </div>
+    <div class="navbar clearfix">
+        <ul class="navbar-l clearfix fl">
+            <li class="food fl"><a href="#">美食</a></li>
+            <li class="club fl"><a href="#">夜店</a></li>
+            <li class="shopping fl"><a href="#">购物</a></li>
+            <li class="culture fl"><a href="#">文化</a></li>
+            <li class="entertain fl"><a href="#">休闲</a></li>
+        </ul>
+        <div class="logo fl"></div>
+        <ul class="navbar-r clearfix fl">
+            <li class="zone fl"><a href="#">烧客空间</a></li>
+            <li class="advice fl"><a href="#">知道分子</a></li>
+            <li class="free fl"><a href="#">白吃白拿</a></li>
+            <li class="bbs fl"><a href="#">烧客论坛</a></li>
+            <li class="entrepreneur fl"><a href="#">企业俱乐部</a></li>
+        </ul>
+    </div>
+    <div class="search-panel">
+        <div class="container">
+            <ul class="panel-header clearfix">
+                <li class="item fl current"><a href="#">搜店</a></li>
+                <li class="item fl"><a href="#">地址</a></li>
+                <li class="item fl"><a href="#">优惠券</a></li>
+                <li class="item fl"><a href="#">全文</a></li>
+                <li class="item fl"><a href="#">视频</a></li>
+            </ul>
+            <div class="panel-body clearfix">
+                <input class="searchbar-text" type="text" placeholder="例如：荷棠鱼坊烤鱼 或 樱花日本料理" />
+                <input class="searchbar-btn" type="button" value="搜索" />
+                <img class="search-tips" src="img/searchbar-info.png" alt="info" />
+                <div class="search-choices">
+                    <p><a href="#">金钱豹</a>、<a href="#">大江南</a>、<a href="#">湘水之珠</a>、<a href="#">德瑀楼</a></p>
+                    <p><a href="#">荷棠鱼坊烤鱼</a>、<a href="#">SOHO尚都</a>、<a href="#">湘味楼</a>...</p>
+                </div>
+            </div>
+        </div>
+        <div class="update clearfix">
+            <span class="icon icon-update fl"></span><a href="#" class="author fl">萱萱</a><span class="time fl">5分钟前</span><a href="#" class="content">写了一篇新文章：那些灿烂华美的瞬间…</a>
+            <a class="icon icon-up"></a>
+            <a class="icon icon-down"></a>
+        </div>
+    </div>
+    <div class="content clearfix">
+        <div class="content-l fl">
+            <div class="row clearfix">
+                <div class="hot-video component fl">
+                    <h3 class="title">WHAT'S HOT</h3>
+                    <!-- 暂时用img代替video -->
+                    <!-- <video src="#" width="318" height="285"></video> -->
+                    <img src="img/hot-video.jpg" alt="" />
+                    <ul class="video-list">
+                        <li><a href="#">现场实录：杭州机场国航系统的崩溃</a></li>
+                        <li><a href="#">网友自拍国航晚点后的遭遇</a></li>
+                        <li><a href="#">【拍客】绝对最奢侈的航班 注意第41秒</a></li>
+                    </ul>
+                </div>
+                <div class="shops component fr">
+                    <ul class="title clearfix">
+                        <li class="current fl"><h3><span>HOT SHOP</span>红店铺</h3><span class="icon icon-down"></span></li>
+                        <li class="fl"><h3><span>NEW SHOP</span>新开张</h3><span class="icon icon-down"></span></li>
+                    </ul>
+                    <ul class="shop-list">
+                        <li class="shop-item hot clearfix">
+                            <div class="img-box fl">
+                                <img src="img/shops-item.png" alt="" />
+                                <span class="icon icon-save"></span>
+                            </div>
+                            <p class="name">御舟和涵珍园国际酒店</p>
+                            <p class="area">区域：朝阳/CBD</p>
+                            <p class="price">人均：180元</p>
+                            <p class="popularity">人气：12321</p>
+                        </li>
+                        <li class="shop-item hot clearfix">
+                            <div class="img-box fl">
+                                <img src="img/shops-item.png" alt="" />
+                            </div>
+                            <p class="name">御舟和涵珍园国际酒店</p>
+                            <p class="area">区域：朝阳/CBD</p>
+                            <p class="price">人均：180元</p>
+                            <p class="popularity">人气：12321</p>
+                        </li>
+                        <li class="shop-item hot clearfix">
+                            <div class="img-box fl">
+                                <img src="img/shops-item.png" alt="" />
+                            </div>
+                            <p class="name">御舟和涵珍园国际酒店</p>
+                            <p class="area">区域：朝阳/CBD</p>
+                            <p class="price">人均：180元</p>
+                            <p class="popularity">人气：12321</p>
+                        </li>
+                    </ul>
+                    <a href="#" class="icon icon-more"></a>
+                </div>
+            </div>
+            <div class="ad-lg"></div>
+            <div class="row clearfix">
+                <div class="today component fl">
+                    <div class="title clearfix">
+                        <h3 class="title-text fl"><span>LUCKY TODAY</span><br />每日活动</h3>
+                        <p class="date fl">2014.2</p>
+                    </div>
+                    <div class="item">
+                        <img class="item-img fl" src="img/today-item.jpg" alt="" />
+                        <div class="item-info">
+                            <h4 class="item-title"><span class="date">07</span><span class="date">21</span>本日主题XXXXXX</h4>
+                            <p class="description">迟到的荣誉——维米尔的写实主义风俗画迟到的荣誉维米尔的写实主义风俗画维米尔米尔米尔</p>
+                        </div>
+                        <ul class="calendar">
+                            <li class="week-title"><a href="#">MON</a><a href="#">TUE</a><a href="#">WED</a><a href="#">THU</a><a href="#">FRI</a><a href="#">SAT</a><a href="#">SUN</a></li>
+                            <li class="week"><a class="last-month" href="#">29</a><a class="last-month" href="#">30</a><a href="#">1</a><a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a></li>
+                            <li class="week"><a href="#">6</a><a href="#">7</a><a href="#">8</a><a href="#">9</a><a href="#">10</a><a href="#">11</a><a href="#">12</a></li>
+                            <li class="week"><a href="#">13</a><a href="#">14</a><a href="#">15</a><a href="#">16</a><a href="#">17</a><a href="#">18</a><a href="#">19</a></li>
+                            <li class="week"><a href="#">20</a><a class="shoes current" href="#">21</a><a href="#">22</a><a href="#">23</a><a class="pizza" href="#">24</a><a href="#">25</a><a href="#">26</a></li>
+                            <li class="week"><a href="#">27</a><a href="#">28</a><a href="#">29</a><a href="#">30</a><a href="#">31</a><a class="next-month" href="#">1</a><a class="next-month" href="#">2</a></li>
+                            <li class="week"><a class="next-month" href="#">3</a><a class="next-month" href="#">4</a><a class="next-month" href="#">5</a><a class="next-month" href="#">6</a><a class="next-month" href="#">7</a><a class="next-month" href="#">8</a><a class="next-month" href="#">9</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="recommend component fr">
+                    <div class="title">
+                        <h3><span>RECOMMEND</span><br />精彩推荐</h3>
+                    </div>
+                    <div class="pics">
+                        <div class="img-lg fl">
+                            <img src="img/recommend-pic-lg.jpg" alt="" />
+                        </div>
+                        <ul class="img-sm fr">
+                            <li><img src="img/recommend-pic-sm1.jpg" alt="" /></li>
+                            <li><img src="img/recommend-pic-sm2.jpg" alt="" /></li>
+                            <li class="active"><img src="img/recommend-pic-sm3.jpg" alt="" /></li>
+                        </ul>
+                        <p class="description">爸爸去哪儿~</p>
+                    </div>
+                    <ul class="recommend-list">
+                        <li><span class="icon icon-shopping"></span><span class="time fr">08/07/22</span><a href="#">老店换新颜, 丰泽园野田重新亮相</a></li>
+                        <li><span class="icon icon-advice"></span><span class="time fr">08/07/22</span><a href="#">生活中哪些商品的包装有缺陷</a></li>
+                        <li><span class="icon icon-shopping"></span><span class="time fr">08/07/22</span><a href="#">老店换新颜, 丰泽园野田重新亮相</a></li>
+                        <li><span class="icon icon-advice"></span><span class="time fr">08/07/22</span><a href="#">生活中哪些商品的包装有缺陷</a></li>
+                        <li><span class="icon icon-shopping"></span><span class="time fr">08/07/22</span><a href="#">老店换新颜, 丰泽园野田重新亮相</a></li>
+                        <li><span class="icon icon-advice"></span><span class="time fr">08/07/22</span><a href="#">生活中哪些商品的包装有缺陷</a></li>
+                        <li><span class="icon icon-shopping"></span><span class="time fr">08/07/22</span><a href="#">老店换新颜, 丰泽园野田重新亮相</a></li>
+                        <li><span class="icon icon-advice"></span><span class="time fr">08/07/22</span><a href="#">生活中哪些商品的包装有缺陷</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="subway component fl">
+                    <ul class="title clearfix">
+                        <li class="current fl"><h3><span>SUBWAY</span>地铁交通<span class="icon icon-down"></span></h3></li>
+                        <li class="fl"><h3><span>MAP</span>生活圈<span class="icon icon-down"></span></h3></li>
+                    </ul>
+                    <img class="subway-img" src="img/subway.jpg" alt="" />
+                    <ul class="lines clearfix">
+                        <li class="line line1 fl"><a href="#"><span>1</span>号线</a></li>
+                        <li class="line line2 fl"><a href="#"><span>2</span>号线</a></li>
+                        <li class="line line13 current fl"><a href="#"><span>13</span>号线</a></li>
+                        <li class="line line8 fl"><a href="#"><span>8</span>通线</a></li>
+                        <li class="line line5 fl"><a href="#"><span>5</span>号线</a></li>
+                    </ul>
+                </div>
+                <div class="bbs component fr">
+                    <h3 class="title common"><span>BBS</span><a href="#" class="icon icon-more fr"></a>论坛</h3>
+                    <ul class="bbs-list">
+                        <li class="first">
+                            <img class="fl" src="img/bbs-img.jpg" alt="" />
+                            <h4>画皮之——日剧中的手机</h4>
+                            <p>阿瑞斯</p>
+                            <span class="rank">one</span>
+                        </li>
+                        <li class="bbs-item"><span class="rank">02</span><span class="author fr">世说新语</span><a href="#" class="title">保你没见过的古怪餐厅</a></li>
+                        <li class="bbs-item"><span class="rank">03</span><span class="author fr">世说新语</span><a href="#" class="title">保你没见过的古怪餐厅</a></li>
+                        <li class="bbs-item"><span class="rank">04</span><span class="author fr">世说新语</span><a href="#" class="title">保你没见过的古怪餐厅</a></li>
+                        <li class="bbs-item"><span class="rank">05</span><span class="author fr">世说新语</span><a href="#" class="title">保你没见过的古怪餐厅</a></li>
+                        <li class="bbs-item"><span class="rank">06</span><span class="author fr">世说新语</span><a href="#" class="title">保你没见过的古怪餐厅</a></li>
+                        <li class="bbs-item"><span class="rank">07</span><span class="author fr">世说新语</span><a href="#" class="title">保你没见过的古怪餐厅</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="ad-lg"></div>
+            <div class="row clearfix">
+                <div class="advice component fl">
+                    <h3 class="title common"><span>LIFESTYLE ADVICE</span><a href="#" class="icon icon-more fr"></a>知道分子</h3>
+                    <div class="panel">
+                        <ul class="panel-header clearfix">
+                            <li class="current fl"><a href="#">有人在问</a><span class="icon icon-down"></span></li>
+                            <li class="fl"><a href="#">有人知道</a><span class="icon icon-down"></span></li>
+                            <li class="fl"><a href="#">热门问题</a><span class="icon icon-down"></span></li>
+                        </ul>
+                        <ul class="panel-body">
+                            <li class="panel-title"><span class="text">标&nbsp;&nbsp;题</span><span class="status">状态</span></li>
+                            <li class="advice-list-item"><p class="text"><span class="cat">[<a href="#">美食</a>]</span>推荐几款性价比比较好的冰箱</p><span class="status fr icon icon-checked"></span></li>
+                            <li class="advice-list-item"><p class="text"><span class="cat">[<a href="#">购物</a>]</span>推荐几款性价比比较好的冰箱</p><span class="status fr icon icon-flag"></span></li>
+                            <li class="advice-list-item"><p class="text"><span class="cat">[<a href="#">休闲</a>]</span>推荐几款性价比比较好的冰箱</p><span class="status fr icon icon-checked"></span></li>
+                            <li class="advice-list-item"><p class="text"><span class="cat">[<a href="#">美食</a>]</span>推荐几款性价比比较好的冰箱</p><span class="status fr icon icon-flag"></span></li>
+                            <li class="advice-list-item"><p class="text"><span class="cat">[<a href="#">购物</a>]</span>推荐几款性价比比较好的冰箱</p><span class="status fr icon icon-flag"></span></li>
+                        </ul>
+                        <p class="advice-search">搜搜谁知道: <input class="search-text" type="text" placeholder="输入关键字" /><input class="search-btn" type="button" value="go" /></p>
+                    </div>
+                </div>
+                <div class="hot component fr">
+                    <h3 class="title common"><span>HOT</span><a href="#" class="icon icon-more fr"></a>红人烧客</h3>
+                    <div class="hot-pics">
+                        <div class="pics-container clearfix">
+                            <img class="fl" src="img/hot-pics1.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics2.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics3.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics4.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics5.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics6.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics7.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics8.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics9.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics10.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics2.jpg" alt="" />
+                            <img class="fl" src="img/hot-pics3.jpg" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="help component fl">
+                    <h3 class="title common"><span>HELP</span>在线帮助</h3>
+                    <p class="info">您有任何问题，都可以通过全国免费电话，或MSN在线客服与我们联系！</p>
+                    <p class="contact"><span class="phone">4006-100-516</span><span class="msn">100du.com@live.cn</span></p>
+                    <div class="tips clearfix">
+                        <ul class="fl">
+                            <h4>用户帮助</h4>
+                            <li><a href="#">金币是什么</a></li>
+                            <li><a href="#">怎样查看我的等级</a></li>
+                            <li><a href="#">怎么赚积分</a></li>
+                        </ul>
+                        <ul class="fl">
+                            <h4>商户帮助</h4>
+                            <li><a href="#">如何成为明星商户</a></li>
+                            <li><a href="#">邮件推广</a></li>
+                            <li><a href="#">论坛推广方法</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="media component fr">
+                    <h3 class="title common"><span>100DU IN THE MEDIA</span><a href="#" class="icon icon-more fr"></a>媒体声音</h3>
+                    <ul class="media-list">
+                        <li><img class="fl" src="img/media-1.jpg" alt="" /><a href="#">日本最大的财经杂志《钻石周刊》对100度享乐网的报道</a></li>
+                        <li><img class="fl" src="img/media-2.jpg" alt="" /><a href="#">视频网站100度享乐网获网络视听许可证</a></li>
+                        <li><img class="fl" src="img/media-3.jpg" alt="" /><a href="#">互联网上的视频橱窗</a></li>
+                        <li><img class="fl" src="img/media-4.jpg" alt="" /><a href="#">享乐主义的机会</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="aside fr">
+            <div class="login component">
+                <h3 class="title"><span>LOAD</span>登陆</h3>
+                <form class="login-form" action="#">
+                    <p><span class="label">用户名：</span><input id="user" type="text" /><label for="remember"><input id="remember" type="checkbox" />记住我</label></p>
+                    <p><span class="label">密码：</span><input id="pwd" type="password" /><input id="submit" type="submit" value="登录" /></p>
+                </form>
+                <ul class="others clearfix">
+                    <li class="fl"><a href="#">新用户注册</a></li>
+                    <li class="fl"><a href="#">忘记密码</a></li>
+                </ul>
+            </div>
+            <div class="ad-sm component"></div>
+            <div class="ad-md component"></div>
+            <div class="coupons component">
+                <h3 class="title common"><span>COUPONS</span><a href="#" class="icon icon-more fr"></a>抢卷儿</h3>
+                <div class="panel">
+                    <ul class="panel-header clearfix">
+                        <li class="current fl"><a href="#">人气</a><span class="icon icon-down"></span></li>
+                        <li class="fl"><a href="#">推荐</a><span class="icon icon-down"></span></li>
+                        <li class="fl"><a href="#">最新</a><span class="icon icon-down"></span></li>
+                    </ul>
+                    <ul class="panel-body">
+                        <li class="panel-title"><span class="name">商店名</span><span class="save">省</span><span class="print">打印</span></li>
+                        <li class="coupons-list-item"><span class="name">老北京一尊皇牛</span><span class="save">12%</span><span class="print">345</span></li>
+                        <li class="coupons-list-item"><span class="name">老北京一尊皇牛</span><span class="save">12%</span><span class="print">345</span></li>
+                        <li class="coupons-list-item"><span class="name">老北京一尊皇牛</span><span class="save">12%</span><span class="print">345</span></li>
+                        <li class="coupons-list-item"><span class="name">老北京一尊皇牛</span><span class="save">12%</span><span class="print">345</span></li>
+                        <li class="coupons-list-item"><span class="name">老北京一尊皇牛</span><span class="save">12%</span><span class="print">345</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="shop-today component">
+                <h3 class="title common"><span>SHOP</span><a href="#" class="icon icon-more fr"></a>今日推荐</h3>
+                <ul class="shop-today-list">
+                    <li class="shop-today-item clearfix">
+                        <div class="img-container fl">
+                            <img src="img/aside-chicken.jpg" alt="" />
+                            <span class="icon icon-save"></span>
+                        </div>
+                        <h4>汉莱国际美食百汇</h4>
+                        <p><span>口味：</span>创意中餐</p>
+                        <p><span>区域：</span>朝阳/CBD</p>
+                    </li>
+                    <li class="shop-today-item clearfix">
+                        <div class="img-container fl">
+                            <img src="img/aside-chicken.jpg" alt="" />
+                            <span class="icon icon-save"></span>
+                        </div>
+                        <h4>汉莱国际美食百汇</h4>
+                        <p><span>口味：</span>创意中餐</p>
+                        <p><span>区域：</span>朝阳/CBD</p>
+                    </li>
+                    <li class="shop-today-item clearfix">
+                        <div class="img-container fl">
+                            <img src="img/aside-chicken.jpg" alt="" />
+                            <span class="icon icon-save"></span>
+                        </div>
+                        <h4>汉莱国际美食百汇</h4>
+                        <p><span>口味：</span>创意中餐</p>
+                        <p><span>区域：</span>朝阳/CBD</p>
+                    </li>
+                    <li class="shop-today-item clearfix">
+                        <div class="img-container fl">
+                            <img src="img/aside-chicken.jpg" alt="" />
+                            <span class="icon icon-save"></span>
+                        </div>
+                        <h4>汉莱国际美食百汇</h4>
+                        <p><span>口味：</span>创意中餐</p>
+                        <p><span>区域：</span>朝阳/CBD</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="shop-view component">
+                <h3 class="title common"><span>360o SHOP</span><a href="#" class="icon icon-more fr"></a>全景逛店</h3>
+                <p><img src="img/aside-view.jpg" alt="" /></p>
+                <p>汉莱国际美食百汇</p>
+            </div>
+            <div class="shop-sale component">
+                <h3 class="title common"><span>SHOP</span><a href="#" class="icon icon-more fr"></a>折扣店</h3>
+                <div class="shop-sale-example clearfix">
+                    <div class="img-container fl">
+                        <img src="img/aside-chicken.jpg" alt="" />
+                        <span class="icon icon-save"></span>
+                    </div>
+                    <h4>汉莱国际美食百汇</h4>
+                    <p><span>口味：</span>创意中餐</p>
+                    <p><span>区域：</span>朝阳/CBD</p>
+                </div>
+                <ul class="shop-sale-list">
+                    <li class="shop-sale-item">
+                        <span class="cat">[<a href="#">休闲</a>]</span>
+                        <a href="#" class="name">瀚茶缘（雍和宫店）</a>
+                    </li>
+                    <li class="shop-sale-item">
+                        <span class="cat">[<a href="#">休闲</a>]</span>
+                        <a href="#" class="name">瀚茶缘（雍和宫店）</a>
+                    </li>
+                    <li class="shop-sale-item">
+                        <span class="cat">[<a href="#">美食</a>]</span>
+                        <a href="#" class="name">老北京一尊皇牛</a>
+                    </li>
+                    <li class="shop-sale-item">
+                        <span class="cat">[<a href="#">购物</a>]</span>
+                        <a href="#" class="name">老北京一尊皇牛</a>
+                    </li>
+                    <li class="shop-sale-item">
+                        <span class="cat">[<a href="#">美食</a>]</span>
+                        <a href="#" class="name">瀚茶缘（雍和宫店）</a>
+                    </li>
+                    <li class="shop-sale-item">
+                        <span class="cat">[<a href="#">美食</a>]</span>
+                        <a href="#" class="name">老北京一尊皇牛</a>
+                    </li>
+                    <li class="shop-sale-item">
+                        <span class="cat">[<a href="#">休闲</a>]</span>
+                        <a href="#" class="name">瀚茶缘（雍和宫店）</a>
+                    </li>
+                    <li class="shop-sale-item">
+                        <span class="cat">[<a href="#">休闲</a>]</span>
+                        <a href="#" class="name">瀚茶缘（雍和宫店）</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="coupons-new component">
+                <h3 class="title common"><span>COUPONS</span><a href="#" class="icon icon-more fr"></a>最新加盟</h3>
+                <div class="example-wrapper clearfix">
+                    <div class="coupons-new-example fl">
+                        <div class="img-container">
+                            <img src="img/aside-chicken.jpg" alt="" />
+                            <span class="icon icon-save"></span>
+                        </div>
+                        <h4>汉莱国际美食百汇</h4>
+                        <p><span>口味：</span>创意中餐</p>
+                        <p><span>区域：</span>朝阳/CBD</p>
+                    </div>
+                    <div class="coupons-new-example fl">
+                        <div class="img-container">
+                            <img src="img/aside-pizza.jpg" alt="" />
+                        </div>
+                        <h4>汉莱国际美食百汇</h4>
+                        <p><span>口味：</span>创意中餐</p>
+                        <p><span>区域：</span>朝阳/CBD</p>
+                    </div>
+                </div>
+                <ul class="coupons-new-list">
+                    <li class="coupons-new-item">
+                        <span class="cat">[<a href="#">休闲</a>]</span>
+                        <a href="#" class="name">瀚茶缘（雍和宫店）</a>
+                    </li>
+                    <li class="coupons-new-item">
+                        <span class="cat">[<a href="#">休闲</a>]</span>
+                        <a href="#" class="name">瀚茶缘（雍和宫店）</a>
+                    </li>
+                    <li class="coupons-new-item">
+                        <span class="cat">[<a href="#">美食</a>]</span>
+                        <a href="#" class="name">老北京一尊皇牛</a>
+                    </li>
+                    <li class="coupons-new-item">
+                        <span class="cat">[<a href="#">购物</a>]</span>
+                        <a href="#" class="name">老北京一尊皇牛</a>
+                    </li>
+                    <li class="coupons-new-item">
+                        <span class="cat">[<a href="#">美食</a>]</span>
+                        <a href="#" class="name">瀚茶缘（雍和宫店）</a>
+                    </li>
+                    <li class="coupons-new-item">
+                        <span class="cat">[<a href="#">美食</a>]</span>
+                        <a href="#" class="name">老北京一尊皇牛</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <ul class="links clearfix">
+            <li class="fl"><a href="#">关于我们</a></li>
+            <li class="fl"><a href="#">联系我们</a></li>
+            <li class="fl"><a href="#">版权声明</a></li>
+            <li class="fl"><a href="#">加入我们</a></li>
+            <li class="fl"><a href="#">问题反馈</a></li>
+            <li class="fl"><a href="#">友情链接</a></li>
+            <li class="fl"><a href="#">网站地图</a></li>
+            <li class="fl"><a href="#">视频索引</a></li>
+        </ul>
+        <p class="copyright">Copyright &copy; 2008 www.100du.com 100度享乐网 版权所有 京ICP证XXX号</p>
+    </div>
+</div>
+</body>
+</html>
