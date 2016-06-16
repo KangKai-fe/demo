@@ -190,15 +190,15 @@ a{
     width: 405px;
     height: 26px;
     margin-left: 226px;
+    margin-bottom: -1px;
 }
 .search-panel-header .item{
     width: 78px;
-    height: 25px;
+    height: 24px;
     margin-right: 1px;
-    line-height: 25px;
+    line-height: 24px;
     text-align: center;
     border: 1px solid #EEC8B8;
-    border-bottom: none;
     border-radius: 5px 5px 0 0;
     background: #fff;
 }
@@ -213,8 +213,7 @@ a{
 .search-panel-header .item.current{
     background: #E21C01;
     border: 1px solid #C40D0E;
-    border-bottom: none;
-    margin-bottom: -1px;
+    border-bottom: 1px solid #E21C01;
 }
 .search-panel-header .item.current a{
     color: #fff;

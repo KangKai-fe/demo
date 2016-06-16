@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>zony_demo</title>
+    <link rel="stylesheet" href="css/lib/jqx.base.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <script src="js/lib/jquery-1.11.1.min.js"></script>
+    <script src="js/lib/jqwidgets/jqxcore.js"></script>
+    <script src="js/lib/jqwidgets/jqxdatetimeinput.js"></script>
+    <script src="js/lib/jqwidgets/jqxcalendar.js"></script>
+    <script src="js/lib/jqwidgets/globalization/globalize.js"></script>
+    <script src="js/lib/jqwidgets/globalization/globalize.culture.ch-CN.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <div class="top">
+        <div class="container-header clearfix">
+            <p class="top-welcome fl">欢迎来到卓一企管！</p>
+            <p class="top-contact fr">
+                <a href="#">登录</a>
+                <span class="line">|</span>
+                <a href="#">注册</a>
+                <span class="line">|</span>
+                <a href="#">加入收藏</a>
+                <span class="line">|</span>
+                <a href="#">联系我们</a>
+                <span class="phone">服务电话：<a href="#">0512-68653001</a></span>
+            </p>
+        </div>
+    </div>
+    <div class="header container-header">
+        <div class="header-logo"></div>
+        <div class="searchbar">
+            <div class="search clearfix">
+                <select class="select fl">
+                    <option value="课程1">课程1</option>
+                    <option value="课程2">课程2</option>
+                    <option value="课程3">课程3</option>
+                </select>
+                <input class="search-box fl" type="text" placeholder="输入课程名称" />
+                <input class="search-btn fl" type="button" value="搜索" />
+            </div>
+            <p class="search-links">
+                <a class="hot" href="#">生产管理</a>
+                <a href="#">质量管理</a>
+                <a href="#">人力资源</a>
+                <a href="#">领导力管理技能</a>
+                <a href="#">销售与市场</a>
+            </p>
+        </div>
+        <div class="header-icons">
+            <span class="icon-weibo"></span>
+            <span class="icon-weixin"></span>
+        </div>
+    </div>
+    <div class="navbar">
+        <ul class="container-header clearfix">
+            <li class="navbar-item fl"><a href="#">首 页</a></li>
+            <li class="navbar-item fl"><a href="#">服务产品</a></li>
+            <li class="navbar-item fl"><a href="#">公开课</a></li>
+            <li class="navbar-item fl"><a href="#">内训课</a></li>
+            <li class="navbar-item fl"><a href="#">讲师团队</a></li>
+            <li class="navbar-item fl"><a href="#">客户见证</a></li>
+            <li class="navbar-item fl"><a href="#">在线学习</a></li>
+            <li class="navbar-item fl"><a href="#">新闻中心</a></li>
+            <li class="navbar-item fl"><a href="#">关于我们</a></li>
+        </ul>
+    </div>
+    <div class="banner">
+        <div class="banner-box">
+            <img src="img/banner.jpg" alt="" />
+        </div>
+        <div class="btns">
+            <a class="current" href="#"></a><a href="#"></a><a href="#"></a>
+        </div>
+    </div>
+    <div class="container-content clearfix">
+        <div class="aside fl">
+            <ul class="nav-cat">
+                <h3 class="nav-cat-title"><a href="#" class="more fr">更多</a>课程分类</h3>
+                <li class="nav-cat-item"><a href="#">生产管理</a></li>
+                <li class="nav-cat-item"><a href="#">质量管理</a></li>
+                <li class="nav-cat-item"><a href="#">采购物流</a></li>
+                <li class="nav-cat-item"><a href="#">领导力管理技能</a></li>
+                <li class="nav-cat-item"><a href="#">人力资源</a></li>
+                <li class="nav-cat-item"><a href="#">职业能力</a></li>
+                <li class="nav-cat-item"><a href="#">销售与市场</a></li>
+                <li class="nav-cat-item"><a href="#">职业资格认证</a></li>
+                <li class="nav-cat-item"><a href="#">ISO国标</a></li>
+                <li class="nav-cat-item"><a href="#">客户服务</a></li>
+                <div class="nav-cat-panel clearfix" style="display:none;">
+                    <div class="nav-cat-panel-l fl">
+                        <h4 class="nav-manager">生产管理</h4>
+                        <p class="nav-courses">
+                            <a href="#">一线主管</a>
+                            <a href="#">生产运作</a>
+                            <a href="#">生产计划</a>
+                            <a href="#">成本控制</a>
+                            <a href="#">设备管理</a>
+                            <br />
+                            <a href="#">现场管理</a>
+                            <a href="#">安全管理</a>
+                            <a href="#">仓储物料</a>
+                            <a href="#">质量管理</a>
+                        </p>
+                        <h4 class="nav-hot">热门课程：</h4>
+                        <ul class="nav-courses-hot">
+                            <li><a href="#">工厂设备维修管理</a></li>
+                            <li><a href="#">生产计划与订单管理PMC</a></li>
+                            <li><a href="#">生产计划管理与物料控制</a></li>
+                        </ul>
+                    </div>
+                    <div class="nav-cat-panel-r fl">
+                        <img src="img/nav-cat-panel-1.jpg" alt="" />
+                        <p class="teacher">分享嘉宾：李炜</p>
+                        <p class="place">开课时间及地点：5月14/苏州</p>
+                        <p class="price"><span>3050</span>元/人</p>
+                    </div>
+                </div>
+            </ul>
+            <div id="calendar" class="calendar"></div>
+            <div class="download component">
+                <h3 class="component-title"><a href="#" class="more fr">更多&gt;</a>下载中心</h3>
+                <ul class="component-list">
+                    <li class="component-list-item">
+                        <a href="#">TWI一线主管技能训练</a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#">危险品化学品安全管理培训</a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#">CSE客诉处理工程师训练</a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#">TWI一线主管技能训练</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="user-demos component">
+                <h3 class="component-title"><a href="#" class="more fr">更多&gt;</a>客户案例</h3>
+                <div class="user-info">
+                    <img class="fl" src="img/user-info.png" alt="" />
+                    <p class="company">广州天创股份有限公司</p>
+                    <p>培训主管</p>
+                </div>
+                <p class="user-text">
+                    <span class="quote-l"></span>
+                    一直头疼终端门店销售人员的培训问题，卓一企业培训提供了一个很好的解决方案。很方便进行一线人员的培训，同时辅以跟踪考核体系，让培训效率得到了很大的提升。
+                    <span class="quote-r"></span>
+                </p>
+            </div>
+            <div class="contact component">
+                <h3 class="component-title"><a href="#" class="more fr">更多&gt;</a>联系我们</h3>
+                <h4 class="company-name">卓一企业管理顾问有限公司</h4>
+                <ul class="phones">
+                    <p>公司电话：</p>
+                    <li>苏州：+86 512 68653001</li>
+                    <li>上海：+86 512 68653001</li>
+                    <li>南京：+86 512 68653001</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content fr">
+            <div class="row row-courses clearfix">
+                <div class="courses-month component fl">
+                    <h3 class="component-title"><a href="#" class="more fr">更多&gt;</a>本月课程</h3>
+                    <ul class="component-list">
+                        <li class="component-list-item">
+                            <a href="#">TWI一线主管技能训练</a>
+                            <span class="icon-new"></span>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">危险品化学品安全管理培训</a>
+                            <span class="icon-new"></span>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">CSE客诉处理工程师训练</a>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">内部稽核展开与外稽应对</a>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">工厂高效仓储管理与物料配送实务</a>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">CSE客诉处理工程师训练</a>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">内部稽核展开与外稽应对</a>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">工厂高效仓储管理与物料配送实务</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="courses-hot component fl">
+                    <h3 class="component-title"><a href="#" class="more fr">更多&gt;</a>热门课程</h3>
+                    <ul class="component-list">
+                        <li class="component-list-item">
+                            <a href="#">采购价格分析和成本控制实战</a>
+                            <span class="icon-hot"></span>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">工作计划与执行力</a>
+                            <span class="icon-hot"></span>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">有效的沟通技巧</a>
+                            <span class="icon-hot"></span>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">TTT-内部培训师培训</a>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">职位分析评估与薪酬体系设计</a>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">思维导图训练</a>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">采购价格分析和成本控制实战</a>
+                        </li>
+                        <li class="component-list-item">
+                            <a href="#">TTT-内部培训师培训</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="login fl">
+                    <h3 class="login-title">享受知识，关注高效</h3>
+                    <form class="login-panel" action="#">
+                        <p class="label-user">账 号：</p>
+                        <p class="clearfix"><input class="user-bar fl" type="text" /></p>
+                        <p class="label-pwd"><a class="fr" href="#">忘记密码？</a>密 码：</p>
+                        <p class="clearfix"><input class="pwd-bar fl" type="password" /></p>
+                        <p class="remember"><input class="checkbox" type="checkbox" />记住账号，下次登录免输入</p>
+                        <p class="clearfix"><input class="login-btn fl" type="button" value="登 录" /></p>
+                        <p class="signup">没有账号？<a href="#">立即注册</a></p>
+                    </form>
+                </div>
+            </div>
+            <div class="row row-videos clearfix">
+                <img class="fl" src="img/video-1.jpg" alt="" /><img class="fr" src="img/video-2.jpg" alt="" />
+            </div>
+            <div class="courses-cat component">
+                <h3 class="component-title">课程分类</h3>
+                <ul class="courses-list clearfix">
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-1.jpg" alt="" />
+                        <h4 class="courses-name">生产管理</h4>
+                    </a></li>
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-2.jpg" alt="" />
+                        <h4 class="courses-name">质量管理</h4>
+                    </a></li>
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-3.jpg" alt="" />
+                        <h4 class="courses-name">采购物流</h4>
+                    </a></li>
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-4.jpg" alt="" />
+                        <h4 class="courses-name">领导力管理技能</h4>
+                    </a></li>
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-5.jpg" alt="" />
+                        <h4 class="courses-name">人力资源</h4>
+                    </a></li>
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-6.jpg" alt="" />
+                        <h4 class="courses-name">职业能力</h4>
+                    </a></li>
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-7.jpg" alt="" />
+                        <h4 class="courses-name">销售与市场</h4>
+                    </a></li>
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-8.jpg" alt="" />
+                        <h4 class="courses-name">职业资格认证</h4>
+                    </a></li>
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-9.jpg" alt="" />
+                        <h4 class="courses-name">ISO国标</h4>
+                    </a></li>
+                    <li class="courses-list-item fl"><a href="#">
+                        <img class="courses-item-img" src="img/courses-cat-10.jpg" alt="" />
+                        <h4 class="courses-name">客户服务</h4>
+                    </a></li>
+                </ul>
+            </div>
+            <div class="presentation component">
+                <h3 class="component-title"><a href="#" class="more fr">更多&gt;</a>培训展示</h3>
+                <ul class="component-list">
+                    <li class="component-list-item">
+                        <a href="#"><img class="presentation-pic" src="img/presentation-pic.jpg" alt="" /></a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#"><img class="presentation-pic" src="img/presentation-pic.jpg" alt="" /></a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#"><img class="presentation-pic" src="img/presentation-pic.jpg" alt="" /></a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#"><img class="presentation-pic" src="img/presentation-pic.jpg" alt="" /></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="news component clearfix">
+                <h3 class="component-title"><a href="#" class="more fr">更多&gt;</a>公司新闻</h3>
+                <img class="news-pic fl" src="img/news-pic.png" alt="" />
+                <ul class="component-list fl">
+                    <li class="component-list-item">
+                        <a href="#">基层干部管理能力提升训练培训圆满结束！</a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#">中层干部管理能力提升训练培训圆满结束！</a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#">卓一企管“采山水幽静，寻心灵珍宝”火凤凰体验式...</a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#">苏州某大型企业“班组长管理技能提升训练”培训圆...</a>
+                    </li>
+                    <li class="component-list-item">
+                        <a href="#">江苏某大型企业“品质控制与食品安全”培训圆满...</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container-footer">
+            <ul class="activity fl">
+                <h4>卓一活动</h4>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">发展历程</a></li>
+                <li><a href="#">业务流程</a></li>
+            </ul>
+            <ul class="experience fl">
+                <h4>客户体验</h4>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">发展历程</a></li>
+                <li><a href="#">业务流程</a></li>
+                <li><a href="#">服务理念</a></li>
+            </ul>
+            <ul class="join fl">
+                <h4>加入卓一</h4>
+                <li><a href="#">公司简介</a></li>
+                <li><a href="#">发展历程</a></li>
+                <li><a href="#">业务流程</a></li>
+                <li><a href="#">服务理念</a></li>
+                <li><a href="#">服务站点</a></li>
+            </ul>
+            <ul class="map fl">
+                <h4>网站地图</h4>
+            </ul>
+            <ul class="links fl">
+                <h4>友情链接</h4>
+                <li><a href="#">卓一企管</a></li>
+                <li><a href="#">卓一企管</a></li>
+            </ul>
+            <div class="wechat fr">
+                <img src="img/icon-weixinQR.jpg" alt="" />
+                <p>微信扫一扫，关注我们</p>
+            </div>
+            <p class="copyright">苏州卓一企业管理顾问有限公司  备案号：苏ICP备11053057号-1</p>
+        </div>
+    </div>
+</body>
+</html>
