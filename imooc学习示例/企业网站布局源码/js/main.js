@@ -42,7 +42,7 @@ kk.ui.moveLeft = function(obj, iCur, iTarget) {
 
 	obj.timer = setInterval(function() {
 
-		var iSpeed = (iTarget - iCur)/10;
+		var iSpeed = (iTarget - iCur)/8;
 		iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
 
 		if(iCur === iTarget) {

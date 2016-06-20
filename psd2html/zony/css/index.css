@@ -81,6 +81,10 @@ img, input{
 .component-list-item a{
     color: #464646;
 }
+.component-list-item a:hover{
+    color: #EF5B1B;
+    text-decoration: underline;
+}
 /* top */
 .top{
     height: 36px;
@@ -227,7 +231,15 @@ img, input{
     height: 360px;
     overflow: hidden;
 }
+.banner-box{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 300%;
+    font-size: 0;
+}
 .banner-box img{
+    display: inline-block;
     height: 100%;
 }
 .banner .btns{
@@ -236,16 +248,52 @@ img, input{
     left: 50%;
     margin-left: -35px;
 }
-.banner .btns a{
+.banner .btns span{
     display: inline-block;
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background: #DCE2E9;
     margin-right: 16px;
+    cursor: pointer;
 }
-.banner .btns .current, .banner .btns a:hover{
+.banner .btns .current{
     background: #fff;
+}
+.arrow {
+    font-family: arial;
+    cursor: pointer;
+    display: none;
+    line-height: 40px;
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 2;
+    top: 135px;
+    background: #000;
+    filter: alpha(opacity: 30);
+    opacity: 0.3;
+}
+
+.arrow:hover {
+    background: #000;
+    filter: alpha(opacity: 70);
+    opacity: 0.7;
+}
+
+.banner:hover .arrow {
+    display: block;
+}
+
+#prev {
+    left: 20px;
+}
+
+#next {
+    right: 20px;
 }
 /* aside */
 /* nav-cat */
@@ -278,25 +326,25 @@ img, input{
     background: #C1B385 url("../img/nav-cat-item-bg.png") 38px center no-repeat;
     text-indent: 60px;
 }
-.nav-cat-item a{
+.nav-cat-item > a{
     display: block;
     width: 100%;
     height: 100%;
     font-size: 14px;
     color: #FFFFFF;
 }
-.nav-cat-item a:hover{
+.nav-cat-item.current{
     background: #9D8741;
 }
 .nav-cat-panel{
     position: absolute;
     left: 273px;
     top: 56px;
-    height: 260px;
     width: 615px;
-    padding-top: 20px;
+    padding: 20px 0;
     border: 2px solid #C1B385;
     background: #fff;
+    text-indent: 0;
 }
 .nav-cat-panel-l{
     width: 309px;
