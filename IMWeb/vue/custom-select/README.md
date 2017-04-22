@@ -6,6 +6,7 @@
 ![demo展示](http://img.blog.csdn.net/20170422113029465?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZ2l0aHViXzM1MDM1OTA2/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 demo: [http://kangkai-fe.github.io/demo/vue/custom-select/](http://kangkai-fe.github.io/demo/vue/custom-select/)
+
 github: [https://github.com/KangKai-fe/demo/tree/master/IMWeb/vue/custom-select](https://github.com/KangKai-fe/demo/tree/master/IMWeb/vue/custom-select)
 
 ### html 代码
@@ -36,22 +37,22 @@ Vue.component("custom-select", {
 		}
 	},
 	template: `<div class="searchIpt clearFix">
-				<div class="clearFix">
-					<input placeholder="点击查询" type="text" class="keyWord"
-						:value="searchValue"
-						@focus="listShown = !listShown"
-					/>
-					<input type="button"
-						:value="btn"
-						@click="listShown = !listShown"
-					/>
-				</div>
-				<custom-list
-					:list="list"
-					@listClicked="listClickedHandler"
-					v-show="listShown"
-				></custom-list>
-			</div>`,
+		<div class="clearFix">
+			<input placeholder="点击查询" type="text" class="keyWord"
+				:value="searchValue"
+				@focus="listShown = !listShown"
+			/>
+			<input type="button"
+				:value="btn"
+				@click="listShown = !listShown"
+			/>
+		</div>
+		<custom-list
+			:list="list"
+			@listClicked="listClickedHandler"
+			v-show="listShown"
+		></custom-list>
+	</div>`,
 	methods: {
 		listClickedHandler(value) {
 			this.listShown = false;
@@ -63,11 +64,11 @@ Vue.component("custom-select", {
 Vue.component('custom-list', {
 	props: ['list'],
 	template: `<ul class="list">
-				<li
-					v-for="item in list"
-					@click="listClicked(item)"
-				>{{ item }}</li>
-			</ul>`,
+		<li
+			v-for="item in list"
+			@click="listClicked(item)"
+		>{{ item }}</li>
+	</ul>`,
 	methods: {
 		listClicked(value) {
 			this.$emit('listClicked', value);
