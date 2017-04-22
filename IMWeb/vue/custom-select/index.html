@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="UTF-8">
+	<title>custom select</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<script src="./vue.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<section class="container">
+			<h3>列表一</h3>
+			<custom-select :list="listOne.list" :btn="listOne.btn"></custom-select>
+		</section>
+		<section class="container">
+			<h3>列表二</h3>
+			<custom-select :list="listTwo.list" :btn="listTwo.btn"></custom-select>
+		</section>
+	</div>
+	<script>
+		//注册组件
+		Vue.component("custom-select", {
+			props: ['btn', 'list'],
+			data: function () {
+				return {
+					listShown: false,
+					searchValue: ''
+				}
+			},
+			template: `<div class="searchIpt clearFix">
+								<div class="clearFix">
+									<input placeholder="点击查询" type="text" class="keyWord"
+										:value="searchValue"
+										@focus="listShown = !listShown"
+									/>
+									<input type="button"
+										:value="btn"
+										@click="listShown = !listShown"
+									/>
+								</div>
+								<custom-list
+									:list="list"
+									@listClicked="listClickedHandler"
+									v-show="listShown"
+								></custom-list>
+							</div>`,
+			methods: {
+				listClickedHandler(value) {
+					this.listShown = false;
+					this.searchValue = value;
+				}
+			}
+		});
+
+		Vue.component('custom-list', {
+			props: ['list'],
+			template: `<ul class="list">
+								<li
+									v-for="item in list"
+									@click="listClicked(item)"
+								>{{ item }}</li>
+							</ul>`,
+			methods: {
+				listClicked(value) {
+					this.$emit('listClicked', value);
+				}
+			}
+		})
+
+		new Vue({
+			el: "#app",
+			data: {
+				listOne: {
+					btn: '城市',
+					list: ['北京', '上海', '广州', '石家庄']
+				},
+				listTwo: {
+					btn: 'Vue',
+					list: ['vue', 'vue-router', 'vuex', 'vue-cli']
+				}
+			}
+		})
+	</script>
+</body>
+
+</html>
